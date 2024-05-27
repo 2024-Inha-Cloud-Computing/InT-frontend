@@ -1,21 +1,22 @@
-import logo from './InT.png';
-import './App.css';
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import logo from "./InT.png";
+import "./App.css";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 function App() {
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
 
-  useEffect(() => {
-    // 배포시 EC2 주소가 들어가는 자리이다.
-    axios.get('http://localhost:8000')
-      .then(response => {
-        setMessage(response.data.message);
-      })
-      .catch(error => {
-        console.error('There was an error!', error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   // 배포시 EC2 주소가 들어가는 자리이다.
+  //   axios
+  //     .get("http://localhost:8000")
+  //     .then((response) => {
+  //       setMessage(response.data.message);
+  //     })
+  //     .catch((error) => {
+  //       console.error("There was an error!", error);
+  //     });
+  // }, []);
 
   return (
     <div className="App">
