@@ -1,0 +1,49 @@
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.App-logo {
+  height: 20vmin;
+  width: 50vmin;
+  pointer-events: none;
+  margin-bottom: 25vmin;
+}
+
+.login-button, .signup-button {
+  background-color: white;
+  border: 2px solid #007bff;
+  color: #007bff;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 80%;
+  max-width: 300px;
+}
+
+.login-button:hover, .signup-button:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.signup-button {
+  border: none;
+  background: none;
+  color: #007bff;
+  text-decoration: underline;
+}
+
+.signup-button:hover {
+  text-decoration: none;
+}
+
+p {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #333;
+}
