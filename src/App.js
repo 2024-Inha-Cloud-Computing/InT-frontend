@@ -1,7 +1,7 @@
-import logo from "./InT.png";
-import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Home from "./Home";
 
 function App() {
   const [message, setMessage] = useState("");
@@ -19,16 +19,11 @@ function App() {
   // }, []);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <div>
-          <img src={logo} className="App-logo" alt="logo" />
-        </div>
-        <button className="login-button">로그인</button>
-        <p>아직 회원이 아니신가요?</p>
-        <button className="signup-button">회원가입</button>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+      </Routes>
+    </Router>
   );
 }
 
