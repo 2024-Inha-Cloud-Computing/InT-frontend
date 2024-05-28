@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Home from "./Home";
+import Home from "./pages/Home.js";
 
 function App() {
   const [message, setMessage] = useState("");

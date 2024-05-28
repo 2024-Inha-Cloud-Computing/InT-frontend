@@ -1,5 +1,5 @@
-import "./App.css";
-import logo from "./InT.png";
+import "../css/Home.css";
+import logo from "../assets/img/InT.png";
 
 const Home = () => {
   return (
