@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Home from "./pages/Home.js";
-
+import "./App.css";
 function App() {
   const [message, setMessage] = useState("");
 
@@ -20,9 +20,11 @@ function App() {
 
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-      </Routes>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+        </Routes>
+      </div>
     </Router>
   );
 }
