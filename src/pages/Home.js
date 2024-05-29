@@ -1,6 +1,5 @@
 import "../css/Home.css";
 import logo from "../assets/img/InT.png";
-import { Link } from "react-router-dom";
 
 const Home = () => {
   window.addEventListener("resize", () => {
