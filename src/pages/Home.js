@@ -10,7 +10,7 @@ const Home = () => {
     window.location.href = "/login";
   }
   function goToJoinPage() {
-    window.location.href = "/join";
+    window.location.href = "/signup";
   }
   return (
     <div className="App">

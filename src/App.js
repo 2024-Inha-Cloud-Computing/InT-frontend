@@ -4,20 +4,11 @@ import axios from "axios";
 import Home from "./pages/Home.js";
 import "./App.css";
 import Login from "./pages/Login.js";
+import Timetable from "./pages/Timetable.js";
+import Signup from "./pages/Signup.js";
+
 function App() {
   const [message, setMessage] = useState("");
-
-  // useEffect(() => {
-  //   // 배포시 EC2 주소가 들어가는 자리이다.
-  //   axios
-  //     .get("http://localhost:8000")
-  //     .then((response) => {
-  //       setMessage(response.data.message);
-  //     })
-  //     .catch((error) => {
-  //       console.error("There was an error!", error);
-  //     });
-  // }, []);
 
   return (
     <Router>
@@ -25,6 +16,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/login" element={<Login />}></Route>
+          <Route path="/timetable" element={<Timetable />}></Route>
+          <Route path="/signup" element={<Signup />}></Route>
         </Routes>
       </div>
     </Router>
