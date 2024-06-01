@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+import "./PhoneEmail.css";
 
+import back from "../assets/img/back.png";
 import good from "../assets/img/check_good.png";
 import bad from "../assets/img/check_bad.png";
 
@@ -53,65 +55,69 @@ const PhoneEmail = () => {
   };
   return (
     <div>
-      {/* <img src={back} className="goback" onClick={goBack} /> */}
-      <h1>전화번호와 이메일을 알려주세요.</h1>
+      <img src={back} className="goback" onClick={goBack} />
+      <h1><p className="phoneEmailTitle1">전화번호와 이메일을</p><p className="phoneEmailTitle2">알려주세요.</p></h1>
       <form>
-        <div>
-          <label>전화번호</label>
+        <div className="phoneContent">
+          <label className="phoneTitle">전화번호</label>
+          <div className="phoneInput">
           <div>
-            <input
-              type="text"
-              value={phone1}
-              onChange={(e) => setPhone1(e.target.value)}
-              maxLength="3"
-            />
-            -
-            <input
-              type="text"
-              value={phone2}
-              onChange={(e) => setPhone2(e.target.value)}
-              maxLength="4"
-            />
-            -
-            <input
-              type="text"
-              value={phone3}
-              onChange={(e) => setPhone3(e.target.value)}
-              maxLength="4"
-            />
+              <input className="phoneInputBox1"
+                type="text"
+                value={phone1}
+                onChange={(e) => setPhone1(e.target.value)}
+                maxLength="3"
+              />
+              -
+              <input className="phoneInputBox2"
+                type="text"
+                value={phone2}
+                onChange={(e) => setPhone2(e.target.value)}
+                maxLength="4"
+              />
+              -
+              <input className="phoneInputBox3"
+                type="text"
+                value={phone3}
+                onChange={(e) => setPhone3(e.target.value)}
+                maxLength="4"
+              />
+            </div>
+            {phone1 !== "" && phone2 !== "" && phone3 !== "" ? (
+              <img className="checkImg" src={good} />
+            ) : (
+              <img className="checkImg" src={bad} />
+            )}
           </div>
-          {phone1 !== "" && phone2 !== "" && phone3 !== "" ? (
-            <img src={good} />
-          ) : (
-            <img src={bad} />
-          )}
         </div>
-        <div>
-          <label>이메일</label>
-          <div>
-            <input
-              type="text"
-              value={emailId}
-              onChange={(e) => setEmailId(e.target.value)}
-              placeholder="이메일"
-            />
-            @
-            <select
-              value={emailDomain}
-              onChange={(e) => setEmailDomain(e.target.value)}
-            >
-              <option value="inha.edu">inha.edu</option>
-              <option value="gmail.com">gmail.com</option>
-              <option value="naver.com">naver.com</option>
-            </select>
+        <div className="emailContent">
+          <label className="emailTitle">이메일</label>
+          <div className="emailInput">
+            <div className="emailInputBox">
+              <input className="idInput"
+                type="text"
+                value={emailId}
+                onChange={(e) => setEmailId(e.target.value)}
+                placeholder="이메일"
+              />
+              @
+              <select className="domainInput"
+                value={emailDomain}
+                onChange={(e) => setEmailDomain(e.target.value)}
+              >
+                <option value="inha.edu">inha.edu</option>
+                <option value="gmail.com">gmail.com</option>
+                <option value="naver.com">naver.com</option>
+              </select>
+            </div>
+            {emailId !== "" && emailDomain !== "" ? (
+              <img className="checkImg" src={good} />
+            ) : (
+              <img className="checkImg" src={bad} />
+            )}
           </div>
-          {emailId !== "" && emailDomain !== "" ? (
-            <img src={good} />
-          ) : (
-            <img src={bad} />
-          )}
         </div>
-        <button onClick={goNext}>다음으로 넘어가기</button>
+        <button className="nextButton" onClick={goNext}>다음으로 넘어가기</button>
       </form>
     </div>
   );
