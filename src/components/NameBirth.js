@@ -65,7 +65,7 @@ const NameBirth = () => {
         <div className="birthContent">
           <label className="birthTitle">생년월일</label>
           <div className="birthInput">
-            <select value={year} onChange={(e) => setYear(e.target.value)}>
+            <select className="birthInputBox" value={year} onChange={(e) => setYear(e.target.value)}>
               <option value="">연도</option>
               {years.map((year) => (
                 <option key={year} value={year}>
@@ -74,7 +74,7 @@ const NameBirth = () => {
               ))}
             </select>
 
-            <select value={month} onChange={(e) => setMonth(e.target.value)}>
+            <select className="birthInputBox" value={month} onChange={(e) => setMonth(e.target.value)}>
               <option value="">월</option>
               {months.map((month) => (
                 <option key={month} value={month}>
@@ -83,7 +83,7 @@ const NameBirth = () => {
               ))}
             </select>
 
-            <select value={day} onChange={(e) => setDay(e.target.value)}>
+            <select className="birthInputBox" value={day} onChange={(e) => setDay(e.target.value)}>
               <option value="">일</option>
               {days.map((day) => (
                 <option key={day} value={day}>
