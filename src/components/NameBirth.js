@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-
+import "./NameBirth.css";
+import back from "../assets/img/back.png";
 import good from "../assets/img/check_good.png";
 import bad from "../assets/img/check_bad.png";
 const NameBirth = () => {
@@ -47,53 +48,57 @@ const NameBirth = () => {
   };
   return (
     <div>
-      {/* <img src={back} className="goback" onClick={goBack} /> */}
-      <h1>이름과 생년월일을 알려주세요</h1>
+      <img src={back} className="goback" onClick={goBack} />
+      <h1 className="nameBirthTitle">이름과 생년월일을<br />알려주세요</h1>
       <form>
-        <div>
-          <label>이름</label>
-          <input
-            type="text"
-            onChange={(e) => setName(e.target.value)}
-            placeholder="이름을 입력해주세요."
-          />
-          {name !== "" ? <img src={good} /> : <img src={bad} />}
+        <div className="nameContent">
+          <label className="nameTitle">이름</label>
+          <div className="nameInput">
+            <input className="nameInputBox"
+              type="text"
+              onChange={(e) => setName(e.target.value)}
+              placeholder="이름을 입력해주세요."
+            />
+            {name !== "" ? <img className="checkImg" src={good} /> : <img className="checkImg" src={bad} />}
+          </div>
         </div>
-        <div>
-          <label>생년월일</label>
-          <select value={year} onChange={(e) => setYear(e.target.value)}>
-            <option value="">연도</option>
-            {years.map((year) => (
-              <option key={year} value={year}>
-                {year}
-              </option>
-            ))}
-          </select>
+        <div className="birthContent">
+          <label className="birthTitle">생년월일</label>
+          <div className="birthInput">
+            <select value={year} onChange={(e) => setYear(e.target.value)}>
+              <option value="">연도</option>
+              {years.map((year) => (
+                <option key={year} value={year}>
+                  {year}
+                </option>
+              ))}
+            </select>
 
-          <select value={month} onChange={(e) => setMonth(e.target.value)}>
-            <option value="">월</option>
-            {months.map((month) => (
-              <option key={month} value={month}>
-                {month}월
-              </option>
-            ))}
-          </select>
+            <select value={month} onChange={(e) => setMonth(e.target.value)}>
+              <option value="">월</option>
+              {months.map((month) => (
+                <option key={month} value={month}>
+                  {month}월
+                </option>
+              ))}
+            </select>
 
-          <select value={day} onChange={(e) => setDay(e.target.value)}>
-            <option value="">일</option>
-            {days.map((day) => (
-              <option key={day} value={day}>
-                {day}일
-              </option>
-            ))}
-          </select>
-          {year !== "" && month !== "" && day !== "" ? (
-            <img src={good} />
-          ) : (
-            <img src={bad} />
-          )}
+            <select value={day} onChange={(e) => setDay(e.target.value)}>
+              <option value="">일</option>
+              {days.map((day) => (
+                <option key={day} value={day}>
+                  {day}일
+                </option>
+              ))}
+            </select>
+            {year !== "" && month !== "" && day !== "" ? (
+              <img className="checkImg" src={good} />
+            ) : (
+              <img className="checkImg" src={bad} />
+            )}
+          </div>
         </div>
-        <button onClick={goNext}>다음으로 넘어가기</button>
+        <button className="nextButton" onClick={goNext}>다음으로 넘어가기</button>
       </form>
     </div>
   );
