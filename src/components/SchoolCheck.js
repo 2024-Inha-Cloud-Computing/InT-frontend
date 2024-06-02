@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import "./SchoolCheck.css";
+import back from "../assets/img/back.png"
 
 const SchoolCheck = () => {
   window.addEventListener("resize", () => {
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty("--vh", `${vh}px`);
   });
-  const [school, setSchool] = useState(true);
+  const [school, setSchool] = useState(false);
   const [timer, setTimer] = useState(1200);
   const [searchParams, setSeratchParams] = useSearchParams();
 
@@ -44,9 +45,9 @@ const SchoolCheck = () => {
     const span = document.querySelector("#message");
     //확인하는 로직
     if (!school) {
-      span.className = "";
+      span.className = "identifyFail";
     } else {
-      span.className = "";
+      span.className = "identifySuccess";
       span.innerText = "인증에 성공하였습니다.";
     }
   };
@@ -62,22 +63,21 @@ const SchoolCheck = () => {
   };
 
   return (
-    <div>
-      {/* <img src={back} className="goback" onClick={goBack} /> */}
-      <h1>인하대학교 재학생이 맞는지 확인할게요.</h1>
-      <div>입력해주신 이메일로 인증번호를 발송했어요!</div>
+    <div className="entire">
+      <img src={back} className="goback" onClick={goBack} />
+      <div><p className="schoolCheckTitle1">인하대학교 재학생이</p><p className="schoolCheckTitle2">맞는지 확인할게요.</p></div>
+      <div className="sendAlert">입력해 주신 이메일로<br />인증번호를 발송했어요!</div>
       <form>
-        <div>
-          <label>인증번호</label>
-          <input type="number" placeholder="인증번호 입력" />
-          <span>{formatTime(timer)}</span>
-          <button onClick={checkScool}>확인</button>
-          <span id="message" className="hidden">
-            인증에 실패하였습니다. 인증번호를 다시 입력해주세요.
-          </span>
+        <div className="schoolCheckContent">
+          <input className="numberCheck" type="number" placeholder="인증번호 입력" />
+          <span className="timeChecker">{formatTime(timer)}</span>
+          <button className="checkButton" onClick={checkScool}>확인</button>
         </div>
+        <span id="message" className="hidden">
+            인증에 실패하였습니다. 인증번호를 다시 입력해 주세요.
+          </span>
       </form>
-      <button onClick={goNext}>다음으로 넘어가기</button>
+      <button className="nextCheckButton" onClick={goNext}>다음으로 넘어가기</button>
     </div>
   );
 };

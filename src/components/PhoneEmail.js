@@ -54,9 +54,9 @@ const PhoneEmail = () => {
     }
   };
   return (
-    <div>
+    <div className="entire">
       <img src={back} className="goback" onClick={goBack} />
-      <h1><p className="phoneEmailTitle1">전화번호와 이메일을</p><p className="phoneEmailTitle2">알려주세요.</p></h1>
+      <div><p className="phoneEmailTitle1">전화번호와 이메일을</p><p className="phoneEmailTitle2">알려주세요.</p></div>
       <form>
         <div className="phoneContent">
           <label className="phoneTitle">전화번호</label>

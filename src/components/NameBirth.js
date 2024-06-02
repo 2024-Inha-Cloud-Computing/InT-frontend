@@ -47,9 +47,9 @@ const NameBirth = () => {
     }
   };
   return (
-    <div>
+    <div className="entire">
       <img src={back} className="goback" onClick={goBack} />
-      <h1><p className="nameBirthTitle1">이름과 생년월일을</p><p className="nameBirthTitle2">알려주세요.</p></h1>
+      <div><p className="nameBirthTitle1">이름과 생년월일을</p><p className="nameBirthTitle2">알려주세요.</p></div>
       <form>
         <div className="nameContent">
           <label className="nameTitle">이름</label>
