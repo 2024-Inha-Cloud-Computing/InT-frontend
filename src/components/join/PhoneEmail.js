@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import "./PhoneEmail.css";
 
-import back from "../assets/img/back.png";
-import good from "../assets/img/check_good.png";
-import bad from "../assets/img/check_bad.png";
+import back from "../../assets/img/back.png";
+import good from "../../assets/img/check_good.png";
+import bad from "../../assets/img/check_bad.png";
 
 const PhoneEmail = () => {
   window.addEventListener("resize", () => {
@@ -56,27 +56,33 @@ const PhoneEmail = () => {
   return (
     <div className="entire">
       <img src={back} className="goback" onClick={goBack} />
-      <div><p className="phoneEmailTitle1">전화번호와 이메일을</p><p className="phoneEmailTitle2">알려주세요.</p></div>
+      <div>
+        <p className="phoneEmailTitle1">전화번호와 이메일을</p>
+        <p className="phoneEmailTitle2">알려주세요.</p>
+      </div>
       <form>
         <div className="phoneContent">
           <label className="phoneTitle">전화번호</label>
           <div className="phoneInput">
-          <div>
-              <input className="phoneInputBox1"
+            <div>
+              <input
+                className="phoneInputBox1"
                 type="text"
                 value={phone1}
                 onChange={(e) => setPhone1(e.target.value)}
                 maxLength="3"
               />
               -
-              <input className="phoneInputBox2"
+              <input
+                className="phoneInputBox2"
                 type="text"
                 value={phone2}
                 onChange={(e) => setPhone2(e.target.value)}
                 maxLength="4"
               />
               -
-              <input className="phoneInputBox3"
+              <input
+                className="phoneInputBox3"
                 type="text"
                 value={phone3}
                 onChange={(e) => setPhone3(e.target.value)}
@@ -94,14 +100,16 @@ const PhoneEmail = () => {
           <label className="emailTitle">이메일</label>
           <div className="emailInput">
             <div className="emailInputBox">
-              <input className="idInput"
+              <input
+                className="idInput"
                 type="text"
                 value={emailId}
                 onChange={(e) => setEmailId(e.target.value)}
                 placeholder="이메일"
               />
               @
-              <select className="domainInput"
+              <select
+                className="domainInput"
                 value={emailDomain}
                 onChange={(e) => setEmailDomain(e.target.value)}
               >
@@ -117,7 +125,9 @@ const PhoneEmail = () => {
             )}
           </div>
         </div>
-        <button className="nextButton" onClick={goNext}>다음으로 넘어가기</button>
+        <button className="nextButton" onClick={goNext}>
+          다음으로 넘어가기
+        </button>
       </form>
     </div>
   );

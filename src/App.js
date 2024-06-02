@@ -8,6 +8,7 @@ import Timetable from "./pages/Timetable.js";
 import Signup from "./pages/Signup.js";
 import FindID from "./pages/FindID.js";
 import FindPW from "./pages/FindPW.js";
+import Taste from "./pages/Taste.js";
 
 function App() {
   const [message, setMessage] = useState("");
@@ -22,6 +23,7 @@ function App() {
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/findId" element={<FindID />}></Route>
           <Route path="findPw" element={<FindPW />}></Route>
+          <Route path="/taste" element={<Taste />}></Route>
         </Routes>
       </div>
     </Router>

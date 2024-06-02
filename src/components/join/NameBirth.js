@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import "./NameBirth.css";
-import back from "../assets/img/back.png";
-import good from "../assets/img/check_good.png";
-import bad from "../assets/img/check_bad.png";
+import back from "../../assets/img/back.png";
+import good from "../../assets/img/check_good.png";
+import bad from "../../assets/img/check_bad.png";
 const NameBirth = () => {
   window.addEventListener("resize", () => {
     let vh = window.innerHeight * 0.01;
