@@ -1,4 +1,4 @@
-import "./Result.css";
+import "./IDResult.css";
 import info from "../../assets/img/Exclamation_mark.png";
 import back from "../../assets/img/back.png";
 const Result = () => {

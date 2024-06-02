@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./Check.css";
+import "./IDCheck.css";
 import back from "../../assets/img/back.png";
 const Check = () => {
   const [check, setCheck] = useState(true);

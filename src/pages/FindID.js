@@ -1,14 +1,14 @@
 import { useSearchParams } from "react-router-dom";
-import Check from "../components/FindID/Check";
-import Result from "../components/FindID/Result";
+import IDCheck from "../components/FindID/IDCheck";
+import IDResult from "../components/FindID/IDResult";
 
 const FindID = () => {
   const [searchParams, setSeratchParams] = useSearchParams();
   const check = searchParams.get("check");
   if (check === null) {
-    return <Check></Check>;
+    return <IDCheck></IDCheck>;
   } else if (check === "true") {
-    return <Result></Result>;
+    return <IDResult></IDResult>;
   }
 };
 
