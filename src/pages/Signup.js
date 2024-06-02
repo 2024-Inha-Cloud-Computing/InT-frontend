@@ -21,9 +21,7 @@ const Signup = () => {
     pw === null
   ) {
     return (
-      <div>
         <NameBirth></NameBirth>
-      </div>
     );
   } else if (
     name_birth === "true" &&
@@ -32,9 +30,7 @@ const Signup = () => {
     pw === null
   ) {
     return (
-      <div>
         <PhoneEmail></PhoneEmail>
-      </div>
     );
   } else if (
     name_birth === "true" &&
@@ -43,9 +39,7 @@ const Signup = () => {
     pw === null
   ) {
     return (
-      <div>
         <SchoolCheck></SchoolCheck>
-      </div>
     );
   } else if (
     name_birth === "true" &&
@@ -54,9 +48,7 @@ const Signup = () => {
     pw === null
   ) {
     return (
-      <div>
         <MakeID></MakeID>
-      </div>
     );
   } else if (
     name_birth === "true" &&
@@ -65,15 +57,11 @@ const Signup = () => {
     pw === "false"
   ) {
     return (
-      <div>
         <MakePW></MakePW>
-      </div>
     );
   }
   return (
-    <div>
       <NameBirth></NameBirth>
-    </div>
   );
 };
 
