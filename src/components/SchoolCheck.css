@@ -1,0 +1,109 @@
+.entire{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100vh;
+  margin: 0 0 0 0;
+}
+
+.goback {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.schoolCheckTitle1{
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 7.38rem 0 0.313rem 2.25rem;
+  text-align: left;
+}
+
+.schoolCheckTitle2{
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 0 2.25rem;
+  text-align: left;
+}
+
+.sendAlert {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ECF6FF;
+  border: 1px solid #0068FF;
+  border-radius: 10px;
+  font-size: 0.875rem;
+  margin: 2.25rem 0 0 2rem;
+  width: 18.5rem;
+  height: 4rem;
+}
+
+.schoolCheckContent {
+  display: flex;
+  align-items: flex-start;
+  margin: 2.813rem 0 0 2rem;
+  width: 20.5rem;
+}
+
+.numberCheck {
+  border: none;            /* 전체 테두리 제거 */
+  border-radius: 0px;
+  border-bottom: 1px solid #000; /* 하단 테두리 추가 (색상 및 두께 조절 가능) */
+  width: 13.25rem;         /* 너비 조절 */
+  height: 1.875rem;        /* 높이 조절 */
+  padding: 0 0 0.313rem 0;
+  margin: 0 0 0 0;
+  font-size: 1rem;
+}
+
+.timeChecker{
+  font-size: 0.625rem;
+  font-weight: 600;
+  vertical-align: bottom;
+  margin: 0.75rem 0 0 11.5rem;
+  position: absolute;
+}
+
+.checkButton {
+  background-color: #fff;
+  color: #64B0EE;
+  width: 5rem;
+  height: 2.125rem;
+  border: 1px solid #64B0EE;
+  border-radius: 20px;
+  font-size: 1rem;
+  position: absolute;
+  margin: 0 0 0 13.688rem;
+}
+
+#message {
+  font-size: 0.625rem;
+  margin: 0.438rem 0 0 2rem;
+  text-align: left;
+}
+
+.hidden {
+  display: none;
+}
+
+.identifyFail {
+  color: #ff0000;
+}
+
+.identifySuccess{
+  color: #0068FF;
+}
+
+.nextCheckButton{
+  background-color: #fff;
+  width: 18.438rem;
+  height: 2.625rem;
+  margin: 9.875rem 0 0 2rem;
+  border: 1.5px solid #0068ff;
+  border-radius: 10px;
+  color: #0068ff;
+  font-weight: 700;
+  font-size: 1rem;
+}
