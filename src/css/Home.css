@@ -1,4 +1,4 @@
-.App {
+.unloginHome{
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -7,19 +7,21 @@
   height: 100vh;
   font-family: Arial, sans-serif;
 }
-.App-header {
+
+.homeHeader {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.App-logo {
+
+.intLogo {
   height: 5.191rem;
   width: 11.438rem;
   pointer-events: none;
   margin-bottom: 8.81rem;
 }
 
-.login-button {
+.loginButton {
   background-color: white;
   border: 1.5px solid #0068ff;
   border-radius: 10px;
@@ -43,33 +45,27 @@
 .line {
   flex-grow: 1;
   height: 1px;
-  background-color: gray;
+  background-color: #8c8c8c;
 }
 
-p {
+.isMemberQuestion {
   font-size: 12px;
-  color: #333;
+  color: #8c8c8c;
   margin-left: 7px;
   margin-right: 7px;
 }
 
-.signup-button {
+.signupButton {
+  border: none;
   background-color: white;
-  border: 0.125rem solid #007bff;
-  color: #007bff;
+  color: #0068ff;
   padding: 0.625rem 1.25rem;
   font-size: 1rem;
   cursor: pointer;
   font-weight: bold;
 }
 
-.login-button:hover {
+.loginButton:hover {
   background-color: #007bff;
   color: white;
-}
-
-.signup-button {
-  border: none;
-  background: none;
-  color: #0068ff;
 }
