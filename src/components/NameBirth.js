@@ -34,7 +34,7 @@ const NameBirth = () => {
   }
 
   const goBack = () => {
-    window.location.href = "/signup";
+    window.location.href = "/login";
     window.sessionStorage.setItem("value", "");
   };
 
@@ -49,23 +49,35 @@ const NameBirth = () => {
   return (
     <div className="entire">
       <img src={back} className="goback" onClick={goBack} />
-      <div><p className="nameBirthTitle1">이름과 생년월일을</p><p className="nameBirthTitle2">알려주세요.</p></div>
+      <div>
+        <p className="nameBirthTitle1">이름과 생년월일을</p>
+        <p className="nameBirthTitle2">알려주세요.</p>
+      </div>
       <form>
         <div className="nameContent">
           <label className="nameTitle">이름</label>
           <div className="nameInput">
-            <input className="nameInputBox"
+            <input
+              className="nameInputBox"
               type="text"
               onChange={(e) => setName(e.target.value)}
               placeholder="이름을 입력해주세요."
             />
-            {name !== "" ? <img className="checkImg" src={good} /> : <img className="checkImg" src={bad} />}
+            {name !== "" ? (
+              <img className="checkImg" src={good} />
+            ) : (
+              <img className="checkImg" src={bad} />
+            )}
           </div>
         </div>
         <div className="birthContent">
           <label className="birthTitle">생년월일</label>
           <div className="birthInput">
-            <select className="birthInputBox" value={year} onChange={(e) => setYear(e.target.value)}>
+            <select
+              className="birthInputBox"
+              value={year}
+              onChange={(e) => setYear(e.target.value)}
+            >
               <option value="">연도</option>
               {years.map((year) => (
                 <option key={year} value={year}>
@@ -74,7 +86,11 @@ const NameBirth = () => {
               ))}
             </select>
 
-            <select className="birthInputBox" value={month} onChange={(e) => setMonth(e.target.value)}>
+            <select
+              className="birthInputBox"
+              value={month}
+              onChange={(e) => setMonth(e.target.value)}
+            >
               <option value="">월</option>
               {months.map((month) => (
                 <option key={month} value={month}>
@@ -83,7 +99,11 @@ const NameBirth = () => {
               ))}
             </select>
 
-            <select className="birthInputBox" value={day} onChange={(e) => setDay(e.target.value)}>
+            <select
+              className="birthInputBox"
+              value={day}
+              onChange={(e) => setDay(e.target.value)}
+            >
               <option value="">일</option>
               {days.map((day) => (
                 <option key={day} value={day}>
@@ -98,7 +118,9 @@ const NameBirth = () => {
             )}
           </div>
         </div>
-        <button className="nextButton" onClick={goNext}>다음으로 넘어가기</button>
+        <button className="nextButton" onClick={goNext}>
+          다음으로 넘어가기
+        </button>
       </form>
     </div>
   );

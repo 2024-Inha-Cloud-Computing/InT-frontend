@@ -20,7 +20,7 @@ const ChangePW = () => {
 
   const changePassword = (event) => {
     event.preventDefault();
-    const span = document.querySelector("#message");
+    const span = document.querySelector("#change-message");
     if (password !== repassword) {
       span.className = "error error-text";
       span.innerText = "비밀번호가 일치하지 않습니다.";
@@ -97,9 +97,9 @@ const ChangePW = () => {
           </div>
 
           {password === repassword ? (
-            <span className="hidden" id="message"></span>
+            <span className="hidden" id="change-message"></span>
           ) : (
-            <span className="hidden" id="message">
+            <span className="hidden" id="change-message">
               비밀번호가 일치하지 않습니다.
             </span>
           )}

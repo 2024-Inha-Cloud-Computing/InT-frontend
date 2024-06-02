@@ -18,14 +18,15 @@
 }
 
 .new-container .password-input {
-  height: 40px;
-  font-size: 13px;
+  height: 2.5rem;
+  font-size: 0.813rem;
   padding: 0;
   width: 16rem;
   border: none;
   border-radius: 0;
   border-bottom: 1px solid black;
   margin-right: 0.875rem;
+  margin-bottom: 0.438rem;
 }
 .check-img {
   width: 1.5rem;

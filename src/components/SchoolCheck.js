@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import "./SchoolCheck.css";
-import back from "../assets/img/back.png"
+import back from "../assets/img/back.png";
 
 const SchoolCheck = () => {
   window.addEventListener("resize", () => {
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty("--vh", `${vh}px`);
   });
-  const [school, setSchool] = useState(false);
+  const [school, setSchool] = useState(true);
   const [timer, setTimer] = useState(1200);
   const [searchParams, setSeratchParams] = useSearchParams();
 
@@ -46,6 +46,7 @@ const SchoolCheck = () => {
     //확인하는 로직
     if (!school) {
       span.className = "identifyFail";
+      span.innerText = "인증에 실패하였습니다. 인증번호를 다시 입력해 주세요.";
     } else {
       span.className = "identifySuccess";
       span.innerText = "인증에 성공하였습니다.";
@@ -56,7 +57,8 @@ const SchoolCheck = () => {
     event.preventDefault();
     const span = document.querySelector("#message");
     if (!school) {
-      span.className = "";
+      span.className = "identifyFail";
+      span.innerText = "인증을 먼저 완료해주세요.";
     } else {
       setSeratchParams({ name_birth: true, phone_email: true, id: false });
     }
@@ -65,19 +67,32 @@ const SchoolCheck = () => {
   return (
     <div className="entire">
       <img src={back} className="goback" onClick={goBack} />
-      <div><p className="schoolCheckTitle1">인하대학교 재학생이</p><p className="schoolCheckTitle2">맞는지 확인할게요.</p></div>
-      <div className="sendAlert">입력해 주신 이메일로<br />인증번호를 발송했어요!</div>
+      <div>
+        <p className="schoolCheckTitle1">인하대학교 재학생이</p>
+        <p className="schoolCheckTitle2">맞는지 확인할게요.</p>
+      </div>
+      <div className="sendAlert">
+        입력해 주신 이메일로
+        <br />
+        인증번호를 발송했어요!
+      </div>
       <form>
         <div className="schoolCheckContent">
-          <input className="numberCheck" type="number" placeholder="인증번호 입력" />
+          <input
+            className="numberCheck"
+            type="number"
+            placeholder="인증번호 입력"
+          />
           <span className="timeChecker">{formatTime(timer)}</span>
-          <button className="checkButton" onClick={checkScool}>확인</button>
+          <button className="checkButton" onClick={checkScool}>
+            확인
+          </button>
         </div>
-        <span id="message" className="hidden">
-            인증에 실패하였습니다. 인증번호를 다시 입력해 주세요.
-          </span>
+        <span id="message" className="hidden"></span>
       </form>
-      <button className="nextCheckButton" onClick={goNext}>다음으로 넘어가기</button>
+      <button className="nextCheckButton" onClick={goNext}>
+        다음으로 넘어가기
+      </button>
     </div>
   );
 };

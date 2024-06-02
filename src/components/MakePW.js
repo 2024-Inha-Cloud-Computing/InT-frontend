@@ -28,10 +28,15 @@ const MakePW = () => {
     event.preventDefault();
     const span = document.querySelector("#message");
     if (password !== repassword) {
-      span.className = "";
+      span.className = "error error-text";
+      span.innerText = "비밀번호가 일치하지 않습니다.";
+    } else if (!checkPassword(password)) {
+      span.className = "error error-text";
+      span.innerText = "비밀번호 조건이 맞지 않습니다.";
     } else {
       //회원가입로직 -> sessionStore 정보 활용
       alert("회원가입완료!");
+      span.innerText = "비밀번호 조건이 맞지 않습니다.";
       window.location.href = "/login";
     }
   };
@@ -69,7 +74,9 @@ const MakePW = () => {
             <img src={bad} />
           )}
 
-          {password === repassword ? null : (
+          {password === repassword ? (
+            <span className="hidden" id="message"></span>
+          ) : (
             <span className="hidden" id="message">
               비밀번호가 일치하지 않습니다.
             </span>
