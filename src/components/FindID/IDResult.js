@@ -64,7 +64,7 @@ const Result = () => {
             <button className="reset-button" onClick={goFindPW}>
               비밀번호 재설정
             </button>
-            <button className="login-button" onClick={goLogin}>
+            <button className="login-button-result" onClick={goLogin}>
               로그인
             </button>
           </div>
