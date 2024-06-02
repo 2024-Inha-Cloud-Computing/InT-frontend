@@ -1,4 +1,4 @@
-import { useSearchParams, useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import NameBirth from "../components/NameBirth";
 import PhoneEmail from "../components/PhoneEmail";
