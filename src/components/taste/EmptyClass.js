@@ -37,7 +37,7 @@ const EmptyClass = () => {
       <span>
         <img src={info} /> 우주 공강은 3시간 이상 공강이 생기는 것을 말해요!
       </span>
-      <div className="line"></div>
+      <div className="taste-line"></div>
       <div className="button-container">
         <button className="btn" onClick={ClickYes}>
           우주 공강 좋아요!

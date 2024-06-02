@@ -12,12 +12,6 @@ html {
 
 .container {
   text-align: center;
-  padding: 20px;
-}
-
-h1 {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
 }
 
 hr {
@@ -47,7 +41,7 @@ hr {
   color: #0068ff;
 }
 
-.line {
+.taste-line {
   height: 1px;
   width: 100%;
   background-color: #000;

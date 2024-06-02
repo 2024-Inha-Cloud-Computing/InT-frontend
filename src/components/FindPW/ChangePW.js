@@ -47,7 +47,7 @@ const ChangePW = () => {
   return (
     <div className="container">
       <img src={back} className="goback" onClick={goBack} />
-      <h1>아이디/ 비밀번호 찾기</h1>
+      <h1 className="find-h1">아이디/ 비밀번호 찾기</h1>
       <div className="tabs">
         <div className="tab inactive" onClick={goFindId}>
           아이디 찾기

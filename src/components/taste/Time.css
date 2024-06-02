@@ -12,12 +12,6 @@ html {
 
 .container {
   text-align: center;
-  padding: 20px;
-}
-
-h1 {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
 }
 
 hr {
@@ -45,13 +39,6 @@ hr {
 .btn:hover {
   border: 1px solid #0068ff;
   color: #0068ff;
-}
-
-.line {
-  height: 1px;
-  width: 100%;
-  background-color: #000;
-  margin-bottom: 4rem;
 }
 
 .progress-bar-container {

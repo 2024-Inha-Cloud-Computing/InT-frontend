@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import "./SchoolCheck.css";
-import back from "../assets/img/back.png";
+import back from "../../assets/img/back.png";
 
 const SchoolCheck = () => {
   window.addEventListener("resize", () => {
