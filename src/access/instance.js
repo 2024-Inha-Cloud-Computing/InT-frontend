@@ -8,8 +8,8 @@ const instance = axios.create({
 instance.interceptors.request.use(
   (config) => {
     // 헤더에 엑세스 토큰 담기
-    config.headers["authorization"] = localStorage.getItem("accessToken");
-    config.headers["refresh-token"] = localStorage.getItem("refreshToken");
+    const accessToken = localStorage.getItem("accessToken");
+    config.headers.Authorization = `Bearer ${accessToken}`;
     return config;
   },
   (error) => {
