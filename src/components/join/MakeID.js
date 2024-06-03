@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+import "./MakeID.css";
+import back from "../../assets/img/back.png";
 
 const MakeID = () => {
   window.addEventListener("resize", () => {
@@ -22,10 +24,10 @@ const MakeID = () => {
     //id 중복확인 로직
     const span = document.querySelector("#message");
     if (!checkID) {
-      span.className = "";
+      span.className = "makeID_checkFail";
       span.innerText = "이미 사용중인 아이디입니다.";
     } else {
-      span.className = "";
+      span.className = "makeID_checkSuccess";
       span.innerText = "사용 가능한 아이디입니다.";
     }
   };
@@ -34,7 +36,7 @@ const MakeID = () => {
     event.preventDefault();
     if (!checkID) {
       const span = document.querySelector("#message");
-      span.className = "";
+      span.className = "makeID_checkFail";
       span.innerText = "사용할 아이디를 입력하고 인증해주세요.";
     } else {
       let value = JSON.parse(window.sessionStorage.getItem("value"));
@@ -49,24 +51,26 @@ const MakeID = () => {
     }
   };
   return (
-    <div>
-      {/* <img src={back} className="goback" onClick={goBack} /> */}
-      <h1>사용하실 아이디를 입력해주세요.</h1>
+    <div className="makeID_container">
+      {<img src={back} className="goback" onClick={goBack} />}
+      <div><p className="makeID_title1">사용하실 아이디를 </p><p className="makeID_title2">입력해주세요.</p></div>
       <form>
-        <div>
-          <label>아이디</label>
-          <input
-            type="text"
-            placeholder="사용하실 아이디를 입력해주세요."
-            onChange={(e) => setID(e.target.value)}
-          />
-          <button onClick={Check}>중복확인</button>
+        <div className="makeID_content">
+          <label className="makeID_idTitle">아이디</label>
+          <div className="makeID_idInput">
+            <input className="makeID_idInputBox"
+              type="text"
+              placeholder="사용하실 아이디를 입력해주세요."
+              onChange={(e) => setID(e.target.value)}
+            />
+            <button className="makeID_checkOnly" onClick={Check}>중복확인</button>
+          </div>
           <span id="message" className="hidden">
             이미 사용중인 아이디입니다.
           </span>
         </div>
       </form>
-      <button onClick={goNext}>다음으로 넘어가기</button>
+      <button className="makeID_nextButton" onClick={goNext}>다음으로 넘어가기</button>
     </div>
   );
 };

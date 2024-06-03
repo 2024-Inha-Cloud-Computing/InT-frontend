@@ -1,11 +1,11 @@
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
-import NameBirth from "../components/NameBirth";
-import PhoneEmail from "../components/PhoneEmail";
+import NameBirth from "../components/join/NameBirth";
+import PhoneEmail from "../components/join/PhoneEmail";
 import { React } from "react";
-import SchoolCheck from "../components/SchoolCheck";
-import MakeID from "../components/MakeID";
-import MakePW from "../components/MakePW";
+import SchoolCheck from "../components/join/SchoolCheck";
+import MakeID from "../components/join/MakeID";
+import MakePW from "../components/join/MakePW";
 
 const Signup = () => {
   const [searchParams, setSeratchParams] = useSearchParams();

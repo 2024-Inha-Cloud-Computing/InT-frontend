@@ -8,7 +8,7 @@ const SchoolCheck = () => {
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty("--vh", `${vh}px`);
   });
-  const [school, setSchool] = useState(false);
+  const [school, setSchool] = useState(true);
   const [timer, setTimer] = useState(1200);
   const [searchParams, setSeratchParams] = useSearchParams();
 
