@@ -5,6 +5,7 @@ import { useCookies } from "react-cookie";
 import logo from "../assets/img/InT.png";
 import back from "../assets/img/back.png";
 import "../css/Login.css";
+import instance from "../access/instance";
 
 const Login = () => {
   window.addEventListener("resize", () => {
@@ -56,7 +57,10 @@ const Login = () => {
   const goSingup = () => {
     window.location.href = "/signup";
   };
-
+  async function test() {
+    const response = instance.post("http://13.215.156.173:8000/");
+    console.log(response);
+  }
   return (
     <div className="loginPage">
       <img src={back} className="goback" onClick={goBack} />
@@ -75,6 +79,7 @@ const Login = () => {
         <div className="slash"></div>
         <span onClick={goSingup}>회원가입</span>
       </div>
+      <button onClick={test}></button>
     </div>
   );
 };
