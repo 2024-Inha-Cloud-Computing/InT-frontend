@@ -44,7 +44,7 @@ const SchoolCheck = () => {
 
   async function checkScool(event) {
     event.preventDefault();
-    const span = document.querySelector("#message");
+    const span = document.querySelector("#schoolCheck_message");
     //확인하는 로직
     try {
       // const value=JSON.parse(sessionStorage.getItem("value"));
@@ -102,7 +102,7 @@ const SchoolCheck = () => {
             확인
           </button>
         </div>
-        <span id="message" className="hidden"></span>
+        <span id="schoolCheck_message" className="hidden"></span>
       </form>
       <button className="nextCheckButton" onClick={goNext}>
         다음으로 넘어가기

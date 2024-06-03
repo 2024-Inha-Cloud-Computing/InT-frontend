@@ -22,9 +22,9 @@ const Home = () => {
           로그인
         </button>
         <div className="information">
-          <div className="line"></div>
+          <div className="home_line1"></div>
           <p className="isMemberQuestion">아직 회원이 아니신가요?</p>
-          <div className="line"></div>
+          <div className="home_line2"></div>
         </div>
         <button className="signupButton" onClick={goToJoinPage}>
           회원가입

@@ -79,7 +79,6 @@ const Login = () => {
         <div className="slash"></div>
         <span onClick={goSingup}>회원가입</span>
       </div>
-      <button onClick={test}></button>
     </div>
   );
 };
