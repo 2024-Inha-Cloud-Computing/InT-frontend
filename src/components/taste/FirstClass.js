@@ -48,33 +48,32 @@ const FirstClass = () => {
     window.location.href = "/taste?time=true&first_class=true&empty_time=";
   };
   return (
-    <div className="taste-container">
-      <div class="progress-bar-container">
-        <div class="progress-bar">
-          <div class="progress2"></div>
+    <div className="firstClass_container">
+      <div className="progress-bar-container">
+        <div className="progress-bar">
+          <div className="progress2"></div>
         </div>
-        <div class="dashed-line"></div>
       </div>
-      <h1>
+      <div className="firstClass_title">
         1교시 수업,
         <br />
         최대 며칠까지 가능한가요?
-      </h1>
-      <div className="line"></div>
-      <div className="button-container">
-        <button onClick={click0} className="btn">
+      </div>
+      <div className="firstClass_line"></div>
+      <div className="firstClass_buttonContainer">
+        <button onClick={click0} className="firstClass_btn">
           안돼요
         </button>
-        <button onClick={click1} className="btn">
+        <button onClick={click1} className="firstClass_btn">
           하루 정도는 괜찮아요
         </button>
-        <button onClick={click2} className="btn">
+        <button onClick={click2} className="firstClass_btn">
           이틀까지는 괜찮아요
         </button>
-        <button onClick={click3} className="btn">
+        <button onClick={click3} className="firstClass_btn">
           사흘까지는 괜찮아요
         </button>
-        <button onClick={click4} className="btn">
+        <button onClick={click4} className="firstClass_btn">
           상관 없어요
         </button>
       </div>

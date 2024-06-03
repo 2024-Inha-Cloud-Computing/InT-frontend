@@ -20,24 +20,23 @@ const Time = () => {
     window.location.href = "/taste?time=true&first_class=";
   };
   return (
-    <div className="taste-container">
-      <div class="progress-bar-container">
-        <div class="progress-bar">
-          <div class="progress"></div>
+    <div className="time_container">
+      <div className="progress-bar-container">
+        <div className="progress-bar">
+          <div className="progress"></div>
         </div>
-        <div class="dashed-line"></div>
       </div>
-      <h1>
+      <div className="time_title">
         오전과 오후 수업 중,
         <br />
         어느 시간대를 더 선호하시나요?
-      </h1>
-      <div className="line"></div>
-      <div className="button-container">
-        <button onClick={clickAm} className="btn">
+      </div>
+      <div className="time_line"></div>
+      <div className="time_button-container">
+        <button onClick={clickAm} className="time_btn">
           오전 수업이 좋아요
         </button>
-        <button onClick={ClickPm} className="btn">
+        <button onClick={ClickPm} className="time_btn">
           오후 수업이 좋아요
         </button>
       </div>
