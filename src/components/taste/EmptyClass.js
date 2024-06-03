@@ -26,7 +26,7 @@ const EmptyClass = () => {
     window.location.href = "/timetable";
   };
   return (
-    <div className="container">
+    <div className="taste-container">
       <div class="progress-bar-container">
         <div class="progress-bar">
           <div class="progress3"></div>

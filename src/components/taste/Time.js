@@ -20,7 +20,7 @@ const Time = () => {
     window.location.href = "/taste?time=true&first_class=";
   };
   return (
-    <div className="container">
+    <div className="taste-container">
       <div class="progress-bar-container">
         <div class="progress-bar">
           <div class="progress"></div>
