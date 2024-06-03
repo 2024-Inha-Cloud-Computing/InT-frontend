@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
-import good from "../assets/img/check_good.png";
-import bad from "../assets/img/check_bad.png";
-import info from "../assets/img/Information.png";
+import good from "../../assets/img/check_good.png";
+import bad from "../../assets/img/check_bad.png";
+import info from "../../assets/img/Information.png";
 
 const MakePW = () => {
   const [password, setPassword] = useState("");

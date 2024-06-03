@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import "./PhoneEmail.css";
 
-import back from "../assets/img/back.png";
-import good from "../assets/img/check_good.png";
-import bad from "../assets/img/check_bad.png";
+import back from "../../assets/img/back.png";
+import good from "../../assets/img/check_good.png";
+import bad from "../../assets/img/check_bad.png";
 
 const PhoneEmail = () => {
   window.addEventListener("resize", () => {
