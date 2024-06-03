@@ -11,7 +11,7 @@ const Main = ({ name }) => {
 
     const timer2 = setTimeout(() => {
       window.location.href = "/taste?time=";
-    }, 100000);
+    }, 3000);
 
     return () => {
       clearTimeout(timer1);
