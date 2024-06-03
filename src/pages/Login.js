@@ -1,12 +1,10 @@
 import axios from "axios";
 import React, { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
 import logo from "../assets/img/InT.png";
 import back from "../assets/img/back.png";
 import "../css/Login.css";
-import instance from "../access/instance";
 
 const Login = () => {
   window.addEventListener("resize", () => {
@@ -16,8 +14,6 @@ const Login = () => {
 
   const formRef = useRef();
   const [cookies, setCookie] = useCookies(["csrftoken"]); // 쿠키
-  const navigate = useNavigate();
-  const [error, setError] = useState("");
 
   const goBack = () => {
     window.location.href = "/";
@@ -46,10 +42,9 @@ const Login = () => {
       console.log(accessToken, refreshToken);
       localStorage.setItem("accessToken", accessToken);
       localStorage.setItem("refreshToken", refreshToken);
-      // window.location.href = "/timetable";
+      window.location.href = "/timetable";
     } catch (error) {
-      console.error("There was an error logged in", error);
-      setError("Invalid credentials");
+      alert("아이디 비번을 확인해주세요");
     }
   }
   const findId = () => {
@@ -61,11 +56,7 @@ const Login = () => {
   const goSingup = () => {
     window.location.href = "/signup";
   };
-  async function test(event) {
-    event.preventDefault();
-    const response = await instance.post("http://13.215.156.173:8000/");
-    console.log(response);
-  }
+
   return (
     <div className="loginPage">
       <img src={back} className="goback" onClick={goBack} />
@@ -84,7 +75,6 @@ const Login = () => {
         <div className="slash"></div>
         <span onClick={goSingup}>회원가입</span>
       </div>
-      <button onClick={test}>확인용</button>
     </div>
   );
 };
