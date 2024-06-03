@@ -5,6 +5,7 @@ import "./PhoneEmail.css";
 import back from "../../assets/img/back.png";
 import good from "../../assets/img/check_good.png";
 import bad from "../../assets/img/check_bad.png";
+import axios from "axios";
 
 const PhoneEmail = () => {
   window.addEventListener("resize", () => {
@@ -37,7 +38,7 @@ const PhoneEmail = () => {
     setSeratchParams({ name_birth: false });
   };
 
-  const goNext = (event) => {
+  async function goNext(event) {
     event.preventDefault();
     if (
       phone1 !== "" &&
@@ -49,10 +50,17 @@ const PhoneEmail = () => {
       let value = JSON.parse(window.sessionStorage.getItem("value"));
       value.push(phone1 + "-" + phone2 + "-" + phone3);
       value.push(emailId + "@" + emailDomain);
-      window.sessionStorage.setItem("value", JSON.stringify(value));
-      setSeratchParams({ name_birth: true, phone_email: true });
+      try {
+        // const response =await axios.post("http://13.215.156.173:8000/checkEmail/",{
+        //   email:emailId+"@"+emailDomain,
+        // })
+        window.sessionStorage.setItem("value", JSON.stringify(value));
+        setSeratchParams({ name_birth: true, phone_email: true });
+      } catch (error) {
+        alert("존재하지 않은 이메일입니다.");
+      }
     }
-  };
+  }
   return (
     <div className="entire">
       <img src={back} className="goback" onClick={goBack} />

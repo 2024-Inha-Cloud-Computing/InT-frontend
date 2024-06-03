@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 import "./SchoolCheck.css";
 import back from "../../assets/img/back.png";
+import axios from "axios";
 
 const SchoolCheck = () => {
   window.addEventListener("resize", () => {
@@ -11,6 +12,7 @@ const SchoolCheck = () => {
   const [school, setSchool] = useState(true);
   const [timer, setTimer] = useState(1200);
   const [searchParams, setSeratchParams] = useSearchParams();
+  const formRef = useRef();
 
   useEffect(() => {
     const value = JSON.parse(sessionStorage.getItem("value"));
@@ -40,10 +42,21 @@ const SchoolCheck = () => {
     setSeratchParams({ name_birth: true });
   };
 
-  const checkScool = (event) => {
+  async function checkScool(event) {
     event.preventDefault();
     const span = document.querySelector("#message");
     //확인하는 로직
+    try {
+      // const value=JSON.parse(sessionStorage.getItem("value"));
+      // const response = await axios.post(
+      //   "http://13.215.156.173:8000/checkEmailNumber/",
+      //   {
+      //     number: formRef.current.number.value,
+      //     email : value[3],
+      //   }
+      // );
+      // setSchool(true);
+    } catch (error) {}
     if (!school) {
       span.className = "identifyFail";
       span.innerText = "인증에 실패하였습니다. 인증번호를 다시 입력해 주세요.";
@@ -51,7 +64,7 @@ const SchoolCheck = () => {
       span.className = "identifySuccess";
       span.innerText = "인증에 성공하였습니다.";
     }
-  };
+  }
 
   const goNext = (event) => {
     event.preventDefault();
@@ -76,12 +89,13 @@ const SchoolCheck = () => {
         <br />
         인증번호를 발송했어요!
       </div>
-      <form>
+      <form ref={formRef}>
         <div className="schoolCheckContent">
           <input
             className="numberCheck"
             type="number"
             placeholder="인증번호 입력"
+            name="number"
           />
           <span className="timeChecker">{formatTime(timer)}</span>
           <button className="checkButton" onClick={checkScool}>

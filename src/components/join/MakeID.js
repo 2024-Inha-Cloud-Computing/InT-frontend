@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 import "./MakeID.css";
 import back from "../../assets/img/back.png";
+import axios from "axios";
 
 const MakeID = () => {
   window.addEventListener("resize", () => {
@@ -11,7 +12,7 @@ const MakeID = () => {
   const [checkID, setCheckID] = useState(true);
   const [ID, setID] = useState("");
   const [searchParams, setSeratchParams] = useSearchParams();
-
+  const formRef = useRef();
   useEffect(() => {
     const value = JSON.parse(sessionStorage.getItem("value"));
     if (value.length !== 4) {
@@ -19,9 +20,15 @@ const MakeID = () => {
     }
   });
 
-  const Check = (event) => {
+  const Check = async (event) => {
     event.preventDefault();
     //id 중복확인 로직
+    // try {
+    //   const response = await axios.post("http://13.215.156.173:8000/checkId", {
+    //     id: formRef.current.id.value,
+    //   });
+    //   setCheckID(true);
+    // } catch (error) {}
     const span = document.querySelector("#message");
     if (!checkID) {
       span.className = "makeID_checkFail";
@@ -31,7 +38,9 @@ const MakeID = () => {
       span.innerText = "사용 가능한 아이디입니다.";
     }
   };
-  const goBack = () => {};
+  const goBack = () => {
+    window.location.href = "/signup?name_birth=true&&phone_email=true";
+  };
   const goNext = (event) => {
     event.preventDefault();
     if (!checkID) {
@@ -53,24 +62,33 @@ const MakeID = () => {
   return (
     <div className="makeID_container">
       {<img src={back} className="goback" onClick={goBack} />}
-      <div><p className="makeID_title1">사용하실 아이디를 </p><p className="makeID_title2">입력해주세요.</p></div>
-      <form>
+      <div>
+        <p className="makeID_title1">사용하실 아이디를 </p>
+        <p className="makeID_title2">입력해주세요.</p>
+      </div>
+      <form ref={formRef}>
         <div className="makeID_content">
           <label className="makeID_idTitle">아이디</label>
           <div className="makeID_idInput">
-            <input className="makeID_idInputBox"
+            <input
+              className="makeID_idInputBox"
               type="text"
               placeholder="사용하실 아이디를 입력해주세요."
               onChange={(e) => setID(e.target.value)}
+              name="id"
             />
-            <button className="makeID_checkOnly" onClick={Check}>중복확인</button>
+            <button className="makeID_checkOnly" onClick={Check}>
+              중복확인
+            </button>
           </div>
           <span id="message" className="hidden">
             이미 사용중인 아이디입니다.
           </span>
         </div>
       </form>
-      <button className="makeID_nextButton" onClick={goNext}>다음으로 넘어가기</button>
+      <button className="makeID_nextButton" onClick={goNext}>
+        다음으로 넘어가기
+      </button>
     </div>
   );
 };

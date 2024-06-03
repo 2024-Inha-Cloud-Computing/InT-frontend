@@ -6,6 +6,7 @@ import info from "../../assets/img/Information.png";
 import back from "../../assets/img/back.png";
 
 import "./ChangePW.css";
+import axios from "axios";
 const ChangePW = () => {
   const [password, setPassword] = useState("");
   const [repassword, setRepassword] = useState("");
@@ -18,7 +19,7 @@ const ChangePW = () => {
     return hasLetter && hasDigit && hasSpecialChar && checkLength;
   };
 
-  const changePassword = (event) => {
+  const changePassword = async (event) => {
     event.preventDefault();
     const span = document.querySelector("#change-message");
     if (password !== repassword) {
@@ -29,6 +30,10 @@ const ChangePW = () => {
       span.innerText = "비밀번호 조건이 맞지 않습니다.";
     } else {
       //localStore의 id 정보로 비밀번호 변경
+      // const response=await axios.post("http://13.215.156.173:8000/changePw",{
+      //   id:localStorage.getItem("id"),
+      //   password:password,
+      // })
       alert("비밀번호 변경 완료!");
       localStorage.removeItem("id");
       window.location.href = "/login";

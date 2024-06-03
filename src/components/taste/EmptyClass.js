@@ -34,8 +34,10 @@ const EmptyClass = () => {
       </div>
       <div className="emptyClass_title">우주 공강을 선호하시나요?</div>
       <div className="emptyClass_info">
-        <img className="emptyClass_infoImg" src={info} /> 
-        <div className="emptyClass_infoTxt">우주 공강은 3시간 이상 공강이 생기는 것을 말해요!</div>
+        <img className="emptyClass_infoImg" src={info} />
+        <div className="emptyClass_infoTxt">
+          우주 공강은 3시간 이상 공강이 생기는 것을 말해요!
+        </div>
       </div>
       <div className="emptyClass_line"></div>
       <div className="emptyClass_buttonContainer">
