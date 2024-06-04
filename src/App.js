@@ -22,7 +22,7 @@ function App() {
           <Route path="/timetable" element={<Timetable />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/findId" element={<FindID />}></Route>
-          <Route path="findPw" element={<FindPW />}></Route>
+          <Route path="/findPw" element={<FindPW />}></Route>
           <Route path="/taste" element={<Taste />}></Route>
         </Routes>
       </div>

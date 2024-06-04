@@ -25,7 +25,7 @@ const Login = () => {
     const csrfToken = cookies;
     try {
       const response = await axios.post(
-        "http://13.215.156.173:8000/login/",
+        "http://54.179.66.145:8000/login/",
         // 로그인 요청
         {
           username: formRef.current.id.value,
@@ -57,10 +57,7 @@ const Login = () => {
   const goSingup = () => {
     window.location.href = "/signup";
   };
-  async function test() {
-    const response = instance.post("http://13.215.156.173:8000/");
-    console.log(response);
-  }
+
   return (
     <div className="loginPage">
       <img src={back} className="goback" onClick={goBack} />

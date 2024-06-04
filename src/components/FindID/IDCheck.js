@@ -23,16 +23,16 @@ const Check = () => {
     event.preventDefault();
     setTimer(600);
     setIsTimerActive(true);
-    // try {
-    //   const response = await axios.post(
-    //     "http://13.215.156.173:8000/checkPhone",
-    //     {
-    //       phone: `${formRef.current.first.value}${formRef.current.second.value}${formRef.current.third.value}`,
-    //     }
-    //   );
-    // } catch (error) {
-    //   alert("전화번호를 확인해주세요.");
-    // }
+    try {
+      const response = await axios.post(
+        "http://54.179.66.145:8000/checkPhone",
+        {
+          phone: `${formRef.current.first.value}${formRef.current.second.value}${formRef.current.third.value}`,
+        }
+      );
+    } catch (error) {
+      alert("전화번호를 확인해주세요.");
+    }
   };
 
   const formatTime = (seconds) => {
@@ -45,15 +45,18 @@ const Check = () => {
   const checkNumber = async (event) => {
     event.preventDefault();
     //인증번호 인증 로직
-    // try{
-    //   const response=await axios.post("http://13.215.156.173:8000/checkPhoneNumber",{
-    //     number:formRef.current.number.value,
-    //     phone :`${formRef.current.first.value}${formRef.current.second.value}${formRef.current.third.value}`
-    //   })
-    //   setCheck(true);
-    // }catch(error){
-    //   setCheck(false);
-    // }
+    try {
+      const response = await axios.post(
+        "http://54.179.66.145:8000/checkPhoneNumber",
+        {
+          number: formRef.current.number.value,
+          phone: `${formRef.current.first.value}${formRef.current.second.value}${formRef.current.third.value}`,
+        }
+      );
+      setCheck(true);
+    } catch (error) {
+      setCheck(false);
+    }
     const span = document.querySelector("#message");
     if (!check) {
       span.innerText = "인증에 실패하였습니다. 인증번호를 다시 확인해 주세요.";
@@ -72,14 +75,14 @@ const Check = () => {
       span.className = "error";
     } else {
       // 아이디 정보 가져오는 로직(로컬 스토리지에 저장) -> result 값
-      // try{
-      //   const response=await axios.post("http://13.215.156.173:8000/findId",{
-      //     phone: `${formRef.current.first.value}${formRef.current.second.value}${formRef.current.third.value}`,
-      //   })
-      //   localStorage.setItem("result",[response.data.id,response.data.date]);
-      // }catch(error){
-      //   localStorage.setItem("result",[]);
-      // }
+      try {
+        const response = await axios.post("http://54.179.66.145:8000/findId", {
+          phone: `${formRef.current.first.value}${formRef.current.second.value}${formRef.current.third.value}`,
+        });
+        localStorage.setItem("result", [response.data.id, response.data.date]);
+      } catch (error) {
+        localStorage.setItem("result", []);
+      }
       window.location.href = "/findId?check=true";
     }
   };

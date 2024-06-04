@@ -22,20 +22,19 @@ const MakeID = () => {
 
   const Check = async (event) => {
     event.preventDefault();
-    //id 중복확인 로직
-    // try {
-    //   const response = await axios.post("http://13.215.156.173:8000/checkId", {
-    //     id: formRef.current.id.value,
-    //   });
-    //   setCheckID(true);
-    // } catch (error) {}
     const span = document.querySelector("#message");
-    if (!checkID) {
-      span.className = "makeID_checkFail";
-      span.innerText = "이미 사용중인 아이디입니다.";
-    } else {
+    // id 중복확인 로직
+    try {
+      const response = await axios.post("http://54.179.66.145:8000/checkId", {
+        id: formRef.current.id.value,
+      });
+      setCheckID(true);
       span.className = "makeID_checkSuccess";
       span.innerText = "사용 가능한 아이디입니다.";
+    } catch (error) {
+      setCheckID(false);
+      span.className = "makeID_checkFail";
+      span.innerText = "이미 사용중인 아이디입니다.";
     }
   };
   const goBack = () => {

@@ -43,24 +43,26 @@ const MakePW = () => {
     if (password !== repassword) {
       span.className = "makePW_joinFail";
     } else {
-      //회원가입로직 -> sessionStore 정보 활용
-      // const value = JSON.parse(sessionStorage.getItem("value"));
-      // try {
-      //   const response = await axios.post("http://13.215.156.173:8000/signup", {
-      //     name: value[0],
-      //     birth: value[1],
-      //     phone: value[2],
-      //     email: value[3],
-      //     id: value[4],
-      //     password: password,
-      //   });
-      //   alert("회원가입완료!");
-      //   window.location.href = "/login";
-      // } catch (error) {
-      //   alert("회원가입오류");
-      // }
-      alert("회원가입완료!");
-      window.location.href = "/login";
+      const value = JSON.parse(sessionStorage.getItem("value"));
+      console.log(value);
+      try {
+        const response = await axios.post("http://54.179.66.145:8000/signup", {
+          name: value[0],
+          birth: value[1],
+          phone: value[2],
+          email: value[3],
+          id: value[4],
+          password: password,
+        });
+        alert("회원가입완료!");
+        sessionStorage.removeItem("value");
+        window.location.href = "/login";
+      } catch (error) {
+        alert("회원가입오류");
+      }
+      // sessionStorage.removeItem("value");
+      // alert("회원가입완료!");
+      // window.location.href = "/login";
     }
   };
   return (

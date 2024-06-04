@@ -9,7 +9,7 @@ const SchoolCheck = () => {
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty("--vh", `${vh}px`);
   });
-  const [school, setSchool] = useState(true);
+  const [school, setSchool] = useState(false);
   const [timer, setTimer] = useState(1200);
   const [searchParams, setSeratchParams] = useSearchParams();
   const formRef = useRef();
@@ -45,30 +45,31 @@ const SchoolCheck = () => {
   async function checkScool(event) {
     event.preventDefault();
     const span = document.querySelector("#schoolCheck_message");
+    let can = false;
     //확인하는 로직
     try {
-      // const value=JSON.parse(sessionStorage.getItem("value"));
-      // const response = await axios.post(
-      //   "http://13.215.156.173:8000/checkEmailNumber/",
-      //   {
-      //     number: formRef.current.number.value,
-      //     email : value[3],
-      //   }
-      // );
-      // setSchool(true);
-    } catch (error) {}
-    if (!school) {
-      span.className = "identifyFail";
-      span.innerText = "인증에 실패하였습니다. 인증번호를 다시 입력해 주세요.";
-    } else {
+      const value = JSON.parse(sessionStorage.getItem("value"));
+
+      const response = await axios.post(
+        "http://54.179.66.145:8000/checkEmailNumber/",
+        {
+          number: formRef.current.number.value,
+          email: value[3],
+        }
+      );
+      setSchool(true);
       span.className = "identifySuccess";
       span.innerText = "인증에 성공하였습니다.";
+    } catch (error) {
+      setSchool(false);
+      span.className = "identifyFail";
+      span.innerText = "인증에 실패하였습니다. 인증번호를 다시 입력해 주세요.";
     }
   }
 
   const goNext = (event) => {
     event.preventDefault();
-    const span = document.querySelector("#message");
+    const span = document.querySelector("#schoolCheck_message");
     if (!school) {
       span.className = "identifyFail";
       span.innerText = "인증을 먼저 완료해주세요.";
