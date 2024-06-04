@@ -1,6 +1,5 @@
 import "../css/Home.css";
 import logo from "../assets/img/InT.png";
-import { Link } from "react-router-dom";
 
 const Home = () => {
   window.addEventListener("resize", () => {
@@ -11,23 +10,23 @@ const Home = () => {
     window.location.href = "/login";
   }
   function goToJoinPage() {
-    window.location.href = "/join";
+    window.location.href = "/signup";
   }
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="unloginHome">
+      <header className="homeHeader">
         <div>
-          <img src={logo} className="App-logo" alt="logo" />
+          <img src={logo} className="intLogo" alt="logo" />
         </div>
-        <button className="login-button" onClick={goToLoginPage}>
+        <button className="loginButton" onClick={goToLoginPage}>
           로그인
         </button>
         <div className="information">
-          <div className="line"></div>
-          <p>아직 회원이 아니신가요?</p>
-          <div className="line"></div>
+          <div className="home_line1"></div>
+          <p className="isMemberQuestion">아직 회원이 아니신가요?</p>
+          <div className="home_line2"></div>
         </div>
-        <button className="signup-button" onClick={goToJoinPage}>
+        <button className="signupButton" onClick={goToJoinPage}>
           회원가입
         </button>
       </header>
