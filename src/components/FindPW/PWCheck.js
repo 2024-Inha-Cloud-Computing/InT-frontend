@@ -55,7 +55,7 @@ const Check = () => {
         "http://13.215.156.173:8000/checkPhoneNumber",
         {
           number: number,
-          phone: `${first}-${second}-${third}`,
+          phone: `${first}${second}${third}`,
         }
       );
       setCheck(true);
@@ -86,7 +86,7 @@ const Check = () => {
         const response = await axios.post(
           "http://13.215.156.173:8000/findIdwithPhone",
           {
-            phone: `${first}-${second}${third}`,
+            phone: `${first}${second}${third}`,
             id: id,
           }
         );

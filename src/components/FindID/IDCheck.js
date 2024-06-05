@@ -27,12 +27,11 @@ const Check = () => {
     event.preventDefault();
     setTimer(600);
     setIsTimerActive(true);
-    console.log(first, second, third);
     try {
       const response = await axios.post(
-        "http://54.179.66.145:8000/checkPhone",
+        "http://54.179.66.145:8000/checkPhone/",
         {
-          phone: `${first}-${second}-${third}`,
+          phone: `${first}${second}${third}`,
         }
       );
     } catch (error) {
@@ -53,10 +52,10 @@ const Check = () => {
     //인증번호 인증 로직
     try {
       const response = await axios.post(
-        "http://54.179.66.145:8000/checkPhoneNumber",
+        "http://54.179.66.145:8000/checkPhoneNumber/",
         {
           number: number,
-          phone: `${first}-${second}-${third}`,
+          phone: `${first}${second}${third}`,
         }
       );
       setCheck(true);
@@ -82,8 +81,8 @@ const Check = () => {
     } else {
       // 아이디 정보 가져오는 로직(로컬 스토리지에 저장) -> result 값
       try {
-        const response = await axios.post("http://54.179.66.145:8000/findId", {
-          phone: `${first}-${second}-${third}`,
+        const response = await axios.post("http://54.179.66.145:8000/findId/", {
+          phone: `${first}${second}${third}`,
         });
         localStorage.setItem("result", [response.data.id, response.data.date]);
       } catch (error) {
