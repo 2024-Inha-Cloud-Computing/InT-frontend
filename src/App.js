@@ -9,6 +9,7 @@ import Signup from "./pages/Signup.js";
 import FindID from "./pages/FindID.js";
 import FindPW from "./pages/FindPW.js";
 import Taste from "./pages/Taste.js";
+import HomeAftLog from "./pages/HomeAftLog.js";
 
 function App() {
   const [message, setMessage] = useState("");
@@ -18,6 +19,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Home />}></Route>
+          <Route path="/homeAftLog" element={<HomeAftLog />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/timetable" element={<Timetable />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
