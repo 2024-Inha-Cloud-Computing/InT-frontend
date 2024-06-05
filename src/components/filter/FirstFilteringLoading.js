@@ -8,20 +8,24 @@ const FirstFilteringLoading = () => {
   useEffect(() => {
     const timer1 = setTimeout(() => {
       document.body.classList.add("fade-out");
-    }, 2000);
+    }, 7000);
 
     const timer2 = setTimeout(() => {
       window.location.href = "/login";
-    }, 3000);
+    }, 8000);
 
     return () => {
       clearTimeout(timer1);
       clearTimeout(timer2);
     };
   }, []);
+  const goBack = () => {
+    localStorage.removeItem("courses");
+    window.location.href = "/firstFiltering";
+  };
   return (
     <div className="ffl_container">
-      <img src={back} className="goback" />
+      <img src={back} className="goback" onClick={goBack} />
       <img src={filter} className="ffl_filter" />
       <div className="ffl_main">
         <span className="ffl_main_first">
