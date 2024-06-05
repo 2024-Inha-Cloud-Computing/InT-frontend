@@ -8,7 +8,10 @@ const Check = () => {
   const [idCheck, setIdCheck] = useState(true);
   const [timer, setTimer] = useState(600);
   const [isTimerActive, setIsTimerActive] = useState(false);
-  const formRef = useRef();
+  const [first, setFirst] = useState("");
+  const [second, setSecond] = useState("");
+  const [third, setThird] = useState("");
+  const [number, setNumber] = useState("");
   useEffect(() => {
     let interval = null;
     if (isTimerActive && timer > 0) {
@@ -25,16 +28,16 @@ const Check = () => {
     event.preventDefault();
     setTimer(600);
     setIsTimerActive(true);
-    // try {
-    //   const response = await axios.post(
-    //     "http://13.215.156.173:8000/checkPhone",
-    //     {
-    //       phone: `${formRef.current.first.value}${formRef.current.second.value}${formRef.current.third.value}`,
-    //     }
-    //   );
-    // } catch (error) {
-    //   alert("전화번호를 확인해주세요.");
-    // }
+    try {
+      const response = await axios.post(
+        "http://13.215.156.173:8000/checkPhone",
+        {
+          phone: `${first}${second}${third}`,
+        }
+      );
+    } catch (error) {
+      alert("전화번호를 확인해주세요.");
+    }
   };
 
   const formatTime = (seconds) => {
@@ -44,18 +47,21 @@ const Check = () => {
       .toString()
       .padStart(2, "0")}`;
   };
-  const checkNumber = (event) => {
+  const checkNumber = async (event) => {
     event.preventDefault();
     //인증번호 인증 로직
-    // try{
-    //   const response=await axios.post("http://13.215.156.173:8000/checkPhoneNumber",{
-    //     number:formRef.current.number.value,
-    //     phone :`${formRef.current.first.value}${formRef.current.second.value}${formRef.current.third.value}`
-    //   })
-    //   setCheck(true);
-    // }catch(error){
-    //   setCheck(false);
-    // }
+    try {
+      const response = await axios.post(
+        "http://13.215.156.173:8000/checkPhoneNumber",
+        {
+          number: number,
+          phone: `${first}-${second}-${third}`,
+        }
+      );
+      setCheck(true);
+    } catch (error) {
+      setCheck(false);
+    }
     const span = document.querySelector("#message");
     if (!check) {
       span.innerText = "인증에 실패하였습니다. 인증번호를 다시 확인해 주세요.";
@@ -76,22 +82,20 @@ const Check = () => {
       span1.className = "error";
     }
     if (check) {
-      // try {
-      //   const response = await axios.post(
-      //     "http://13.215.156.173:8000/findIdwithPhone",
-      //     {
-      //       phone: `${formRef.current.first.value}${formRef.current.second.value}${formRef.current.third.value}`,
-      //       id: id,
-      //     }
-      //   );
-      //   localStorage.setItem("id", id);
-      //   window.location.href = "/findPw?check=true";
-      // } catch (error) {
-      //   span2.innerText = "아이디가 존재하지 않습니다. 다시 확인해 주세요.";
-      //   span2.className = "error";
-      // }
-      localStorage.setItem("id", id);
-      window.location.href = "/findPw?check=true";
+      try {
+        const response = await axios.post(
+          "http://13.215.156.173:8000/findIdwithPhone",
+          {
+            phone: `${first}-${second}${third}`,
+            id: id,
+          }
+        );
+        localStorage.setItem("id", id);
+        window.location.href = "/findPw?check=true";
+      } catch (error) {
+        span2.innerText = "아이디가 존재하지 않습니다. 다시 확인해 주세요.";
+        span2.className = "error";
+      }
     }
   };
 
@@ -116,7 +120,7 @@ const Check = () => {
           비밀번호 찾기
         </div>
       </div>
-      <div className="content" ref={formRef}>
+      <div className="content">
         <label>아이디</label>
         <input
           type="text"
@@ -132,6 +136,7 @@ const Check = () => {
             name="first"
             type="text"
             maxLength="3"
+            onChange={(e) => setFirst(e.target.value)}
           />
           <span>-</span>
           <input
@@ -139,6 +144,7 @@ const Check = () => {
             name="second"
             type="text"
             maxLength="4"
+            onChange={(e) => setSecond(e.target.value)}
           />
           <span>-</span>
           <input
@@ -146,6 +152,7 @@ const Check = () => {
             name="last"
             type="text"
             maxLength="4"
+            onChange={(e) => setThird(e.target.value)}
           />
           <button className="send-code-button" onClick={sendNumber}>
             인증번호 전송
@@ -154,7 +161,12 @@ const Check = () => {
         <label>인증번호 입력</label>
         <div className="code-input">
           <div className="check-box">
-            <input type="text" name="number" placeholder="인증번호 입력" />
+            <input
+              type="text"
+              name="number"
+              placeholder="인증번호 입력"
+              onChange={(e) => setNumber(e.target.value)}
+            />
             <span className="timer">{formatTime(timer)}</span>
           </div>
           <button className="verify-button" onClick={checkNumber}>

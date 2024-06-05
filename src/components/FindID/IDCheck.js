@@ -6,6 +6,10 @@ const Check = () => {
   const [check, setCheck] = useState(true);
   const [timer, setTimer] = useState(600);
   const [isTimerActive, setIsTimerActive] = useState(false);
+  const [first, setFirst] = useState("");
+  const [second, setSecond] = useState("");
+  const [third, setThird] = useState("");
+  const [number, setNumber] = useState("");
   const formRef = useRef();
   useEffect(() => {
     let interval = null;
@@ -23,14 +27,16 @@ const Check = () => {
     event.preventDefault();
     setTimer(600);
     setIsTimerActive(true);
+    console.log(first, second, third);
     try {
       const response = await axios.post(
         "http://54.179.66.145:8000/checkPhone",
         {
-          phone: `${formRef.current.first.value}${formRef.current.second.value}${formRef.current.third.value}`,
+          phone: `${first}-${second}-${third}`,
         }
       );
     } catch (error) {
+      console.log(error);
       alert("전화번호를 확인해주세요.");
     }
   };
@@ -49,8 +55,8 @@ const Check = () => {
       const response = await axios.post(
         "http://54.179.66.145:8000/checkPhoneNumber",
         {
-          number: formRef.current.number.value,
-          phone: `${formRef.current.first.value}${formRef.current.second.value}${formRef.current.third.value}`,
+          number: number,
+          phone: `${first}-${second}-${third}`,
         }
       );
       setCheck(true);
@@ -77,7 +83,7 @@ const Check = () => {
       // 아이디 정보 가져오는 로직(로컬 스토리지에 저장) -> result 값
       try {
         const response = await axios.post("http://54.179.66.145:8000/findId", {
-          phone: `${formRef.current.first.value}${formRef.current.second.value}${formRef.current.third.value}`,
+          phone: `${first}-${second}-${third}`,
         });
         localStorage.setItem("result", [response.data.id, response.data.date]);
       } catch (error) {
@@ -108,7 +114,7 @@ const Check = () => {
           비밀번호 찾기
         </div>
       </div>
-      <div className="content" ref={formRef}>
+      <div className="content">
         <label className="phone-label">전화번호</label>
         <div className="phone-input">
           <input
@@ -116,6 +122,9 @@ const Check = () => {
             name="first"
             type="text"
             maxLength="3"
+            onChange={(e) => {
+              setFirst(e.target.value);
+            }}
           />
           <span>-</span>
           <input
@@ -123,6 +132,9 @@ const Check = () => {
             name="second"
             type="text"
             maxLength="4"
+            onChange={(e) => {
+              setSecond(e.target.value);
+            }}
           />
           <span>-</span>
           <input
@@ -130,6 +142,9 @@ const Check = () => {
             name="third"
             type="text"
             maxLength="4"
+            onChange={(e) => {
+              setThird(e.target.value);
+            }}
           />
           <button className="send-code-button" onClick={sendNumber}>
             인증번호 전송
@@ -138,7 +153,12 @@ const Check = () => {
         <label>인증번호 입력</label>
         <div className="code-input">
           <div className="check-box">
-            <input type="text" placeholder="인증번호 입력" name="number" />
+            <input
+              type="text"
+              placeholder="인증번호 입력"
+              name="number"
+              onChange={(e) => setNumber(e.target.value)}
+            />
             <span className="timer">{formatTime(timer)}</span>
           </div>
           <button className="verify-button" onClick={checkNumber}>

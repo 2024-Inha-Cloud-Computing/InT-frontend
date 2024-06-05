@@ -30,10 +30,10 @@ const ChangePW = () => {
       span.innerText = "비밀번호 조건이 맞지 않습니다.";
     } else {
       //localStore의 id 정보로 비밀번호 변경
-      // const response=await axios.post("http://13.215.156.173:8000/changePw",{`
-      //   id:localStorage.getItem("id"),
-      //   password:password,
-      // })
+      const response = await axios.post("http://13.215.156.173:8000/changePw", {
+        id: localStorage.getItem("id"),
+        password: password,
+      });
       localStorage.removeItem("id");
       window.location.href = "/findPw?check=true&success=true";
     }
