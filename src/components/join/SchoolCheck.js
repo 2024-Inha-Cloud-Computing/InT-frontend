@@ -51,7 +51,7 @@ const SchoolCheck = () => {
     } catch (error) {
       setSchool(false);
       span.className = "identifyFail";
-      span.innerText = "인증에 실패하였습니다. 인증번호를 다시 입력해 주세요.";
+      span.innerText = "인증에 실패하였습니다. 인증 링크를 다시 확인해 주세요.";
     }
   }
 

@@ -9,6 +9,8 @@ import Signup from "./pages/Signup.js";
 import FindID from "./pages/FindID.js";
 import FindPW from "./pages/FindPW.js";
 import Taste from "./pages/Taste.js";
+import FirstFilteringLoading from "./components/filter/FirstFilteringLoading.js";
+import FirstFiltering from "./components/filter/FirstFiltering.js";
 import HomeAftLog from "./pages/HomeAftLog.js";
 
 function App() {
@@ -26,6 +28,14 @@ function App() {
           <Route path="/findId" element={<FindID />}></Route>
           <Route path="/findPw" element={<FindPW />}></Route>
           <Route path="/taste" element={<Taste />}></Route>
+          <Route
+            path="/firstFilteringLoading"
+            element={<FirstFilteringLoading></FirstFilteringLoading>}
+          ></Route>
+          <Route
+            path="/firstFiltering"
+            element={<FirstFiltering></FirstFiltering>}
+          ></Route>
         </Routes>
       </div>
     </Router>

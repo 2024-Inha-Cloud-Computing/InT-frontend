@@ -48,7 +48,7 @@ const PhoneEmail = () => {
       emailDomain !== ""
     ) {
       let value = JSON.parse(window.sessionStorage.getItem("value"));
-      value.push(phone1 + "-" + phone2 + "-" + phone3);
+      value.push(phone1 + phone2 + phone3);
       value.push(emailId + "@" + emailDomain);
       try {
         const response = await axios.post(
