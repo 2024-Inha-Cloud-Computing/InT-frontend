@@ -12,6 +12,7 @@ import Taste from "./pages/Taste.js";
 import FirstFilteringLoading from "./components/filter/FirstFilteringLoading.js";
 import FirstFiltering from "./components/filter/FirstFiltering.js";
 import HomeAftLog from "./pages/HomeAftLog.js";
+import FirstFilteringTimetable from "./components/filter/FirstFilteringTimetable.js";
 
 function App() {
   const [message, setMessage] = useState("");
@@ -35,6 +36,10 @@ function App() {
           <Route
             path="/firstFiltering"
             element={<FirstFiltering></FirstFiltering>}
+          ></Route>
+          <Route
+            path="/firstFilteringTimetable"
+            element={<FirstFilteringTimetable></FirstFilteringTimetable>}
           ></Route>
         </Routes>
       </div>
