@@ -16,6 +16,13 @@ import FirstFiltering from "./components/filter/FirstFiltering.js";
 import FirstFilteringTimetable from "./components/filter/FirstFilteringTimetable.js";
 import FirstFilteringQuestion from "./components/filter/FirstFilteringQuestion.js";
 import FirstFilteringDecide from "./components/filter/FirstFilteringDecide.js";
+import SndFilTimeCheck from "./components/filter/SndFilTimeCheck.js";
+import SndFilLikeProf from "./components/filter/SndFilLikeProf.js";
+import SndFilLikeCheck from "./components/filter/SndFilLikeCheck.js";
+import SndFilHateProf from "./components/filter/SndFilHateProf.js";
+import SndFilHateCheck from "./components/filter/SndFilHateCheck.js";
+import SndFilLoading from "./components/filter/SndFilLoading.js";
+import SndFilDecide from "./components/filter/SndFilDecide.js";
 
 function App() {
   const [message, setMessage] = useState("");
@@ -52,6 +59,34 @@ function App() {
           <Route
             path="/firstFilteringDecide"
             element={<FirstFilteringDecide></FirstFilteringDecide>}
+          ></Route>
+          <Route
+            path="/sndFilTimeCheck"
+            element={<SndFilTimeCheck></SndFilTimeCheck>}
+          ></Route>
+          <Route
+            path="/sndFilLikeProf"
+            element={<SndFilLikeProf></SndFilLikeProf>}
+          ></Route>
+          <Route
+            path="/sndFilLikeCheck"
+            element={<SndFilLikeCheck></SndFilLikeCheck>}
+          ></Route>
+          <Route
+            path="/sndFilHateProf"
+            element={<SndFilHateProf></SndFilHateProf>}
+          ></Route>
+          <Route
+            path="/sndFilHateCheck"
+            element={<SndFilHateCheck></SndFilHateCheck>}
+          ></Route>
+          <Route
+            path="/sndFilLoading"
+            element={<SndFilLoading></SndFilLoading>}
+          ></Route>
+          <Route
+            path="/sndFilDecide"
+            element={<SndFilDecide></SndFilDecide>}
           ></Route>
           <Route path="/test" element={<Schedule />}></Route>
         </Routes>
