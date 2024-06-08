@@ -12,7 +12,7 @@ const SndFilLoading = () => {
     }, 2000);
 
     const timer2 = setTimeout(() => {
-      window.location.href = "/firstFilteringTimetable";
+      window.location.href = "/sndFilDecide";
     }, 3000);
 
     return () => {
@@ -21,23 +21,15 @@ const SndFilLoading = () => {
     };
   }, []);
   return (
-    <div className="ffl_container">
+    <div className="sfl_container">
       <img src={back} className="goback" />
-      <img src={filter} className="ffl_filter" />
-      <div className="ffl_main">
-        <span className="ffl_main_first">
-          시간표 취향과 들어가야하는 과목을 기반으로
+      <img src={filter} className="sfl_filter" />
+      <div className="sfl_main">
+        <span className="sfl_main_first">
+        마지막으로, 소연 님이 원하는 정보를 
         </span>
-        <span className="ffl_main_second">
-          소연 님 맞춤 시간표를 만들어 봤어요!
-        </span>
-      </div>
-      <div className="ffl_sub">
-        <span className="ffl_sub_first">
-          우선 시간표를 확인하고, 뒤애서 추가로
-        </span>
-        <span className="ffl_sub_second">
-          조건을 설정할 수 있으니 걱정하지 마세요!
+        <span className="sfl_main_second">
+        기반으로 시간표를 만들었어요!
         </span>
       </div>
     </div>
