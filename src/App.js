@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import Home from "./pages/Home.js";
 import "./App.css";
 import Login from "./pages/Login.js";
@@ -13,6 +12,7 @@ import FirstFilteringLoading from "./components/filter/FirstFilteringLoading.js"
 import FirstFiltering from "./components/filter/FirstFiltering.js";
 import HomeAftLog from "./pages/HomeAftLog.js";
 import FirstFilteringTimetable from "./components/filter/FirstFilteringTimetable.js";
+import Schedule from "./components/Schedule.js";
 
 function App() {
   const [message, setMessage] = useState("");
@@ -41,6 +41,7 @@ function App() {
             path="/firstFilteringTimetable"
             element={<FirstFilteringTimetable></FirstFilteringTimetable>}
           ></Route>
+          <Route path="/test" element={<Schedule />}></Route>
         </Routes>
       </div>
     </Router>
