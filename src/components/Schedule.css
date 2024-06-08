@@ -1,0 +1,56 @@
+.timetable {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.timetable th,
+.timetable td {
+  border: 1px solid #ddd;
+  text-align: center;
+  padding: 8px;
+}
+
+.header {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.time-header {
+  font-weight: bold;
+  width: 50px;
+}
+
+.database {
+  background-color: #ffcccc;
+}
+
+.algorithm {
+  background-color: #add8e6;
+}
+
+.experiment {
+  background-color: #90ee90;
+}
+
+.cloud {
+  background-color: #ffb6c1;
+}
+
+.computer {
+  background-color: #ffd700;
+}
+
+.half {
+  position: relative;
+}
+
+.half::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 50%;
+  width: 100%;
+  background-color: inherit;
+}
