@@ -88,7 +88,6 @@ function App() {
             path="/sndFilDecide"
             element={<SndFilDecide></SndFilDecide>}
           ></Route>
-          <Route path="/test" element={<Schedule />}></Route>
         </Routes>
       </div>
     </Router>
