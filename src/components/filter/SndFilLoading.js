@@ -2,14 +2,14 @@ import React, { useEffect } from "react";
 
 import filter from "../../assets/img/filter.png";
 import back from "../../assets/img/back.png";
-import "./FirstFilteringLoading.css";
+import "./SndFilLoading.css";
 
-const FirstFilteringLoading = () => {
+const SndFilLoading = () => {
   const name = localStorage.getItem("name");
   useEffect(() => {
     const timer1 = setTimeout(() => {
       document.body.classList.add("fade-out");
-    }, 7000);
+    }, 2000);
 
     const timer2 = setTimeout(() => {
       window.location.href = "/firstFilteringTimetable";
@@ -20,13 +20,9 @@ const FirstFilteringLoading = () => {
       clearTimeout(timer2);
     };
   }, []);
-  const goBack = () => {
-    localStorage.removeItem("courses");
-    window.location.href = "/firstFiltering";
-  };
   return (
     <div className="ffl_container">
-      <img src={back} className="goback" onClick={goBack} />
+      <img src={back} className="goback" />
       <img src={filter} className="ffl_filter" />
       <div className="ffl_main">
         <span className="ffl_main_first">
@@ -48,4 +44,4 @@ const FirstFilteringLoading = () => {
   );
 };
 
-export default FirstFilteringLoading;
+export default SndFilLoading;

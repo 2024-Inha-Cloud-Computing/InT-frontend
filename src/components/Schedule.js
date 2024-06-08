@@ -212,7 +212,6 @@ const Schedule = () => {
       ref={canvasRef}
       width={300}
       height={600}
-      style={{ border: "1px solid #000" }}
     />
   );
 };

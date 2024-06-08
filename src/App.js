@@ -8,9 +8,21 @@ import Signup from "./pages/Signup.js";
 import FindID from "./pages/FindID.js";
 import FindPW from "./pages/FindPW.js";
 import Taste from "./pages/Taste.js";
+import HomeAftLog from "./pages/HomeAftLog.js";
+import HomeTimetable from "./components/HomeAftLog/HomeTimetable.js";
+import Schedule from "./components/Schedule.js";
 import FirstFilteringLoading from "./components/filter/FirstFilteringLoading.js";
 import FirstFiltering from "./components/filter/FirstFiltering.js";
-import Schedule from "./components/Schedule.js";
+import FirstFilteringTimetable from "./components/filter/FirstFilteringTimetable.js";
+import FirstFilteringQuestion from "./components/filter/FirstFilteringQuestion.js";
+import FirstFilteringDecide from "./components/filter/FirstFilteringDecide.js";
+import SndFilTimeCheck from "./components/filter/SndFilTimeCheck.js";
+import SndFilLikeProf from "./components/filter/SndFilLikeProf.js";
+import SndFilLikeCheck from "./components/filter/SndFilLikeCheck.js";
+import SndFilHateProf from "./components/filter/SndFilHateProf.js";
+import SndFilHateCheck from "./components/filter/SndFilHateCheck.js";
+import SndFilLoading from "./components/filter/SndFilLoading.js";
+import SndFilDecide from "./components/filter/SndFilDecide.js";
 
 function App() {
   const [message, setMessage] = useState("");
@@ -20,12 +32,14 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Home />}></Route>
+          <Route path="/homeAftLog" element={<HomeAftLog />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/timetable" element={<Timetable />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/findId" element={<FindID />}></Route>
           <Route path="/findPw" element={<FindPW />}></Route>
           <Route path="/taste" element={<Taste />}></Route>
+          <Route path="/homeTimetable" element={<HomeTimetable />}></Route>
           <Route
             path="/firstFilteringLoading"
             element={<FirstFilteringLoading></FirstFilteringLoading>}
@@ -34,7 +48,46 @@ function App() {
             path="/firstFiltering"
             element={<FirstFiltering></FirstFiltering>}
           ></Route>
-          <Route path="/test" element={<Schedule />}></Route>
+          <Route
+            path="/firstFilteringTimetable"
+            element={<FirstFilteringTimetable></FirstFilteringTimetable>}
+          ></Route>
+          <Route
+            path="/firstFilteringQuestion"
+            element={<FirstFilteringQuestion></FirstFilteringQuestion>}
+          ></Route>
+          <Route
+            path="/firstFilteringDecide"
+            element={<FirstFilteringDecide></FirstFilteringDecide>}
+          ></Route>
+          <Route
+            path="/sndFilTimeCheck"
+            element={<SndFilTimeCheck></SndFilTimeCheck>}
+          ></Route>
+          <Route
+            path="/sndFilLikeProf"
+            element={<SndFilLikeProf></SndFilLikeProf>}
+          ></Route>
+          <Route
+            path="/sndFilLikeCheck"
+            element={<SndFilLikeCheck></SndFilLikeCheck>}
+          ></Route>
+          <Route
+            path="/sndFilHateProf"
+            element={<SndFilHateProf></SndFilHateProf>}
+          ></Route>
+          <Route
+            path="/sndFilHateCheck"
+            element={<SndFilHateCheck></SndFilHateCheck>}
+          ></Route>
+          <Route
+            path="/sndFilLoading"
+            element={<SndFilLoading></SndFilLoading>}
+          ></Route>
+          <Route
+            path="/sndFilDecide"
+            element={<SndFilDecide></SndFilDecide>}
+          ></Route>
         </Routes>
       </div>
     </Router>

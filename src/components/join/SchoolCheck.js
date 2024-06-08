@@ -10,7 +10,6 @@ const SchoolCheck = () => {
     document.documentElement.style.setProperty("--vh", `${vh}px`);
   });
   const [school, setSchool] = useState(true);
-  const [timer, setTimer] = useState(1200);
   const [searchParams, setSeratchParams] = useSearchParams();
   const formRef = useRef();
 
@@ -25,18 +24,7 @@ const SchoolCheck = () => {
       }
       sessionStorage.setItem("value", JSON.stringify(newVal));
     }
-    const countdown = setInterval(() => {
-      setTimer((prevTime) => (prevTime > 0 ? prevTime - 1 : 0));
-    }, 1000);
-
-    return () => clearInterval(countdown);
   }, []);
-
-  const formatTime = (seconds) => {
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = seconds % 60;
-    return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
-  };
 
   const goBack = () => {
     setSeratchParams({ name_birth: true });
@@ -63,7 +51,7 @@ const SchoolCheck = () => {
     } catch (error) {
       setSchool(false);
       span.className = "identifyFail";
-      span.innerText = "인증에 실패하였습니다. 인증번호를 다시 입력해 주세요.";
+      span.innerText = "인증에 실패하였습니다. 인증 링크를 다시 확인해 주세요.";
     }
   }
 
@@ -81,33 +69,17 @@ const SchoolCheck = () => {
   return (
     <div className="entire">
       <img src={back} className="goback" onClick={goBack} />
-      <div>
-        <p className="schoolCheckTitle1">인하대학교 재학생이</p>
-        <p className="schoolCheckTitle2">맞는지 확인할게요.</p>
-      </div>
-      <div className="sendAlert">
-        입력해 주신 이메일로
-        <br />
-        인증번호를 발송했어요!
-      </div>
-      <form ref={formRef}>
-        <div className="schoolCheckContent">
-          <input
-            className="numberCheck"
-            type="number"
-            placeholder="인증번호 입력"
-            name="number"
-          />
-          <span className="timeChecker">{formatTime(timer)}</span>
-          <button className="checkButton" onClick={checkScool}>
-            확인
-          </button>
+      <div><p className="schoolCheckTitle1">인하대학교 재학생이</p><p className="schoolCheckTitle2">맞는지 확인할게요.</p></div>
+      <div className="schoolCheck_content">
+        <div className="sendAlert">
+          입력해 주신 이메일로<br />인증 링크를 발송했어요!<br />링크 접속 후 확인 버튼을 눌러주세요.
         </div>
-        <span id="schoolCheck_message" className="hidden"></span>
-      </form>
-      <button className="nextCheckButton" onClick={goNext}>
-        다음으로 넘어가기
-      </button>
+        <button className="schoolCheck_checkButton" onClick={checkScool}>인증 링크 확인</button>
+        <span id="message" className="hidden">
+            인증에 실패하였습니다. 인증번호를 다시 입력해 주세요.
+        </span>
+        <button className="nextCheckButton" onClick={goNext}>다음으로 넘어가기</button>
+      </div>
     </div>
   );
 };
