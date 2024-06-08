@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router-dom";
-import HomeEmpty from "../components/HomeAftLog/HomeEmpty";
-import HomeTimetable from "../components/HomeAftLog/HomeTimetable";
+import HomeEmpty from "../components/HomeAftLog/HomeEmpty";
+import HomeTimetable from "../components/HomeAftLog/HomeTimetable";
 
 const HomeAftLog = () => {
   const [searchParams, setSeratchParams] = useSearchParams();
