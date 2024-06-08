@@ -11,7 +11,7 @@ const FirstFilteringLoading = () => {
     }, 2000);
 
     const timer2 = setTimeout(() => {
-      window.location.href = "/login";
+      window.location.href = "/firstFilteringTimetable";
     }, 3000);
 
     return () => {
