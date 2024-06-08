@@ -8,11 +8,14 @@ import Signup from "./pages/Signup.js";
 import FindID from "./pages/FindID.js";
 import FindPW from "./pages/FindPW.js";
 import Taste from "./pages/Taste.js";
+import HomeAftLog from "./pages/HomeAftLog.js";
+import HomeTimetable from "./components/HomeAftLog/HomeTimetable.js";
+import Schedule from "./components/Schedule.js";
 import FirstFilteringLoading from "./components/filter/FirstFilteringLoading.js";
 import FirstFiltering from "./components/filter/FirstFiltering.js";
-import HomeAftLog from "./pages/HomeAftLog.js";
 import FirstFilteringTimetable from "./components/filter/FirstFilteringTimetable.js";
-import Schedule from "./components/Schedule.js";
+import FirstFilteringQuestion from "./components/filter/FirstFilteringQuestion.js";
+import FirstFilteringDecide from "./components/filter/FirstFilteringDecide.js";
 
 function App() {
   const [message, setMessage] = useState("");
@@ -29,6 +32,7 @@ function App() {
           <Route path="/findId" element={<FindID />}></Route>
           <Route path="/findPw" element={<FindPW />}></Route>
           <Route path="/taste" element={<Taste />}></Route>
+          <Route path="/homeTimetable" element={<HomeTimetable />}></Route>
           <Route
             path="/firstFilteringLoading"
             element={<FirstFilteringLoading></FirstFilteringLoading>}
@@ -40,6 +44,14 @@ function App() {
           <Route
             path="/firstFilteringTimetable"
             element={<FirstFilteringTimetable></FirstFilteringTimetable>}
+          ></Route>
+          <Route
+            path="/firstFilteringQuestion"
+            element={<FirstFilteringQuestion></FirstFilteringQuestion>}
+          ></Route>
+          <Route
+            path="/firstFilteringDecide"
+            element={<FirstFilteringDecide></FirstFilteringDecide>}
           ></Route>
           <Route path="/test" element={<Schedule />}></Route>
         </Routes>

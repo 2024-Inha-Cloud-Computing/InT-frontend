@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from "react";
 
-import Exclamation_mark from "../../assets/img/Exclamation_mark.png";
+import "./HomeTimetable.css";
+import Schedule from "../Schedule";
 
 const HomeTimetable = () => {
-    const goTimetable = () => {
-      window.location.href = "/timetable";
-    };
     return (
       <div className="homeTimetable_container">
+        <div className="homeTimetable_title">2024학년도 1학기</div>
+        <div className="homeTimetable_content1">
+          <div className="homeTimetable_content2">
+            <Schedule />
+          </div>
+        </div>
       </div>
     );
   };
