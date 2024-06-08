@@ -12,18 +12,18 @@ import Schedule from '../Schedule.js';
 
 const SndFilDecide = () => {
     const goBack = () => {
-        window.location.href = "/firstFilteringQuestion";
+        window.location.href = "/sndFilHateCheck";
       };
 
     const goNext = () => {
-        window.location.href = "/firstFilteringDecide";
+        window.location.href = "/";
     }
 
     return (
-      <div className="ffd_container">
+      <div className="sfd_container">
         <img src={back} className="goback" onClick={goBack}/>
         <Swiper
-            className="ffd_swiper"
+            className="sfd_swiper"
             slidesPerView={1.2}
             centeredSlides={true}
             spaceBetween={40}
@@ -33,31 +33,31 @@ const SndFilDecide = () => {
             speed = {200}
         >
             <SwiperSlide>
-                <div className='ffd_theader'>
-                    <div className="ffd_title">시간표 1</div>
+                <div className='sfd_theader'>
+                    <div className="sfd_title">시간표 1</div>
                 </div>
-                <div className="ffd_content"><Schedule/></div>
+                <div className="sfd_content"><Schedule/></div>
             </SwiperSlide>
             <SwiperSlide>
-                <div className='ffd_theader'>
-                    <div className="ffd_title">시간표 2</div>
+                <div className='sfd_theader'>
+                    <div className="sfd_title">시간표 2</div>
                 </div>
-                <div className="ffd_content"><Schedule/></div>
+                <div className="sfd_content"><Schedule/></div>
             </SwiperSlide>
             <SwiperSlide>
-                <div className='ffd_theader'>
-                    <div className="ffd_title">시간표 3</div>
+                <div className='sfd_theader'>
+                    <div className="sfd_title">시간표 3</div>
                 </div>
-                <div className="ffd_content"><Schedule/></div>
+                <div className="sfd_content"><Schedule/></div>
             </SwiperSlide>
             <SwiperSlide>
-                <div className='ffd_theader'>
-                    <div className="ffd_title">시간표 4</div>
+                <div className='sfd_theader'>
+                    <div className="sfd_title">시간표 4</div>
                 </div>
-                <div className="ffd_content"><Schedule/></div>
+                <div className="sfd_content"><Schedule/></div>
             </SwiperSlide>
         </Swiper>
-        <button className="ffd_nextButton" onClick={goNext}>이 시간표로 확정할래요!</button>
+        <button className="sfd_nextButton" onClick={goNext}>이 시간표로 확정할래요!</button>
       </div>
     );
   };
