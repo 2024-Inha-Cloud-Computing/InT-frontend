@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import filter from "../../assets/img/filter.png";
 import back from "../../assets/img/back.png";
 import "./FirstFilteringLoading.css";
+
 const FirstFilteringLoading = () => {
   const name = localStorage.getItem("name");
   useEffect(() => {

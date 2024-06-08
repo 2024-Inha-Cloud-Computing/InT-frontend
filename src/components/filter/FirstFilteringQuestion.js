@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import "./FirstFilteringQuestion.css";
 import back from "../../assets/img/back.png";
 
-const Timetable = () => {
+const FirstFilteringQuestion = () => {
     const goBack = () => {
       window.location.href = "/firstFilteringTimetable";
     };
@@ -33,4 +33,4 @@ const Timetable = () => {
     );
   };
   
-  export default Timetable;
+  export default FirstFilteringQuestion;

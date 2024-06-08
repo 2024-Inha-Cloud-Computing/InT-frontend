@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import "./SndFilTimeCheck.css";
 import back from "../../assets/img/back.png";
 
-const Timetable = () => {
+const SndFilTimeCheck = () => {
     const goBack = () => {
       window.location.href = "/";
     };
@@ -37,4 +37,4 @@ const Timetable = () => {
     );
   };
   
-  export default Timetable;
+  export default SndFilTimeCheck;

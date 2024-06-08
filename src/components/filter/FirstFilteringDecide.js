@@ -10,7 +10,7 @@ import back from "../../assets/img/back.png";
 import Schedule from '../Schedule.js';
 
 
-const FirstFilteringTimetable = () => {
+const FirstFilteringDecide = () => {
     const goBack = () => {
         window.location.href = "/firstFilteringQuestion";
       };
@@ -62,4 +62,4 @@ const FirstFilteringTimetable = () => {
     );
   };
   
-  export default FirstFilteringTimetable;
+  export default FirstFilteringDecide;
