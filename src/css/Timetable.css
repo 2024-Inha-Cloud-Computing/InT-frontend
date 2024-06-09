@@ -49,9 +49,7 @@
     border: 1.5px solid #0068FF;
     color: #0068FF;
     background-color: white;
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
     font-size: 1rem;
-    font-weight: 600;
 }
 
 .timetable_manualButton {
@@ -62,6 +60,10 @@
     border-radius: 0.625rem;
     color: #000;
     background-color: white;
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
     font-size: 1rem;
+}
+
+.timetable_filteringButton:hover, .timetable_manualButton:hover {
+    font-weight: 600;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
 }
