@@ -7,7 +7,7 @@ import down from "../../assets/img/down_triangle.png";
 
 const SndFilHateProf = () => { // 컴포넌트 이름도 바꿉니다
   const [expandedCourse, setExpandedCourse] = useState(null);
-  const [selectedHateProfessors, setSelectedHateProfessors] = useState({});
+  const [selectedHateProfessors, setSelectedHateProfessors] = useState([]);
 
   const courses = [
     { id: 1, name: '컴퓨터공학과, 컴퓨터구조론, CSE3246', professors: ['최영규', '이어진', '정진만'] },
@@ -31,17 +31,20 @@ const SndFilHateProf = () => { // 컴포넌트 이름도 바꿉니다
   };
 
   const selectHateProfessor = (courseName, professor) => {
-    const newSelectedHateProfessors = { ...selectedHateProfessors };
+    let newSelectedHateProfessors = [...selectedHateProfessors];
+    const existingIndex = newSelectedHateProfessors.findIndex(item => item.course === courseName);
 
-    if (newSelectedHateProfessors[courseName] === professor) {
-      delete newSelectedHateProfessors[courseName]; // 선택 해제
+    if (existingIndex !== -1) {
+      newSelectedHateProfessors[existingIndex] = { course: courseName, professor };
     } else {
-      newSelectedHateProfessors[courseName] = professor; // 새로운 선택
+      newSelectedHateProfessors.push({ course: courseName, professor });
     }
-
+  
     setSelectedHateProfessors(newSelectedHateProfessors);
     localStorage.setItem('selectedHateProfessors', JSON.stringify(newSelectedHateProfessors));
   };
+
+
 
   const goBack = () => {
     window.location.href = "/sndFilLikeCheck";
@@ -78,7 +81,7 @@ const SndFilHateProf = () => { // 컴포넌트 이름도 바꿉니다
                   {course.professors.map(professor => (
                     <div
                       key={professor}
-                      className={`professor-name ${selectedHateProfessors[course.name] === professor ? 'selected' : ''}`}
+                      className={`professor-name ${selectedHateProfessors.find(item => item.course === course.name && item.professor === professor) ? 'selected' : ''}`}
                       onClick={() => selectHateProfessor(course.name, professor)}
                     >
                       {professor}

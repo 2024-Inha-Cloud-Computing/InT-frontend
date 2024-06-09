@@ -7,7 +7,7 @@ import down from "../../assets/img/down_triangle.png";
 
 const SndFilLikeProf = () => {
     const [expandedCourse, setExpandedCourse] = useState(null);
-    const [selectedLikeProfessors, setSelectedLikeProfessors] = useState({});
+    const [selectedLikeProfessors, setSelectedLikeProfessors] = useState([]);
 
     const courses = [
       { id: 1, name: '컴퓨터공학과, 컴퓨터구조론, CSE3246', professors: ['최영규', '이어진', '정진만'] },
@@ -31,12 +31,13 @@ const SndFilLikeProf = () => {
     };
 
     const selectLikeProfessor = (courseName, professor) => {
-      const newSelectedLikeProfessors = { ...selectedLikeProfessors };
-    
-      if (newSelectedLikeProfessors[courseName] === professor) {
-        delete newSelectedLikeProfessors[courseName]; // 선택 해제
+      let newSelectedLikeProfessors = [...selectedLikeProfessors];
+      const existingIndex = newSelectedLikeProfessors.findIndex(item => item.course === courseName);
+
+      if (existingIndex !== -1) {
+        newSelectedLikeProfessors[existingIndex] = { course: courseName, professor };
       } else {
-        newSelectedLikeProfessors[courseName] = professor; // 새로운 선택
+        newSelectedLikeProfessors.push({ course: courseName, professor });
       }
     
       setSelectedLikeProfessors(newSelectedLikeProfessors);
@@ -76,8 +77,7 @@ const SndFilLikeProf = () => {
                   {course.professors.map(professor => (
                     <div
                       key={professor}
-                      className={`professor-name ${selectedLikeProfessors[course.name] === professor ? 'selected' : ''}`}
-                      onClick={() => selectLikeProfessor(course.name, professor)}
+                      className={`professor-name ${selectedLikeProfessors.find(item => item.course === course.name && item.professor === professor) ? 'selected' : ''}`}                      onClick={() => selectLikeProfessor(course.name, professor)}
                     >
                       {professor}
                     </div>

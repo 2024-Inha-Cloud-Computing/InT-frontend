@@ -8,12 +8,8 @@ const SndFilHateCheck = () => {
   useEffect(() => {
     // 로컬 스토리지에서 데이터를 가져옴
     const storedHatedCourses = JSON.parse(localStorage.getItem('selectedHateProfessors'));
-    if (storedHatedCourses && Object.keys(storedHatedCourses).length > 0) {
-      const formattedCourses = Object.entries(storedHatedCourses).map(([course, professor]) => ({
-        course: course.split(", ")[1], // 과목명만 추출
-        professor
-      }));
-      setHatedCourses(formattedCourses);
+    if (storedHatedCourses && storedHatedCourses.length > 0) {
+      setHatedCourses(storedHatedCourses);
     } else {
       setHatedCourses([]); // 데이터가 없으면 빈 배열로 설정
     }
@@ -38,7 +34,7 @@ const SndFilHateCheck = () => {
           {hatedCourses.length > 0 ? (
             hatedCourses.map((item, index) => (
               <div key={index} className="sflc_info">
-                {item.course}, {item.professor}
+                {item.course.split(", ")[1]}, {item.professor}
               </div>
             ))
           ) : (
