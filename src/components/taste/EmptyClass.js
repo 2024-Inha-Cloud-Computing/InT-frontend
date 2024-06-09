@@ -18,12 +18,12 @@ const EmptyClass = () => {
   const ClickYes = () => {
     //서버 데이터 보내기
     sessionStorage.clear();
-    window.location.href = "/timetable";
+    window.location.href = "/homeAftLog";
   };
   const ClickNo = () => {
     //서버 데이터 보내기
     sessionStorage.clear();
-    window.location.href = "/timetable";
+    window.location.href = "/homeAftLog";
   };
   return (
     <div className="emptyClass_container">
