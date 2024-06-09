@@ -23,6 +23,7 @@ import SndFilHateProf from "./components/filter/SndFilHateProf.js";
 import SndFilHateCheck from "./components/filter/SndFilHateCheck.js";
 import SndFilLoading from "./components/filter/SndFilLoading.js";
 import SndFilDecide from "./components/filter/SndFilDecide.js";
+import SndHateTime from "./components/filter/SndHateTime.js";
 
 function App() {
   const [message, setMessage] = useState("");
@@ -59,6 +60,10 @@ function App() {
           <Route
             path="/firstFilteringDecide"
             element={<FirstFilteringDecide></FirstFilteringDecide>}
+          ></Route>
+          <Route
+            path="/sndHateTime"
+            element={<SndHateTime></SndHateTime>}
           ></Route>
           <Route
             path="/sndFilTimeCheck"
