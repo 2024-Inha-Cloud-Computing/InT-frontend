@@ -42,9 +42,12 @@ const FirstFiltering = () => {
     localStorage.setItem("courses", JSON.stringify(selectedCourses));
     window.location.href = "/firstFilteringLoading";
   };
+  const goBack = () => {
+    window.location.href = "/timetable";
+  };
   return (
     <div className="first_filtering_container">
-      <img src={back} className="goback" />
+      <img src={back} className="goback" onClick={goBack} />
       <div className="first_filtering_main">
         <span>이번 학기에 꼭 수강해야하는</span>
         <span>과목을 알려주세요!</span>

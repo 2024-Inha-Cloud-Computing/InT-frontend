@@ -272,9 +272,12 @@ const SndHateTime = () => {
     localStorage.setItem("time", []);
     window.location.href = "/sndFilLikeProf";
   };
+  const goBack = () => {
+    window.location.href = "/firstFilteringQuestion";
+  };
   return (
     <div className="hatetime_container">
-      <img src={back} className="hatetime_img" />
+      <img src={back} className="hatetime_img" onClick={goBack} />
       <div className="hatetime_header">
         <span>피해야 하는 시간을</span>
         <br />
