@@ -63,7 +63,19 @@
   padding: 0.65rem 0 0.65rem 1.875rem;
 }
 
-
+.sfhc_alert{
+  margin-top: 5rem;
+  width: 13.75rem;
+  height: 3.75rem;
+  font-size: 0.875rem;
+  color: #0068FF;
+  border: 1.5px solid #0068FF;
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
 .sfhc_buttons {
   display: flex;
