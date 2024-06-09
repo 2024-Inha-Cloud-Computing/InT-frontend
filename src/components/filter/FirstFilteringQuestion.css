@@ -49,9 +49,7 @@
     border: 1.5px solid black;
     color: black;
     background-color: white;
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
     font-size: 0.875rem;
-    font-weight: 600;
 }
 
 .ffq_manualButton {
@@ -62,13 +60,14 @@
     border-radius: 0.625rem;
     color: #000;
     background-color: white;
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
     font-size: 0.875rem;
 }
 
 .ffq_filteringButton:hover, .ffq_manualButton:hover {
     border: 1.5px solid #0068FF;
     color: #0068FF; /* Change to your desired text color on hover */
+    font-weight: 600;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     transition: border 0.3s, color 0.3s; /* Smooth transition for hover effect */
   }
