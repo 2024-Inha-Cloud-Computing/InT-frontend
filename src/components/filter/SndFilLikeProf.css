@@ -90,9 +90,11 @@
 }
 
 .professor-list {
+    width: 18.75rem;
     margin-top: 0.688rem;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: flex-start;
 }
 
