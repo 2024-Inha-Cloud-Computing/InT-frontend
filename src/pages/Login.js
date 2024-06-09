@@ -40,9 +40,11 @@ const Login = () => {
       );
       const accessToken = response.data.access;
       const refreshToken = response.data.refresh;
+      const name = response.data.name;
       console.log(accessToken, refreshToken);
       localStorage.setItem("accessToken", accessToken);
       localStorage.setItem("refreshToken", refreshToken);
+      localStorage.setItem("name", name);
       window.location.href = "/timetable";
     } catch (error) {
       alert("아이디 비번을 확인해주세요");
