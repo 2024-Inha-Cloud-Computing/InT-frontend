@@ -10,7 +10,7 @@ const ManualStartQ = () => {
   };
 
   const goAutoQ = () => {
-    window.location.href = "/timetable/manual";
+    window.location.href = "/manualAutoQ";
   };
 
   const goHome = () => {
