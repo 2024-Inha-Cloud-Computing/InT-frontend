@@ -26,6 +26,8 @@ import SndFilDecide from "./components/filter/SndFilDecide.js";
 import SndHateTime from "./components/filter/SndHateTime.js";
 import ManualStartQ from "./components/manual/manualStartQ.js";
 import ManualAutoQ from "./components/manual/manualAutoQ.js";
+import ManualAddManual from "./components/manual/ManualAddManual.js";
+import ManualAddRandom from "./components/manual/ManualAddRandom.js";
 
 function App() {
   const [message, setMessage] = useState("");
@@ -102,6 +104,14 @@ function App() {
           <Route
             path="/manualAutoQ"
             element={<ManualAutoQ></ManualAutoQ>}
+          ></Route>
+          <Route
+            path="/manualAddManual"
+            element={<ManualAddManual></ManualAddManual>}
+          ></Route>
+          <Route
+            path="/manualAddRandom"
+            element={<ManualAddRandom></ManualAddRandom>}
           ></Route>
         </Routes>
       </div>

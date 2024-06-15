@@ -1,0 +1,180 @@
+.mc_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.mc_title {
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-align: left;
+    width: 18rem;
+}
+
+.mc_search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin: 1.125rem 0 1.125rem 0;
+    width: 100%;
+}
+
+.mc_input {
+    width: 17.5rem;
+    height: 2.5rem;
+    padding-left: 0.875rem;
+    border: 0.125rem solid #007bff;
+    border-radius: 0.625rem;
+    font-size: 0.75rem;
+}
+
+.mc_find {
+    position: absolute;
+    right: 3.563rem;
+    top: 0.813rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    cursor: pointer;
+}
+
+.mc_total_course {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 17.5rem;
+    height: 17.5rem;
+    margin: 0.5rem 0 0 0;
+    overflow: auto;
+}
+
+.mc_course {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 16.875rem;
+}
+
+.mc_line {
+    width: 16.875rem;
+    height:0.5px;
+    background-color: #EAEAEA;
+}
+
+.mc_courseInfoContainer {
+    width: 16.875rem;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin: 0.563rem 0 0 0;
+    position: relative;
+}
+
+.mc_courseInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.mc_courseType {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.mc_courseNum {
+    font-size:0.375rem;
+    margin: 0 0.25rem 0 0;
+}
+
+.mc_courseMajorOrNot, .mc_courseGrade, .mc_courseCredit {
+    font-size: 0.375rem;
+    margin: 0 0 0 0.25rem;
+    border: 0.5px solid #64B0EE;
+    border-radius: 0.625rem;
+}
+
+.mc_courseMajorOrNot{
+    width: 2rem;
+    text-align: center;
+}
+
+.mc_courseGrade, .mc_courseCredit {
+    width: 1.438rem;
+    text-align: center;
+}
+
+
+.mc_courseRate{
+    width: 1.8rem;
+    display:flex;
+    justify-content: center;
+    font-size: 0.375rem;
+    margin: 0 0 0 0.25rem;
+    border: 0.5px solid #E6E6E6;
+    border-radius: 0.625rem;
+}
+
+.mc_courseRateImg {
+    width: 0.5rem;
+    height: 0.5rem;
+    margin: 0 0.125rem 0 0;
+}
+
+.mc_courseName {
+    font-size: 0.625rem;
+    font-weight: bold;
+    text-align: left;
+    margin: 0.438rem 0 0 0;
+}
+
+.mc_courseProfTime {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 0.25rem 0 0 0;
+}
+
+.mc_courseProf, .mc_courseTime {
+    font-size: 0.5rem;
+    margin: 0 0.313rem 0 0;
+}
+
+.mc_courseSubinfo {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 0.375rem 0 0.625rem 0;
+}
+
+.mc_courseExamTitle, .mc_courseEtcTitle {
+    font-size: 0.375rem;
+    font-weight: 600;
+    margin: 0 0.25rem 0 0;
+}
+
+.mc_courseExam {
+    font-size: 0.375rem;
+    margin: 0 0.75rem 0 0;
+}
+
+.mc_courseEtc {
+    font-size: 0.375rem;
+}
+
+.mc_addButton {
+    width: 1.563rem;
+    height: 1rem;
+    font-size: 0.5rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 0.188rem 0 0 0;
+    color: white;
+    background-color: #64B0EE;
+    border-radius: 0.625rem;
+    position:absolute;
+    top: 1.3rem;
+    right: 0.313rem;
+}
