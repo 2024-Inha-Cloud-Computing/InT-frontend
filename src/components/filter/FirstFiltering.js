@@ -1,24 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import back from "../../assets/img/back.png";
 import find from "../../assets/img/find.png";
 import "./FirstFiltering.css";
+import axios from "axios";
 const FirstFiltering = () => {
   //서버에 넘겨줄 과목들
+  const [courseList, setCourseList] = useState([]);
   const [selectedCourses, setSelectedCourses] = useState([]);
   const [select, setSelect] = useState("");
+  // let courseList;
+  const getData = async () => {
+    try {
+      const id = localStorage.getItem("id");
+      const response = await axios.post(
+        "http://3.1.102.78:8000/timetablepage/allCourse/",
+        {
+          id: id,
+        }
+      );
+      const list = await response.data.courses;
+      setCourseList(list);
+    } catch (e) {
+      console.log(e);
+    }
+  };
   //서버로 부터 받을거 -> useState로 치환
-  const courseList = [
-    "컴퓨터공학과, 컴퓨터구조론, CS201",
-    "컴퓨터공학과, 알고리즘, CS202",
-    "컴퓨터공학과, 객체지향프로그래밍1, CS202",
-    "컴퓨터공학과, 오퍼레이팅시스템, CS202",
-    "컴퓨터공학과, 오퍼레이팅시스템, CS203",
-    "컴퓨터공학과, 오퍼레이팅시스템, CS204",
-    "컴퓨터공학과, 오퍼레이팅시스템, CS205",
-    "컴퓨터공학과, 오퍼레이팅시스템, CS206",
-    "컴퓨터공학과, 오퍼레이팅시스템, CS207",
-  ];
+  useEffect(() => {
+    getData();
+  }, []);
 
   const handleCourseClick = (course) => {
     if (!selectedCourses.includes(course)) {
@@ -37,6 +47,20 @@ const FirstFiltering = () => {
 
   const search = async () => {
     //서버로 부터 받기 courseList 갱신
+    try {
+      const id = localStorage.getItem("id");
+      const response = await axios.post(
+        "http://3.1.102.78:8000/timetablepage/findCourse/",
+        {
+          id: id,
+          input: select,
+        }
+      );
+      const list = await response.data.courses;
+      setCourseList(list);
+    } catch (e) {
+      console.log(e);
+    }
   };
   const goNext = () => {
     localStorage.setItem("courses", JSON.stringify(selectedCourses));

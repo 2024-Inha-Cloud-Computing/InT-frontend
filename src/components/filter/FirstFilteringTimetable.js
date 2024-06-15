@@ -10,9 +10,32 @@ import blue_heart from "../../assets/img/blue_heart.png";
 import gray_heart from "../../assets/img/gray_heart.png";
 import back from "../../assets/img/back.png";
 import Schedule from "../Schedule.js";
-
+import instance from "../../access/instance.js";
+import axios from "axios";
 const FirstFilteringTimetable = () => {
-  const [likedStates, setLikedStates] = useState([false, false, false, false]);
+  const [likedStates, setLikedStates] = useState([]);
+  const [schedules, setSchedules] = useState([]);
+
+  const getShedule = async () => {
+    const id = localStorage.getItem("id");
+    const courses = localStorage.getItem("courses");
+    const response = await axios.post(
+      "http://3.1.102.78:8000/timetablepage/firstFilteringTimetable/",
+      {
+        courses: courses,
+        id: id,
+      }
+    );
+    const list = await response.data.courses;
+    setSchedules(list);
+    let likes = [];
+    list.map(() => likes.push(false));
+    setLikedStates(likes);
+  };
+
+  useState(() => {
+    getShedule();
+  }, []);
 
   const handleToggle = (index) => {
     setLikedStates((prev) => {
@@ -27,6 +50,13 @@ const FirstFilteringTimetable = () => {
   };
 
   const goNext = () => {
+    const final = [];
+    likedStates.map((status, index) => {
+      if (status) {
+        final.push(schedules[index]);
+      }
+    });
+    localStorage.setItem("liked", JSON.stringify(final));
     window.location.href = "/firstFilteringQuestion";
   };
 
@@ -43,10 +73,10 @@ const FirstFilteringTimetable = () => {
         scrollbar={{ draggable: true }}
         speed={200}
       >
-        {[1, 2, 3, 4].map((timetable, index) => (
+        {schedules.map((timetable, index) => (
           <SwiperSlide key={index}>
             <div className="fflt_theader">
-              <div className="fflt_title">시간표 {timetable}</div>
+              <div className="fflt_title">시간표 {index + 1}</div>
               <img
                 src={likedStates[index] ? blue_heart : gray_heart}
                 onClick={() => handleToggle(index)}
@@ -54,7 +84,7 @@ const FirstFilteringTimetable = () => {
               />
             </div>
             <div className="fflt_content">
-              <Schedule />
+              <Schedule schedule={timetable} />
             </div>
           </SwiperSlide>
         ))}

@@ -1,75 +1,7 @@
 import React, { useEffect, useRef } from "react";
 
-const Schedule = () => {
+const Schedule = ({ schedule }) => {
   const canvasRef = useRef(null);
-
-  const schedule = [
-    {
-      day: "월",
-      time: 9,
-      duration: 1.5,
-      subject: "알고리즘",
-      room: "하-222",
-      professor: "김영호",
-    },
-    {
-      day: "월",
-      time: 10.5,
-      duration: 2,
-      subject: "데이터베이스",
-      room: "하-120",
-      professor: "이주홍",
-    },
-    {
-      day: "화",
-      time: 11,
-      duration: 2,
-      subject: "실험계획법",
-      room: "5서360",
-      professor: "조민호",
-    },
-    {
-      day: "수",
-      time: 12,
-      duration: 1.5,
-      subject: "객체지향프로그래밍1",
-      room: "하-222",
-      professor: "이욱",
-    },
-    {
-      day: "목",
-      time: 9,
-      duration: 1,
-      subject: "데이터베이스",
-      room: "하-120",
-      professor: "이주홍",
-    },
-    {
-      day: "목",
-      time: 15,
-      duration: 1,
-      subject: "클라우드 컴퓨팅",
-      room: "하-324",
-      professor: "권구인",
-    },
-    {
-      day: "금",
-      time: 9,
-      duration: 1,
-      subject: "알고리즘",
-      room: "하-222",
-      professor: "김영호",
-    },
-    {
-      day: "금",
-      time: 14,
-      duration: 1,
-      subject: "컴퓨터구조론",
-      room: "하-220",
-      professor: "최영규",
-    },
-  ];
-
   const days = ["월", "화", "수", "목", "금"];
   const times = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
   const colors = [
@@ -207,13 +139,7 @@ const Schedule = () => {
     return lines;
   };
 
-  return (
-    <canvas
-      ref={canvasRef}
-      width={300}
-      height={600}
-    />
-  );
+  return <canvas ref={canvasRef} width={300} height={600} />;
 };
 
 export default Schedule;

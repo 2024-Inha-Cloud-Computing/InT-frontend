@@ -9,7 +9,7 @@ const SchoolCheck = () => {
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty("--vh", `${vh}px`);
   });
-  const [school, setSchool] = useState(true);
+  const [school, setSchool] = useState(false);
   const [searchParams, setSeratchParams] = useSearchParams();
   const formRef = useRef();
 
@@ -33,15 +33,12 @@ const SchoolCheck = () => {
   async function checkScool(event) {
     event.preventDefault();
     const span = document.querySelector("#schoolCheck_message");
-    let can = false;
     //확인하는 로직
     try {
       const value = JSON.parse(sessionStorage.getItem("value"));
-
       const response = await axios.post(
-        "http://54.179.66.145:8000/checkEmailNumber/",
+        "http://3.1.102.78:8000/checkEmailNumber/",
         {
-          number: formRef.current.number.value,
           email: value[3],
         }
       );
@@ -50,6 +47,7 @@ const SchoolCheck = () => {
       span.innerText = "인증에 성공하였습니다.";
     } catch (error) {
       setSchool(false);
+      console.log(error);
       span.className = "identifyFail";
       span.innerText = "인증에 실패하였습니다. 인증 링크를 다시 확인해 주세요.";
     }
@@ -69,16 +67,27 @@ const SchoolCheck = () => {
   return (
     <div className="entire">
       <img src={back} className="goback" onClick={goBack} />
-      <div><p className="schoolCheckTitle1">인하대학교 재학생이</p><p className="schoolCheckTitle2">맞는지 확인할게요.</p></div>
+      <div>
+        <p className="schoolCheckTitle1">인하대학교 재학생이</p>
+        <p className="schoolCheckTitle2">맞는지 확인할게요.</p>
+      </div>
       <div className="schoolCheck_content">
         <div className="sendAlert">
-          입력해 주신 이메일로<br />인증 링크를 발송했어요!<br />링크 접속 후 확인 버튼을 눌러주세요.
+          입력해 주신 이메일로
+          <br />
+          인증 링크를 발송했어요!
+          <br />
+          링크 접속 후 확인 버튼을 눌러주세요.
         </div>
-        <button className="schoolCheck_checkButton" onClick={checkScool}>인증 링크 확인</button>
-        <span id="message" className="hidden">
-            인증에 실패하였습니다. 인증번호를 다시 입력해 주세요.
+        <button className="schoolCheck_checkButton" onClick={checkScool}>
+          인증 링크 확인
+        </button>
+        <span id="schoolCheck_message" className="hidden">
+          인증에 실패하였습니다. 인증번호를 다시 입력해 주세요.
         </span>
-        <button className="nextCheckButton" onClick={goNext}>다음으로 넘어가기</button>
+        <button className="nextCheckButton" onClick={goNext}>
+          다음으로 넘어가기
+        </button>
       </div>
     </div>
   );

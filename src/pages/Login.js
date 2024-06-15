@@ -25,7 +25,7 @@ const Login = () => {
     const csrfToken = cookies;
     try {
       const response = await axios.post(
-        "http://54.179.66.145:8000/login/",
+        "http://3.1.102.78:8000/login/",
         // 로그인 요청
         {
           username: formRef.current.id.value,
@@ -41,11 +41,17 @@ const Login = () => {
       const accessToken = response.data.access;
       const refreshToken = response.data.refresh;
       const name = response.data.name;
-      console.log(accessToken, refreshToken);
+      const first = response.data.first_login;
+      const id = response.data.id;
       localStorage.setItem("accessToken", accessToken);
       localStorage.setItem("refreshToken", refreshToken);
       localStorage.setItem("name", name);
-      window.location.href = "/timetable";
+      localStorage.setItem("id", id);
+      if (first == 0) {
+        window.location.href = "/taste";
+      } else {
+        window.location.href = "/timetable";
+      }
     } catch (error) {
       alert("아이디 비번을 확인해주세요");
     }

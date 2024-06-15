@@ -52,7 +52,7 @@ const PhoneEmail = () => {
       value.push(emailId + "@" + emailDomain);
       try {
         const response = await axios.post(
-          "http://54.179.66.145:8000/checkEmail/",
+          "http://3.1.102.78:8000/checkEmail/",
           {
             email: emailId + "@" + emailDomain,
           }

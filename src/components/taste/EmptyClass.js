@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import info from "../../assets/img/Information.png";
 import "./EmptyClass.css";
-
+import instance from "../../access/instance";
+import axios from "axios";
 const EmptyClass = () => {
   useEffect(() => {
     const value = JSON.parse(sessionStorage.getItem("value"));
@@ -15,13 +16,36 @@ const EmptyClass = () => {
       sessionStorage.setItem("value", JSON.stringify(newVal));
     }
   });
-  const ClickYes = () => {
+  const ClickYes = async () => {
     //서버 데이터 보내기
+    let value = JSON.parse(sessionStorage.getItem("value"));
+    value.push(true);
+    const id = localStorage.getItem("id");
+    try {
+      //axios -> instance로 바꾸면 됨!
+      const reponse = await axios.post("http://3.1.102.78:8000/taste/", {
+        taste: value,
+        id: id,
+      });
+    } catch (e) {
+      console.log(e);
+    }
     sessionStorage.clear();
     window.location.href = "/homeAftLog";
   };
-  const ClickNo = () => {
+  const ClickNo = async () => {
     //서버 데이터 보내기
+    let value = JSON.parse(sessionStorage.getItem("value"));
+    value.push(false);
+    const id = localStorage.getItem("id");
+    try {
+      const reponse = await axios.post("http://3.1.102.78:8000/taste/", {
+        taste: value,
+        id: id,
+      });
+    } catch (e) {
+      console.log(e);
+    }
     sessionStorage.clear();
     window.location.href = "/homeAftLog";
   };
