@@ -16,7 +16,7 @@ const SndFilDecide = () => {
       };
 
     const goNext = () => {
-        window.location.href = "/";
+        window.location.href = "/manualStartQ";
     }
 
     return (

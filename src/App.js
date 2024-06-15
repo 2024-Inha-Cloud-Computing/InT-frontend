@@ -24,6 +24,7 @@ import SndFilHateCheck from "./components/filter/SndFilHateCheck.js";
 import SndFilLoading from "./components/filter/SndFilLoading.js";
 import SndFilDecide from "./components/filter/SndFilDecide.js";
 import SndHateTime from "./components/filter/SndHateTime.js";
+import ManualStartQ from "./components/manual/manualStartQ.js";
 
 function App() {
   const [message, setMessage] = useState("");
@@ -92,6 +93,10 @@ function App() {
           <Route
             path="/sndFilDecide"
             element={<SndFilDecide></SndFilDecide>}
+          ></Route>
+          <Route
+            path="/manualStartQ"
+            element={<ManualStartQ></ManualStartQ>}
           ></Route>
         </Routes>
       </div>
