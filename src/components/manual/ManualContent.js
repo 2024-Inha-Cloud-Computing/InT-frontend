@@ -24,10 +24,10 @@ const ManualContent = ({ handleCourseClick, search, setSelect, totalCredits, set
       {/* 전체 과목 */}
       <div className="mc_total_course">
         {courseList.map((course, index) => (
-            <div className="mc_course">
+            <div className="mc_course"  key={course.split(", ")[2]}>
                 <div className="mc_line"></div>
                 <div className="mc_courseInfoContainer">
-                    <div className="mc_courseInfo" key={course.split(", ")[2]}>
+                    <div className="mc_courseInfo">
                         <div className="mc_courseType">
                             <div className="mc_courseNum">{course.split(", ")[2]}</div>
                             <div className="mc_courseMajorOrNot">{course.split(", ")[6]}</div>
