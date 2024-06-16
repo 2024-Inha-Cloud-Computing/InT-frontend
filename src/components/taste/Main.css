@@ -1,17 +1,13 @@
-body,
-html {
-  transition: opacity 1s;
-}
-
-body.fade-out {
-  opacity: 0;
-}
-
 .tasteMain {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  transition: opacity 1s;
+}
+
+.tasteMain.fade-out {
+  opacity: 0;
 }
 
 .tasteMain_calenderImg {
