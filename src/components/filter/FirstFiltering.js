@@ -9,18 +9,20 @@ const FirstFiltering = () => {
   const [courseList, setCourseList] = useState([]);
   const [selectedCourses, setSelectedCourses] = useState([]);
   const [select, setSelect] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
   // let courseList;
   const getData = async () => {
     try {
       const id = localStorage.getItem("id");
       const response = await axios.post(
-        "http://3.1.102.78:8000/timetablepage/allCourse/",
+        "http://47.129.55.117:8000/timetablepage/allCourse/",
         {
           id: id,
         }
       );
       const list = await response.data.courses;
       setCourseList(list);
+      setIsLoading(false);
     } catch (e) {
       console.log(e);
     }
@@ -50,7 +52,7 @@ const FirstFiltering = () => {
     try {
       const id = localStorage.getItem("id");
       const response = await axios.post(
-        "http://3.1.102.78:8000/timetablepage/findCourse/",
+        "http://47.129.55.117:8000/timetablepage/findCourse/",
         {
           id: id,
           input: select,
@@ -64,7 +66,7 @@ const FirstFiltering = () => {
   };
   const goNext = () => {
     localStorage.setItem("courses", JSON.stringify(selectedCourses));
-    window.location.href = "/firstFilteringLoading";
+    window.location.href = "/firstFilteringTimetable";
   };
   const goBack = () => {
     window.location.href = "/timetable";
@@ -113,11 +115,22 @@ const FirstFiltering = () => {
         <div className="first_filtering_cross_line"></div>
       </div>
       <div className="total_course">
-        {courseList.map((course, index) => (
-          <div key={index} onClick={() => handleCourseClick(course)}>
-            {course}
+        {isLoading ? (
+          <div className="total_course_loading">
+            <span>시간표 로딩중!</span>
+            <span>잠시만 기다려주세요!</span>
           </div>
-        ))}
+        ) : (
+          courseList.map((course, index) => (
+            <div
+              key={index}
+              onClick={() => handleCourseClick(course)}
+              className="total_course_list"
+            >
+              {course}
+            </div>
+          ))
+        )}
       </div>
       <button className="first_filtering_nextButton" onClick={goNext}>
         다음으로 넘어가기

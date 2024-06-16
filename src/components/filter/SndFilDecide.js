@@ -4,26 +4,27 @@ import "swiper/css";
 import "swiper/css/scrollbar";
 import { Scrollbar } from "swiper/modules";
 import { useState, useEffect } from "react";
-
 import "./SndFilDecide.css";
 import back from "../../assets/img/back.png";
-import Schedule from "../Schedule.js";
 import axios from "axios";
+import SndFilLoading from "./SndFilLoading";
 
 const SndFilDecide = () => {
   const [schedules, setSchedules] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [fadeOut, setFadeOut] = useState(false);
   const getData = async () => {
-    const selectedLikeProfessors = localStorage.getItem(
-      "selectedLikeProfessors"
+    const selectedLikeProfessors = JSON.parse(
+      localStorage.getItem("selectedLikeProfessors")
     );
-    const selectedHateProfessors = localStorage.getItem(
-      "selectedHateProfessors"
+    const selectedHateProfessors = JSON.parse(
+      localStorage.getItem("selectedHateProfessors")
     );
-    const time = localStorage.getItem("time");
-    const courses = localStorage.getItem("courses");
+    const time = JSON.parse(localStorage.getItem("time"));
+    const courses = JSON.parse(localStorage.getItem("courses"));
     const id = localStorage.getItem("id");
     const response = await axios.post(
-      "http://3.1.102.78:8000/timetablepage/sndFilDecide/",
+      "http://47.129.55.117:8000/timetablepage/sndFilDecide/",
       {
         time: time,
         selectedHateProfessors: selectedHateProfessors,
@@ -33,7 +34,10 @@ const SndFilDecide = () => {
       }
     );
     const result = await response.data.courses;
-    console.log(result);
+    setFadeOut(true);
+    setTimeout(() => {
+      setIsLoading(false); // 페이드 아웃 애니메이션 후 로딩 상태 해제
+    }, 1000);
   };
   useEffect(() => {
     getData();
@@ -45,7 +49,13 @@ const SndFilDecide = () => {
   const goNext = () => {
     window.location.href = "/";
   };
-
+  if (isLoading) {
+    return (
+      <div className={`loading-container ${fadeOut ? "fade-out" : ""}`}>
+        <SndFilLoading></SndFilLoading>
+      </div>
+    );
+  }
   return (
     <div className="sfd_container">
       <img src={back} className="goback" onClick={goBack} />

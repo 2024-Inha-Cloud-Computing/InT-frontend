@@ -7,7 +7,9 @@ const SndFilHateCheck = () => {
 
   useEffect(() => {
     // 로컬 스토리지에서 데이터를 가져옴
-    const storedHatedCourses = JSON.parse(localStorage.getItem('selectedHateProfessors'));
+    const storedHatedCourses = JSON.parse(
+      localStorage.getItem("selectedHateProfessors")
+    );
     if (storedHatedCourses && storedHatedCourses.length > 0) {
       setHatedCourses(storedHatedCourses);
     } else {
@@ -16,11 +18,11 @@ const SndFilHateCheck = () => {
   }, []);
 
   const goBack = () => {
-    window.location.href = "/sndFilHateProf"; 
+    window.location.href = "/sndFilHateProf";
   };
 
   const goNext = () => {
-    window.location.href = "/sndFilLoading";
+    window.location.href = "/sndFilDecide";
   };
 
   return (

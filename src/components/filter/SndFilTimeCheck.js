@@ -5,7 +5,7 @@ import back from "../../assets/img/back.png";
 
 const SndFilTimeCheck = () => {
   const [times, setTimes] = useState([]);
-
+  const name = localStorage.getItem("name");
   useEffect(() => {
     const storedTimes = localStorage.getItem("time");
     if (storedTimes) {
@@ -23,7 +23,9 @@ const SndFilTimeCheck = () => {
   return (
     <div className="sftc_container">
       <img className="goback" src={back} onClick={goBack}></img>
-      <div className="sftc_title1">소연 님이 피해야 하는 시간들이에요.</div>
+      <div className="sftc_title1">
+        {name.substring(1, 3)} 님이 피해야 하는 시간들이에요.
+      </div>
       <div className="sftc_title2">정보가 정확한지 확인해 주세요!</div>
       <div className="sftc_content">
         <div className="sftc_line"></div>

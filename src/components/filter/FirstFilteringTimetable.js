@@ -11,16 +11,19 @@ import gray_heart from "../../assets/img/gray_heart.png";
 import back from "../../assets/img/back.png";
 import Schedule from "../Schedule.js";
 import instance from "../../access/instance.js";
+import FirstFilteringLoading from "./FirstFilteringLoading.js";
 import axios from "axios";
 const FirstFilteringTimetable = () => {
   const [likedStates, setLikedStates] = useState([]);
   const [schedules, setSchedules] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [fadeOut, setFadeOut] = useState(false);
 
   const getShedule = async () => {
     const id = localStorage.getItem("id");
     const courses = localStorage.getItem("courses");
     const response = await axios.post(
-      "http://3.1.102.78:8000/timetablepage/firstFilteringTimetable/",
+      "http://47.129.55.117:8000/timetablepage/firstFilteringTimetable/",
       {
         courses: courses,
         id: id,
@@ -31,6 +34,10 @@ const FirstFilteringTimetable = () => {
     let likes = [];
     list.map(() => likes.push(false));
     setLikedStates(likes);
+    setFadeOut(true);
+    setTimeout(() => {
+      setIsLoading(false); // 페이드 아웃 애니메이션 후 로딩 상태 해제
+    }, 1000);
   };
 
   useState(() => {
@@ -60,6 +67,13 @@ const FirstFilteringTimetable = () => {
     window.location.href = "/firstFilteringQuestion";
   };
 
+  if (isLoading) {
+    return (
+      <div className={`loading-container ${fadeOut ? "fade-out" : ""}`}>
+        <FirstFilteringLoading />
+      </div>
+    ); // 로딩 중일 때 로딩 페이지를 보여줌
+  }
   return (
     <div className="fflt_container">
       <img src={back} className="goback" onClick={goBack} />

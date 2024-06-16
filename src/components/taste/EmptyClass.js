@@ -23,7 +23,7 @@ const EmptyClass = () => {
     const id = localStorage.getItem("id");
     try {
       //axios -> instance로 바꾸면 됨!
-      const reponse = await axios.post("http://3.1.102.78:8000/taste/", {
+      const reponse = await axios.post("http://47.129.55.117:8000/taste/", {
         taste: value,
         id: id,
       });
@@ -39,7 +39,7 @@ const EmptyClass = () => {
     value.push(false);
     const id = localStorage.getItem("id");
     try {
-      const reponse = await axios.post("http://3.1.102.78:8000/taste/", {
+      const reponse = await axios.post("http://47.129.55.117:8000/taste/", {
         taste: value,
         id: id,
       });

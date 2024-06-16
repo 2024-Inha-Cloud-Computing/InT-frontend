@@ -37,7 +37,7 @@ const SchoolCheck = () => {
     try {
       const value = JSON.parse(sessionStorage.getItem("value"));
       const response = await axios.post(
-        "http://3.1.102.78:8000/checkEmailNumber/",
+        "http://47.129.55.117:8000/checkEmailNumber/",
         {
           email: value[3],
         }

@@ -9,15 +9,10 @@ const SndFilLoading = () => {
   useEffect(() => {
     const timer1 = setTimeout(() => {
       document.body.classList.add("fade-out");
-    }, 2000);
-
-    const timer2 = setTimeout(() => {
-      window.location.href = "/sndFilDecide";
-    }, 3000);
+    }, 10000);
 
     return () => {
       clearTimeout(timer1);
-      clearTimeout(timer2);
     };
   }, []);
   return (
@@ -26,10 +21,10 @@ const SndFilLoading = () => {
       <img src={filter} className="sfl_filter" />
       <div className="sfl_main">
         <span className="sfl_main_first">
-        마지막으로, 소연 님이 원하는 정보를 
+          마지막으로, {name.substring(1, 3)} 님이 원하는 정보를
         </span>
         <span className="sfl_main_second">
-        기반으로 시간표를 만들었어요!
+          기반으로 시간표를 만드는 중이예요!
         </span>
       </div>
     </div>

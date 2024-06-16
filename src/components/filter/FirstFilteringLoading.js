@@ -9,15 +9,15 @@ const FirstFilteringLoading = () => {
   useEffect(() => {
     const timer1 = setTimeout(() => {
       document.body.classList.add("fade-out");
-    }, 7000);
+    }, 10000);
 
-    const timer2 = setTimeout(() => {
-      window.location.href = "/firstFilteringTimetable";
-    }, 3000);
+    // const timer2 = setTimeout(() => {
+    //   window.location.href = "/firstFilteringTimetable";
+    // }, 3000);
 
     return () => {
       clearTimeout(timer1);
-      clearTimeout(timer2);
+      // clearTimeout(timer2);
     };
   }, []);
   const goBack = () => {
@@ -33,7 +33,7 @@ const FirstFilteringLoading = () => {
           시간표 취향과 들어가야하는 과목을 기반으로
         </span>
         <span className="ffl_main_second">
-          소연 님 맞춤 시간표를 만들어 봤어요!
+          {name.substring(1, 3)}님 맞춤 시간표를 만드는 중이예요!
         </span>
       </div>
       <div className="ffl_sub">

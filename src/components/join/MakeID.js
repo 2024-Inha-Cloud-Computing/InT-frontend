@@ -25,7 +25,7 @@ const MakeID = () => {
     const span = document.querySelector("#message");
     // id 중복확인 로직
     try {
-      const response = await axios.post("http://3.1.102.78:8000/checkId/", {
+      const response = await axios.post("http://47.129.55.117:8000/checkId/", {
         id: formRef.current.id.value,
       });
       setCheckID(true);

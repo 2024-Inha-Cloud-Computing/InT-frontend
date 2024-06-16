@@ -8,6 +8,7 @@ import axios from "axios";
 
 const SndFilHateProf = () => {
   // 컴포넌트 이름도 바꿉니다
+  const [isLoading, setIsLoading] = useState(true);
   const [expandedCourse, setExpandedCourse] = useState(null);
   const [selectedHateProfessors, setSelectedHateProfessors] = useState([]);
   const [courses, setCourses] = useState([]);
@@ -16,7 +17,7 @@ const SndFilHateProf = () => {
     const cs = localStorage.getItem("courses");
     const id = localStorage.getItem("id");
     const response = await axios.post(
-      "http://3.1.102.78:8000/timetablepage/sndFilLikeProf/",
+      "http://47.129.55.117:8000/timetablepage/sndFilLikeProf/",
       {
         courses: cs,
         id: id,
@@ -24,6 +25,7 @@ const SndFilHateProf = () => {
     );
     const css = await response.data.courses;
     setCourses(css);
+    setIsLoading(false);
   };
   useEffect(() => {
     // 컴포넌트가 마운트될 때 로컬 스토리지에서 선택된 교수님 데이터를 로드합니다.
@@ -77,7 +79,60 @@ const SndFilHateProf = () => {
       <div className="sfhp_title2">교수님을 선택해 주세요!</div>
       <div className="sfhp_content">
         <div className="sfhp_courseInfo">
-          {courses.map((course) => (
+          {isLoading ? (
+            <div className="sfhp_courseInfo_loading">
+              <span>교수님 목록 로딩중!</span>
+              <span>잠시만 기다려주세요!</span>
+            </div>
+          ) : (
+            courses.map((course) => (
+              <div
+                key={course.id}
+                className={`course ${
+                  expandedCourse === course.id ? "expanded" : ""
+                }`}
+              >
+                <div
+                  className="course-info"
+                  onClick={() => toggleCourse(course.id)}
+                >
+                  <span className="course-title">과목 {course.id}</span>
+                  <span className="course-name">{course.name}</span>
+                  <span className="arrow">
+                    {expandedCourse === course.id ? (
+                      <img src={up} className="sflp_triangle" alt="collapse" />
+                    ) : (
+                      <img src={down} className="sflp_triangle" alt="expand" />
+                    )}
+                  </span>
+                </div>
+                {expandedCourse === course.id && (
+                  <div className="professor-list">
+                    {course.professors.map((professor) => (
+                      <div
+                        key={professor}
+                        className={`professor-name ${
+                          selectedHateProfessors.find(
+                            (item) =>
+                              item.course === course.name &&
+                              item.professor === professor
+                          )
+                            ? "selected"
+                            : ""
+                        }`}
+                        onClick={() =>
+                          selectHateProfessor(course.name, professor)
+                        }
+                      >
+                        {professor}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))
+          )}
+          {/* {courses.map((course) => (
             <div
               key={course.id}
               className={`course ${
@@ -122,7 +177,7 @@ const SndFilHateProf = () => {
                 </div>
               )}
             </div>
-          ))}
+          ))} */}
         </div>
         <div className="sfhp_buttons">
           <button className="sfhp_skipButton" onClick={goSkip}>
