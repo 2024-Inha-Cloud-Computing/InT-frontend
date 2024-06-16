@@ -6,12 +6,20 @@
     left: 1.313rem;
 }
 
-.mam_Buttons {
-    display: flex;
-    justify-content: flex-end;
+.mam_Button {
+    display: flex; /* Flexbox를 사용하여 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    justify-content: center; /* 수평 중앙 정렬 */
     position: absolute;
     top: 3.813rem;
     right: 1.688rem;
+    width: 3.56rem;
+    height: 1.625rem;
+    text-align: center;
+    font-size: 0.75rem;
+    color: #007bff;
+    border: 1px solid #007bff;
+    border-radius: 10px;
 }
 
 

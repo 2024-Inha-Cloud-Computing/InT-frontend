@@ -63,7 +63,7 @@ const ManualAddManual = () => {
   return (
     <BaseDiv>
       <img className="mam_goback" src={back} onClick={goBack} alt="Go Back"></img>
-      <div className="mam_Buttons"></div>
+      <div className="mam_Button">확정하기</div>
       <div className="mam_content">
         <div className="mam_alert">
           {selectedCourses.length === 0 ? (
