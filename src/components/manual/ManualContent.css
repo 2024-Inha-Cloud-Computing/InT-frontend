@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
+    height:100vh;
 }
 
 .mc_title {
@@ -75,21 +76,18 @@
 }
 
 .mc_dropdown-menu {
-    position: absolute; /* 부모 요소 기준으로 절대 위치 */
-    top: calc(100% + 5px); /* 버튼 바로 아래에 위치하도록 설정 */
-    left: 0;
+    height: 2.313rem;
+    overflow: scroll;
     border: 1px solid #e6e6e6;
     border-radius: 10px;
     background-color: #f8f8f8;
     list-style: none;
     padding: 0;
     margin: 0;
-    width: 100%; /* 드롭다운 메뉴 너비 설정 */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     font-size: 0.5rem;
-    font-weight: regluar;
-}
+  }  
 
 .mc_dropdown-menu li {
     display: flex;
