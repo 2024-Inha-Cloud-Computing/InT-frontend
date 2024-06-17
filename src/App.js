@@ -29,6 +29,7 @@ import ManualAutoQ from "./components/manual/manualAutoQ.js";
 import ManualAddManual from "./components/manual/ManualAddManual.js";
 import ManualAddRandom from "./components/manual/ManualAddRandom.js";
 import SndOrding from "./components/filter/SndOrdering.js";
+import ManualRandomSelect from "./components/manual/ManualRandomSelect.js";
 
 function App() {
   const [message, setMessage] = useState("");
@@ -115,6 +116,10 @@ function App() {
             element={<ManualAddRandom></ManualAddRandom>}
           ></Route>
           <Route path="/sndOrdering" element={<SndOrding></SndOrding>}></Route>
+          <Route
+            path="/manualRandomSelect"
+            element={<ManualRandomSelect></ManualRandomSelect>}
+          ></Route>
         </Routes>
       </div>
     </Router>

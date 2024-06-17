@@ -20,6 +20,7 @@
     color: #007bff;
     border: 1px solid #007bff;
     border-radius: 10px;
+    pointer-events: auto; /* Ensure pointer events are enabled */
 }
 
 
