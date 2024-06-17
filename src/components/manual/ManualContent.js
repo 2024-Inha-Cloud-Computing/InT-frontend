@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import "./ManualContent.css";
 
 import find from "../../assets/img/find.png";
 import star from "../../assets/img/star.png";
 
-const departments = ['컴퓨터공학과', '정보통신공학과', '기계공학과'];
-const subjectTypes = ['전공필수', '전공선택', '핵심교양1'];
+// const subjectTypes = ['전공필수', '전공선택', '핵심교양1'];
 const years = ['1학년', '2학년', '3학년', '4학년', '전체'];
 const credits = ['1.0', '2.0', '3.0', '4.0'];
 
@@ -25,7 +25,7 @@ const DropdownButton = ({ label, options, onSelect, className }) => {
   };
 
   const getDisplayText = (text) => {
-    return text && text.length > 4 ? `${text.substring(0, 4)}...` : text;
+    return text && text.length > 11 ? `${text.substring(0, 11)}...` : text;
   };
 
   return (
@@ -45,7 +45,7 @@ const DropdownButton = ({ label, options, onSelect, className }) => {
                 checked={selectedOption === option}
                 readOnly 
               />
-              <label htmlFor={`option-${label}-${index}`}>{option}</label>
+              <label htmlFor={`option-${label}-${index}`}>{getDisplayText(option)}</label>
             </li>
           ))}
         </ul>
@@ -54,19 +54,41 @@ const DropdownButton = ({ label, options, onSelect, className }) => {
   );
 };
 
-const ManualContent = ({ handleCourseClick, search, setSelect, totalCredits, setTotalCredits, selectedCourses, courseList }) => {
+const ManualContent = ({ handleCourseClick, search, setSelect, totalCredits, setTotalCredits, selectedCourses, courseList, setCourseList }) => {
   const [filters, setFilters] = useState({ department: '', subjectType: '', year: '', credits: '' });
+  const [departments, setDepartments] = useState([]);
+  const [subjectTypes, setSubjectTypes] = useState(['전공필수', '전공선택', '핵심교양1']);
 
-  const handleSelect = (filterType, value) => {
-    setFilters(prevFilters => ({ ...prevFilters, [filterType]: value }));
-    // 선택된 값으로 데이터를 필터링하는 엔드포인트 호출
-    // fetch(`/api/filter?${filterType}=${value}`)
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     // 필터링된 데이터 처리
-    //     console.log('필터링된 데이터:', data);
-    //   })
-    //   .catch(error => console.error('데이터 필터링 중 오류 발생:', error));
+  useEffect(() => {
+    const fetchDepartments = async () => {
+      try {
+        const response = await axios.get("http://18.141.146.148:8000/timetablepage/departments/");
+        setDepartments(response.data.departments);
+      } catch (error) {
+        console.error("Failed to fetch departments:", error);
+      }
+    };
+
+    fetchDepartments();
+  }, []);
+
+  const filter = async (filterType, value) => {
+    const newFilters = { ...filters, [filterType]: value };
+    setFilters(newFilters);
+    try {
+      const id = localStorage.getItem("id");
+      const response = await axios.post(
+        "http://18.141.146.148:8000/timetablepage/findCourse/",
+        {
+          id: id,
+          input: newFilters,
+        }
+      );
+      const list = await response.data.courses;
+      setCourseList(list);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (
@@ -90,23 +112,23 @@ const ManualContent = ({ handleCourseClick, search, setSelect, totalCredits, set
         <DropdownButton
           label="학과/교양"
           options={departments}
-          onSelect={(value) => handleSelect('department', value)}
+          onSelect={(value) => filter('department', value)}
         />
         <DropdownButton
           label="과목구분"
           options={subjectTypes}
-          onSelect={(value) => handleSelect('subjectType', value)}
+          onSelect={(value) => filter('subjectType', value)}
         />
         <DropdownButton
           label="학년"
           options={years}
-          onSelect={(value) => handleSelect('year', value)}
+          onSelect={(value) => filter('year', value)}
           className="year" /* 학년 버튼에 특정 클래스 추가 */
         />
         <DropdownButton
           label="학점"
           options={credits}
-          onSelect={(value) => handleSelect('credits', value)}
+          onSelect={(value) => filter('credits', value)}
           className="credits" /* 학점 버튼에 특정 클래스 추가 */
         />
       </div>
