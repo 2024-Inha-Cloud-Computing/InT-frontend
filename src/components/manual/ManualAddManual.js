@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from 'styled-components';
+import axios from 'axios';
 import BottomSheet from "./ManualBottomSheet";
 import back from "../../assets/img/back.png";
 import Schedule from "../Schedule";
@@ -20,15 +21,66 @@ const ManualAddManual = () => {
   const [selectedCourses, setSelectedCourses] = useState([]);
   const [select, setSelect] = useState("");
   const [totalCredits, setTotalCredits] = useState(0);
+  const [courseList, setCourseList] = useState([]);  // 여기서 선언된 courseList
+  const [timetable, setTimetable] = useState([]);
 
-  const courseList = [
-    "컴퓨터공학과, , CSE1103-001, 객체지향프로그래밍 2, 전체, 3.0, 전공필수, 화4,5,6,7,목4,5,6,7(하-324), 이선우, 절대평가, 선수, 5.0",
-    "컴퓨터공학과, , CSE1101-001, 객체지향프로그래밍 1, 1, 3.0, 전공필수, 화4,5,6,7(하-120) /수9,10,11,12(하-322), 한경숙, 상대평가, , 5.0",
-    "컴퓨터공학과, , CSE1101-002, 객체지향프로그래밍 1, 1, 3.0, 전공필수, 화9,10,11,12(하-120) /수13,14,15,16(하-322), 한경숙, 상대평가, , 5.0",
-    "컴퓨터공학과, , CSE2107-003, 자바기반응용프로그래밍, 2, 3.0, 전공선택, 월9,10,11,12,수9,10,11,12(하-324), 권현수, 상대평가, , 5.0",
-  ];
+  const getData = async () => {
+    try {
+      const id = localStorage.getItem("id");
+      const response = await axios.post(
+        "http://18.141.146.148:8000/timetablepage/sndFilDecide/",
+        {
+          id: id,
+        }
+      );
+      const course = await response.data.courses; // 강의 정보
+      const schedule = await response.data.schedule; // 시간표 정보
+      setCourseList(course);
+      setTimetable(schedule);
+    } catch (error) {
+      console.error("Failed to fetch courses:", error);
+    }
+  };
 
-  const handleCourseClick = (course) => {
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const search = async () => {
+    try {
+      const id = localStorage.getItem("id");
+      const response = await axios.post(
+        "http://18.141.146.148:8000/timetablepage/findCourse/",
+        {
+          id: id,
+          input: select,
+        }
+      );
+      const list = await response.data.courses;
+      setCourseList(list);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const update = async () => {
+    try {
+      const id = localStorage.getItem("id");
+      const response = await axios.post(
+        "http://18.141.146.148:8000/timetablepage/updateSchedule/",
+        {
+          id: id,
+          courses: selectedCourses,
+        }
+      );
+      const updatedSchedule = await response.data.schedule;
+      setTimetable(updatedSchedule);
+    } catch (error) {
+      console.error("Failed to update schedule:", error);
+    }
+  };
+
+  const handleCourseClick = async (course) => {
     const courseName = course.split(", ")[3].trim();
     const courseCredit = parseFloat(course.split(", ")[5]);
     if (!selectedCourses.includes(courseName)) {
@@ -37,10 +89,25 @@ const ManualAddManual = () => {
         courseName,
       ]);
       setTotalCredits((prevTotalCredits) => prevTotalCredits + courseCredit);
+
+      try {
+        const id = localStorage.getItem("id");
+        const response = await axios.post(
+          "http://18.141.146.148:8000/timetablepage/addCourse/",
+          {
+            id: id,
+            course: course,
+          }
+        );
+        const updatedSchedule = await response.data.schedule;
+        setTimetable(updatedSchedule);
+      } catch (error) {
+        console.error("Failed to update schedule:", error);
+      }
     }
   };
 
-  const handleCourseRemove = (courseName) => {
+  const handleCourseRemove = async (courseName) => {
     const course = courseList.find(c => c.split(", ")[3].trim() === courseName);
     if (course) {
       const courseCredit = parseFloat(course.split(", ")[5]);
@@ -48,11 +115,22 @@ const ManualAddManual = () => {
         prevSelectedCourses.filter((c) => c !== courseName)
       );
       setTotalCredits((prevTotalCredits) => prevTotalCredits - courseCredit);
-    }
-  };
 
-  const search = async () => {
-    //서버로 부터 받기 courseList 갱신
+      try {
+        const id = localStorage.getItem("id");
+        const response = await axios.post(
+          "http://18.141.146.148:8000/timetablepage/removeCourse/",
+          {
+            id: id,
+            courseName: courseName,
+          }
+        );
+        const updatedSchedule = await response.data.schedule;
+        setTimetable(updatedSchedule);
+      } catch (error) {
+        console.error("Failed to update schedule:", error);
+      }
+    }
   };
 
   const navigate = useNavigate();
@@ -63,7 +141,7 @@ const ManualAddManual = () => {
 
   const goHome = () => {
     navigate("/homeAftLog?check=true");
-  }
+  };
 
   return (
     <BaseDiv>
@@ -74,7 +152,7 @@ const ManualAddManual = () => {
           {selectedCourses.length === 0 ? (
             <div className="mam_info">
               <div className="mam_infoTitle">
-                <img className="mam_infoImg" src={bulb}></img>
+                <img className="mam_infoImg" src={bulb} alt="Info"></img>
                 <div className="mam_infoText">아직 추가한 과목이 없어요!</div>
               </div>
               <div className="mam_infoSubtext">
@@ -100,7 +178,7 @@ const ManualAddManual = () => {
           )}
         </div>
         <div className="mam_timetable">
-          <Schedule />
+          <Schedule schedule={timetable} />
         </div>
       </div>
       <BottomSheet
