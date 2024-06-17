@@ -62,6 +62,7 @@ const SndFilLikeProf = () => {
   };
 
   const goSkip = () => {
+    localStorage.setItem("selectedLikeProfessors", JSON.parse([]));
     window.location.href = "/sndFilHateProf";
   };
   const goNext = () => {
