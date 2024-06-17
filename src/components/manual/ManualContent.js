@@ -53,9 +53,8 @@ const DropdownButton = ({ label, options, onSelect, className }) => {
   );
 };
 
-const ManualContent = ({ handleCourseClick, search, setSelect, department, setDepartment, totalCredits, setTotalCredits, selectedCourses, courseList, setCourseList }) => {
+const ManualContent = ({ handleCourseClick, search, setSelect, department, setDepartment, totalCredits, setTotalCredits, selectedCourses, courseList = [], setCourseList }) => {
   const [filters, setFilters] = useState({ department: '', subjectType: '', year: '', credits: '' });
-  const [departments, setDepartments] = useState([]);
   const [subjectTypes, setSubjectTypes] = useState(['전공필수', '전공선택', '핵심교양1']);
 
   const filter = async (filterType, value) => {
@@ -63,18 +62,31 @@ const ManualContent = ({ handleCourseClick, search, setSelect, department, setDe
     setFilters(newFilters);
     try {
       const id = localStorage.getItem("id");
+      const searchText = localStorage.getItem("searchText");
       const response = await axios.post(
-        "http://54.169.159.174:8000/timetablepage/findCourse/",
+        "http://54.169.159.174:8000/timetablepage/filteringCourse/",
         {
           id: id,
           input: newFilters,
+          search: searchText,
         }
       );
-      const list = await response.data.courses;
+      const list = response.data.courses;
       setCourseList(list);
     } catch (e) {
       console.log(e);
     }
+  };
+
+  const handleSearch = () => {
+    const searchText = localStorage.getItem("searchText");
+    search(searchText);
+  };
+
+  const handleInputChange = (e) => {
+    const searchText = e.target.value;
+    setSelect(searchText);
+    localStorage.setItem("searchText", searchText);
   };
 
   return (
@@ -88,16 +100,16 @@ const ManualContent = ({ handleCourseClick, search, setSelect, department, setDe
           type="text"
           placeholder="학과명, 과목명, 학수번호를 입력하세요."
           className="mc_input"
-          onChange={(e) => setSelect(e.target.value)}
+          onChange={handleInputChange}
         ></input>
-        <img src={find} className="mc_find" onClick={search} alt="search icon" />
+        <img src={find} className="mc_find" onClick={handleSearch} alt="search icon" />
       </div>
 
       {/* 필터링 */}
       <div className="mc_filterButtons">
         <DropdownButton
           label="학과/교양"
-          options={departments}
+          options={department}
           onSelect={(value) => filter('department', value)}
         />
         <DropdownButton
@@ -121,35 +133,35 @@ const ManualContent = ({ handleCourseClick, search, setSelect, department, setDe
 
       {/* 전체 과목 */}
       <div className="mc_total_course">
-        {courseList.map((course, index) => (
-          <div className="mc_course" key={course.split(", ")[2]}>
+        {courseList && courseList.map((course, index) => (
+          <div className="mc_course" key={course.split(", ")[1]}>
             <div className="mc_line"></div>
             <div className="mc_courseInfoContainer">
               <div className="mc_courseInfo">
                 <div className="mc_courseType">
-                  <div className="mc_courseNum">{course.split(", ")[2]}</div>
-                  <div className="mc_courseMajorOrNot">{course.split(", ")[6]}</div>
+                  <div className="mc_courseNum">{course.split(", ")[1]}</div>
+                  <div className="mc_courseMajorOrNot">{course.split(", ")[5]}</div>
                   <div className="mc_courseGrade">
-                    {course.split(", ")[4] !== "전체" ? `${course.split(", ")[4]}학년` : course.split(", ")[4]}
+                    {course.split(", ")[3] !== "전체" ? `${course.split(", ")[3]}학년` : course.split(", ")[4]}
                   </div>
                   <div className="mc_courseCredit">
-                    {parseFloat(course.split(", ")[5])}학점
+                    {parseFloat(course.split(", ")[4])}학점
                   </div>
                   <div className="mc_courseRate">
                     <img className="mc_courseRateImg" src={star} alt="star rating" />
-                    <div className="mc_courseRateText">{course.split(", ")[11]}</div>
+                    <div className="mc_courseRateText">{course.split(", ")[10]}</div>
                   </div>
                 </div>
-                <div className="mc_courseName">{course.split(", ")[3]}</div>
+                <div className="mc_courseName">{course.split(", ")[2]}</div>
                 <div className="mc_courseProfTime">
-                  <div className="mc_courseProf">{course.split(", ")[8]}</div>
-                  <div className="mc_courseTime">{course.split(", ")[7]}</div>
+                  <div className="mc_courseProf">{course.split(", ")[7]}</div>
+                  <div className="mc_courseTime">{course.split(", ")[6]}</div>
                 </div>
                 <div className="mc_courseSubinfo">
                   <div className="mc_courseExamTitle">평가방식</div>
-                  <div className="mc_courseExam">{course.split(", ")[9]}</div>
+                  <div className="mc_courseExam">{course.split(", ")[8]}</div>
                   <div className="mc_courseEtcTitle">비고</div>
-                  <div className="mc_courseEtc">{course.split(", ")[10] ? course.split(",")[10] : "없음"}</div>
+                  <div className="mc_courseEtc">{course.split(", ")[9] ? course.split(",")[9] : "없음"}</div>
                 </div>
               </div>
               <div className="mc_addButton" onClick={() => handleCourseClick(course)}>추가</div>

@@ -21,26 +21,26 @@ const ManualAddManual = () => {
   const [selectedCourses, setSelectedCourses] = useState([]);
   const [select, setSelect] = useState("");
   const [totalCredits, setTotalCredits] = useState(0);
-  const [courseList, setCourseList] = useState([]);  // 여기서 선언된 courseList
+  const [courseList, setCourseList] = useState([]);
   const [timetable, setTimetable] = useState([]);
-  const [departement, setDepartment] = useState([]);
+  const [department, setDepartment] = useState([]);
 
   const getData = async () => {
     try {
       const id = localStorage.getItem("id");
       const response = await axios.post(
         "http://54.169.159.174:8000/timetablepage/manualAddManual/",
-        {
-          id: id,
-        }
+        { id: id }
       );
-      const course = await response.data.courses; // 강의 정보
-      const schedule = await response.data.schedule; // 시간표 정보
-      const departements = await response.data.department; // 학과/교양
+      const course = response.data.course;
+      const schedule = response.data.schedule;
+      const departments = response.data.department;
+      const credits = response.data.credits;
 
       setCourseList(course);
       setTimetable(schedule);
-      setDepartment(departements);
+      setDepartment(departments);
+      setTotalCredits(credits);
     } catch (error) {
       console.error("Failed to fetch courses:", error);
     }
@@ -54,86 +54,73 @@ const ManualAddManual = () => {
     try {
       const id = localStorage.getItem("id");
       const response = await axios.post(
-        "http://54.169.159.174:8000/timetablepage/findCourse/",
+        "http://54.169.159.174:8000/timetablepage/allFindCourse/",
         {
           id: id,
           input: select,
         }
       );
-      const list = await response.data.courses;
+      const list = response.data.course;
       setCourseList(list);
     } catch (e) {
       console.log(e);
     }
   };
 
-  const update = async () => {
+  const handleCourseClick = async (course) => {
     try {
       const id = localStorage.getItem("id");
       const response = await axios.post(
-        "http://54.169.159.174:8000/timetablepage/updateSchedule/",
+        "http://54.169.159.174:8000/timetablepage/addCourse/",
         {
           id: id,
-          courses: selectedCourses,
+          course: course,
         }
       );
+
       const updatedSchedule = await response.data.schedule;
+      const updatedCredits = await response.data.credits;
       setTimetable(updatedSchedule);
+      setTotalCredits(updatedCredits);
+      const courseName = course.split(", ")[2].trim();
+      const courseCredit = parseFloat(course.split(", ")[4]);
+
+      if (!selectedCourses.includes(courseName)) {
+        setSelectedCourses((prevSelectedCourses) => [
+          ...prevSelectedCourses,
+          courseName,
+        ]);
+      }
     } catch (error) {
+      alert("해당 과목을 추가할 수 없습니다.");
       console.error("Failed to update schedule:", error);
     }
   };
 
-  const handleCourseClick = async (course) => {
-    const courseName = course.split(", ")[3].trim();
-    const courseCredit = parseFloat(course.split(", ")[5]);
-    if (!selectedCourses.includes(courseName)) {
-      setSelectedCourses((prevSelectedCourses) => [
-        ...prevSelectedCourses,
-        courseName,
-      ]);
-      setTotalCredits((prevTotalCredits) => prevTotalCredits + courseCredit);
-
-      try {
-        const id = localStorage.getItem("id");
-        const response = await axios.post(
-          "http://54.169.159.174:8000/timetablepage/addCourse/",
-          {
-            id: id,
-            course: course,
-          }
-        );
-        const updatedSchedule = await response.data.schedule;
-        setTimetable(updatedSchedule);
-      } catch (error) {
-        console.error("Failed to update schedule:", error);
-      }
-    }
-  };
-
   const handleCourseRemove = async (courseName) => {
-    const course = courseList.find(c => c.split(", ")[3].trim() === courseName);
-    if (course) {
-      const courseCredit = parseFloat(course.split(", ")[5]);
-      setSelectedCourses((prevSelectedCourses) =>
-        prevSelectedCourses.filter((c) => c !== courseName)
+    try {
+      const id = localStorage.getItem("id");
+      const response = await axios.post(
+        "http://54.169.159.174:8000/timetablepage/removeCourse/",
+        {
+          id: id,
+          courseName: courseName,
+        }
       );
-      setTotalCredits((prevTotalCredits) => prevTotalCredits - courseCredit);
+      const updatedSchedule = response.data.schedule;
+      const updatedCredits = await response.data.credits;
+      setTimetable(updatedSchedule);
+      setTotalCredits(updatedCredits);
 
-      try {
-        const id = localStorage.getItem("id");
-        const response = await axios.post(
-          "http://54.169.159.174:8000/timetablepage/removeCourse/",
-          {
-            id: id,
-            courseName: courseName,
-          }
+      const course = courseList.find(c => c.split(", ")[2].trim() === courseName);
+      if (course) {
+        const courseCredit = parseFloat(course.split(", ")[4]);
+        setSelectedCourses((prevSelectedCourses) =>
+          prevSelectedCourses.filter((c) => c !== courseName)
         );
-        const updatedSchedule = await response.data.schedule;
-        setTimetable(updatedSchedule);
-      } catch (error) {
-        console.error("Failed to update schedule:", error);
       }
+    } catch (error) {
+      console.error("Failed to update schedule:", error);
     }
   };
 
@@ -189,12 +176,13 @@ const ManualAddManual = () => {
         handleCourseClick={handleCourseClick}
         search={search}
         setSelect={setSelect}
-        departement={departement}
+        department={department}
         setDepartment={setDepartment}
         totalCredits={totalCredits}
         setTotalCredits={setTotalCredits}
         selectedCourses={selectedCourses}
         courseList={courseList}
+        setCourseList={setCourseList}
       />
     </BaseDiv>
   );
