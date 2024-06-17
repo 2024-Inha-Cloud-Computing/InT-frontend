@@ -35,7 +35,7 @@ const SndFilDecide = () => {
     const id = localStorage.getItem("id");
     try {
       const response = await axios.post(
-        "http://3.1.79.31:8000/timetablepage/sndFilDecide/",
+        process.env.REACT_APP_NOTION_SERVER_URL + "timetablepage/sndFilDecide/",
         {
           time: time,
           selectedHateProfessors: selectedHateProfessors,
@@ -78,14 +78,15 @@ const SndFilDecide = () => {
   };
 
   const getAi = () => {
-    window.location.href = "http://3.1.79.31:8501";
+    window.location.href = process.env.REACT_APP_NOTION_BEDROCK_URL;
   };
 
   const goNext = async () => {
     const id = localStorage.getItem("id");
     try {
       const response = await axios.post(
-        "http://3.1.79.31:8000/timetablepage/firstFilteringDecide/",
+        process.env.REACT_APP_NOTION_SERVER_URL +
+          "timetablepage/firstFilteringDecide/",
         {
           final: schedules[currentSlideIndex],
           id: id,

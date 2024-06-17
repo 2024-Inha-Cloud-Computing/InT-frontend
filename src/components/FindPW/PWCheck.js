@@ -30,7 +30,7 @@ const Check = () => {
     setIsTimerActive(true);
     try {
       const response = await axios.post(
-        "http://13.215.156.173:8000/checkPhone",
+        process.env.REACT_APP_NOTION_SERVER_URL + "checkPhone",
         {
           phone: `${first}${second}${third}`,
         }
@@ -52,7 +52,7 @@ const Check = () => {
     //인증번호 인증 로직
     try {
       const response = await axios.post(
-        "http://13.215.156.173:8000/checkPhoneNumber",
+        process.env.REACT_APP_NOTION_SERVER_URL + "checkPhoneNumber",
         {
           number: number,
           phone: `${first}${second}${third}`,
@@ -84,7 +84,7 @@ const Check = () => {
     if (check) {
       try {
         const response = await axios.post(
-          "http://13.215.156.173:8000/findIdwithPhone",
+          process.env.REACT_APP_NOTION_SERVER_URL + "findIdwithPhone",
           {
             phone: `${first}${second}${third}`,
             id: id,

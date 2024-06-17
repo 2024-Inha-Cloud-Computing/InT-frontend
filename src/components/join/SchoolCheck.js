@@ -37,7 +37,7 @@ const SchoolCheck = () => {
     try {
       const value = JSON.parse(sessionStorage.getItem("value"));
       const response = await axios.post(
-        "http://3.1.79.31:8000/checkEmailNumber/",
+        process.env.REACT_APP_NOTION_SERVER_URL + "checkEmailNumber/",
         {
           email: value[3],
         }

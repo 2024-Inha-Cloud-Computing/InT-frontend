@@ -25,7 +25,8 @@ const FirstFilteringTimetable = () => {
     const id = localStorage.getItem("id");
     const courses = localStorage.getItem("courses");
     const response = await axios.post(
-      "http://3.1.79.31:8000/timetablepage/firstFilteringTimetable/",
+      process.env.REACT_APP_NOTION_SERVER_URL +
+        "timetablepage/firstFilteringTimetable/",
       {
         courses: courses,
         id: id,
@@ -54,7 +55,7 @@ const FirstFilteringTimetable = () => {
     });
   };
   const getAi = () => {
-    window.location.href = "http://3.1.79.31:8501";
+    window.location.href = process.env.REACT_APP_NOTION_BEDROCK_URL;
   };
   const goBack = () => {
     window.location.href = "/firstFilteringLoading";

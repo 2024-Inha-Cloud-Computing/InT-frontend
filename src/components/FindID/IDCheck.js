@@ -29,7 +29,7 @@ const Check = () => {
     setIsTimerActive(true);
     try {
       const response = await axios.post(
-        "http://54.179.66.145:8000/checkPhone/",
+        process.env.REACT_APP_NOTION_SERVER_URL + "checkPhone/",
         {
           phone: `${first}${second}${third}`,
         }
@@ -52,7 +52,7 @@ const Check = () => {
     //인증번호 인증 로직
     try {
       const response = await axios.post(
-        "http://54.179.66.145:8000/checkPhoneNumber/",
+        process.env.REACT_APP_NOTION_SERVER_URL + "checkPhoneNumber/",
         {
           number: number,
           phone: `${first}${second}${third}`,
@@ -81,9 +81,12 @@ const Check = () => {
     } else {
       // 아이디 정보 가져오는 로직(로컬 스토리지에 저장) -> result 값
       try {
-        const response = await axios.post("http://54.179.66.145:8000/findId/", {
-          phone: `${first}${second}${third}`,
-        });
+        const response = await axios.post(
+          process.env.REACT_APP_NOTION_SERVER_URL + "findId/",
+          {
+            phone: `${first}${second}${third}`,
+          }
+        );
         localStorage.setItem("result", [response.data.id, response.data.date]);
       } catch (error) {
         localStorage.setItem("result", []);

@@ -23,10 +23,13 @@ const EmptyClass = () => {
     const id = localStorage.getItem("id");
     try {
       //axios -> instance로 바꾸면 됨!
-      const reponse = await axios.post("http://3.1.79.31:8000/taste/", {
-        taste: value,
-        id: id,
-      });
+      const reponse = await axios.post(
+        process.env.REACT_APP_NOTION_SERVER_URL + "taste/",
+        {
+          taste: value,
+          id: id,
+        }
+      );
     } catch (e) {
       console.log(e);
     }
@@ -39,10 +42,13 @@ const EmptyClass = () => {
     value.push(false);
     const id = localStorage.getItem("id");
     try {
-      const reponse = await axios.post("http://3.1.79.31:8000/taste/", {
-        taste: value,
-        id: id,
-      });
+      const reponse = await axios.post(
+        process.env.REACT_APP_NOTION_SERVER_URL + "taste/",
+        {
+          taste: value,
+          id: id,
+        }
+      );
     } catch (e) {
       console.log(e);
     }

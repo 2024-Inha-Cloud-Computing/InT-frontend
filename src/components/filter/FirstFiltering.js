@@ -48,14 +48,14 @@ const FirstFiltering = () => {
     );
   };
   const getAi = () => {
-    window.location.href = "http://3.1.79.31:8501";
+    window.location.href = process.env.REACT_APP_NOTION_BEDROCK_URL;
   };
   const search = async () => {
     //서버로 부터 받기 courseList 갱신
     try {
       const id = localStorage.getItem("id");
       const response = await axios.post(
-        "http://3.1.79.31:8000/timetablepage/findCourse/",
+        process.env.REACT_APP_NOTION_SERVER_URL + "timetablepage/findCourse/",
         {
           id: id,
           input: select,

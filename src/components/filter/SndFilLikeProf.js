@@ -16,7 +16,7 @@ const SndFilLikeProf = () => {
     const cs = localStorage.getItem("courses");
     const id = localStorage.getItem("id");
     const response = await axios.post(
-      "http://3.1.79.31:8000/timetablepage/sndFilLikeProf/",
+      process.env.REACT_APP_NOTION_SERVER_URL + "timetablepage/sndFilLikeProf/",
       {
         courses: cs,
         id: id,
@@ -68,7 +68,7 @@ const SndFilLikeProf = () => {
     window.location.href = "/sndFilLikeCheck";
   };
   const getAi = () => {
-    window.location.href = "http://3.1.79.31:8501";
+    window.location.href = process.env.REACT_APP_NOTION_BEDROCK_URL;
   };
   return (
     <div className="sflp_container">
