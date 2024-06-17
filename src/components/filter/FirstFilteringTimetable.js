@@ -23,7 +23,7 @@ const FirstFilteringTimetable = () => {
     const id = localStorage.getItem("id");
     const courses = localStorage.getItem("courses");
     const response = await axios.post(
-      "http://47.129.55.117:8000/timetablepage/firstFilteringTimetable/",
+      "http://18.141.146.148:8000/timetablepage/firstFilteringTimetable/",
       {
         courses: courses,
         id: id,

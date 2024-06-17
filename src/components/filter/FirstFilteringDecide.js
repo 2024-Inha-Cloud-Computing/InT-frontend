@@ -23,7 +23,7 @@ const FirstFilteringDecide = () => {
     const id = localStorage.getItem("id");
     try {
       const response = await axios.post(
-        "http://47.129.55.117:8000/timetablepage/firstFilteringDecide/",
+        "http://18.141.146.148:8000/timetablepage/firstFilteringDecide/",
         {
           final: schedules[currentSlideIndex],
           id: id,
@@ -32,9 +32,9 @@ const FirstFilteringDecide = () => {
     } catch (error) {
       console.log(error);
     }
-    // localStorage.removeItem("liked");
-    // localStorage.removeItem("courses");
-    // window.location.href = "/homeTimetable";
+    localStorage.removeItem("liked");
+    localStorage.removeItem("courses");
+    window.location.href = "/homeTimetable";
   };
 
   const goBack = () => {

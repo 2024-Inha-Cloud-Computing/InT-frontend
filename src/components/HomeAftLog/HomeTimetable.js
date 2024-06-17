@@ -10,12 +10,12 @@ const HomeTimetable = () => {
     const id = localStorage.getItem("id");
     try {
       const response = await axios.post(
-        "http://47.129.55.117:8000/homeTimetable/",
+        "http://18.141.146.148:8000/homeTimetable/",
         {
           id: id,
         }
       );
-      const schedule = await response.data.course;
+      const schedule = await response.data.course.homepage_timetable;
       setTimetable(schedule);
     } catch (error) {
       console.log(error);

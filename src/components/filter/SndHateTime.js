@@ -246,13 +246,13 @@ const SndHateTime = () => {
         const day = days[dayIndex];
         const formatTime = (timeIndex) => {
           if (timeIndex >= times.length * 2) {
-            return "9시"; // 8시 30분 이후를 9시로 표시
+            return "21시"; // 8시 30분 이후를 9시로 표시
           }
           const hour = times[Math.floor(timeIndex / 2)];
           const minute = timeIndex % 2 === 0 ? "" : " 30분";
           const displayHour =
-            timeIndex % 2 === 0 && hour !== 9
-              ? `${hour}시`
+            hour >= 1 && hour <= 8
+              ? `${hour + 12}시${minute}`
               : `${hour}시${minute}`;
           return displayHour.trim();
         };
