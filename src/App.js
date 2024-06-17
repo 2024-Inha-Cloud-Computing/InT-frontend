@@ -28,6 +28,7 @@ import ManualStartQ from "./components/manual/manualStartQ.js";
 import ManualAutoQ from "./components/manual/manualAutoQ.js";
 import ManualAddManual from "./components/manual/ManualAddManual.js";
 import ManualAddRandom from "./components/manual/ManualAddRandom.js";
+import ManualRandomSelect from "./components/manual/ManualRandomSelect.js";
 
 function App() {
   const [message, setMessage] = useState("");
@@ -112,6 +113,10 @@ function App() {
           <Route
             path="/manualAddRandom"
             element={<ManualAddRandom></ManualAddRandom>}
+          ></Route>
+          <Route
+            path="/manualRandomSelect"
+            element={<ManualRandomSelect></ManualRandomSelect>}
           ></Route>
         </Routes>
       </div>
