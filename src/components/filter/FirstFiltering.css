@@ -164,3 +164,15 @@
 .first_filtering_selected_course_span {
   font-size: 0.5rem;
 }
+
+.ai {
+  position: absolute;
+  top: 3.813rem;
+  right: 2rem;
+  width: 2rem;
+  height: 2rem;
+}
+
+.ai:hover {
+  transform: scale(1.5);
+}

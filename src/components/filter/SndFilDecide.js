@@ -6,6 +6,7 @@ import { Scrollbar } from "swiper/modules";
 import { useState, useEffect, useRef } from "react";
 import "./SndFilDecide.css";
 import back from "../../assets/img/back.png";
+import ai from "../../assets/img/ai.png";
 import axios from "axios";
 import SndFilLoading from "./SndFilLoading";
 import Schedule from "../Schedule";
@@ -44,14 +45,24 @@ const SndFilDecide = () => {
           id: id,
         }
       );
-      console.log(response);
       const result = await response.data.courses;
+      const bool = await response.data.flag;
       if (result.length == 0) {
         alert("조건을 만족하는 시간표가 없습니다. 다시 필터링을 하세요");
         window.location.href = "/sndHateTime";
       }
       setSchedules(result);
       setFadeOut(true);
+      localStorage.removeItem("selectedHateProfessors");
+      localStorage.removeItem("selectedLikeProfessors");
+      localStorage.removeItem("time");
+      localStorage.removeItem("order");
+      localStorage.removeItem("courses");
+      if (bool) {
+        alert(
+          "필터링 조건을 모두 만족시키지 못했습니다. 선택하신 우선순위를 바탕으로 추천 시간표를 드립니다."
+        );
+      }
       setTimeout(() => {
         setIsLoading(false); // 페이드 아웃 애니메이션 후 로딩 상태 해제
       }, 1000);
@@ -64,6 +75,10 @@ const SndFilDecide = () => {
   }, []);
   const goBack = () => {
     window.location.href = "/sndFilHateCheck";
+  };
+
+  const getAi = () => {
+    window.location.href = "http://3.1.79.31:8501";
   };
 
   const goNext = async () => {
@@ -91,6 +106,7 @@ const SndFilDecide = () => {
   }
   return (
     <div className="sfd_container">
+      <img src={ai} className="ai" onClick={getAi} />
       <img src={back} className="goback" onClick={goBack} />
       <Swiper
         onSlideChange={handleSlideChange}

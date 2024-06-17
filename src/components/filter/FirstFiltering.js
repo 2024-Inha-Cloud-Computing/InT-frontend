@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import back from "../../assets/img/back.png";
 import find from "../../assets/img/find.png";
+import ai from "../../assets/img/ai.png";
 import "./FirstFiltering.css";
 import axios from "axios";
 const FirstFiltering = () => {
@@ -15,7 +16,7 @@ const FirstFiltering = () => {
     try {
       const id = localStorage.getItem("id");
       const response = await axios.post(
-        "http://3.1.79.31:8000/timetablepage/allCourse/",
+        process.env.REACT_APP_NOTION_SERVER_URL + "timetablepage/allCourse/",
         {
           id: id,
         }
@@ -46,7 +47,9 @@ const FirstFiltering = () => {
       prevSelectedCourses.filter((c) => c !== course)
     );
   };
-
+  const getAi = () => {
+    window.location.href = "http://3.1.79.31:8501";
+  };
   const search = async () => {
     //서버로 부터 받기 courseList 갱신
     try {
@@ -73,6 +76,7 @@ const FirstFiltering = () => {
   };
   return (
     <div className="first_filtering_container">
+      <img src={ai} className="ai" onClick={getAi} />
       <img src={back} className="goback" onClick={goBack} />
       <div className="first_filtering_main">
         <span>이번 학기에 꼭 수강해야하는</span>

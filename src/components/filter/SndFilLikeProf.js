@@ -4,6 +4,7 @@ import "./SndFilLikeProf.css";
 import back from "../../assets/img/back.png";
 import up from "../../assets/img/up_triangle.png";
 import down from "../../assets/img/down_triangle.png";
+import ai from "../../assets/img/ai.png";
 import axios from "axios";
 
 const SndFilLikeProf = () => {
@@ -66,8 +67,12 @@ const SndFilLikeProf = () => {
   const goNext = () => {
     window.location.href = "/sndFilLikeCheck";
   };
+  const getAi = () => {
+    window.location.href = "http://3.1.79.31:8501";
+  };
   return (
     <div className="sflp_container">
+      <img src={ai} className="ai" onClick={getAi} />
       <img className="goback" src={back} onClick={goBack}></img>
       <div className="sflp_title1">다음으로, 과목 별로 가장 듣고 싶은</div>
       <div className="sflp_title2">교수님을 선택해 주세요!</div>

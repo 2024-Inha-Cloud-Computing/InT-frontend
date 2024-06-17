@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 
 const Schedule = ({ schedule }) => {
   const canvasRef = useRef(null);
-  const days = ["월", "화", "수", "목", "금"];
+  const days = ["월", "화", "수", "목", "금", "웹"];
   const times = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
   const colors = [
     "#add8e6",

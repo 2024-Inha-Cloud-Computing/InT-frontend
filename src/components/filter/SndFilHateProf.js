@@ -4,6 +4,7 @@ import "./SndFilHateProf.css"; // 파일명도 바꾸는 것이 좋습니다
 import back from "../../assets/img/back.png";
 import up from "../../assets/img/up_triangle.png";
 import down from "../../assets/img/down_triangle.png";
+import ai from "../../assets/img/ai.png";
 import axios from "axios";
 
 const SndFilHateProf = () => {
@@ -69,9 +70,12 @@ const SndFilHateProf = () => {
   const goNext = () => {
     window.location.href = "/sndFilHateCheck"; // '싫어하는 교수' 검증 페이지로 넘어갑니다
   };
-
+  const getAi = () => {
+    window.location.href = "http://3.1.79.31:8501";
+  };
   return (
     <div className="sfhp_container">
+      <img src={ai} className="ai" onClick={getAi} />
       <img className="goback" src={back} onClick={goBack} alt="Go back"></img>
       <div className="sfhp_title1">
         {name.substring(1, 3)} 님의 스타일과 맞지 않는

@@ -13,6 +13,8 @@ import Schedule from "../Schedule.js";
 import instance from "../../access/instance.js";
 import FirstFilteringLoading from "./FirstFilteringLoading.js";
 import axios from "axios";
+import ai from "../../assets/img/ai.png";
+
 const FirstFilteringTimetable = () => {
   const [likedStates, setLikedStates] = useState([]);
   const [schedules, setSchedules] = useState([]);
@@ -51,7 +53,9 @@ const FirstFilteringTimetable = () => {
       return newStates;
     });
   };
-
+  const getAi = () => {
+    window.location.href = "http://3.1.79.31:8501";
+  };
   const goBack = () => {
     window.location.href = "/firstFilteringLoading";
   };
@@ -76,6 +80,7 @@ const FirstFilteringTimetable = () => {
   }
   return (
     <div className="fflt_container">
+      <img src={ai} className="ai" onClick={getAi} />
       <img src={back} className="goback" onClick={goBack} />
       <Swiper
         className="fflt_swiper"

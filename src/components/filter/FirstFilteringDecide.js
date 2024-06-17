@@ -9,6 +9,7 @@ import "./FirstFilteringDecide.css";
 import back from "../../assets/img/back.png";
 import Schedule from "../Schedule.js";
 import axios from "axios";
+import ai from "../../assets/img/ai.png";
 
 const FirstFilteringDecide = () => {
   const schedules = JSON.parse(localStorage.getItem("liked"));
@@ -37,12 +38,17 @@ const FirstFilteringDecide = () => {
     window.location.href = "/homeTimetable";
   };
 
+  const getAi = () => {
+    window.location.href = "http://3.1.79.31:8501";
+  };
+
   const goBack = () => {
     window.location.href = "/firstFilteringQuestion";
   };
 
   return (
     <div className="ffd_container">
+      <img src={ai} className="ai" onClick={getAi} />
       <img src={back} className="goback" onClick={goBack} />
       <Swiper
         onSlideChange={handleSlideChange}
