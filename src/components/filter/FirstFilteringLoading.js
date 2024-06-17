@@ -28,12 +28,12 @@ const FirstFilteringLoading = () => {
           시간표 취향과 들어가야하는 과목을 기반으로
         </span>
         <span className="ffl_main_second">
-          {name.substring(1, 3)}님 맞춤 시간표를 만드는 중이예요!
+          {name.substring(1, 3)}님 맞춤 시간표를 만드는 중이에요!
         </span>
       </div>
       <div className="ffl_sub">
         <span className="ffl_sub_first">
-          우선 시간표를 확인하고, 뒤애서 추가로
+          우선 시간표를 확인하고, 뒤에서 추가로
         </span>
         <span className="ffl_sub_second">
           조건을 설정할 수 있으니 걱정하지 마세요!
