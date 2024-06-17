@@ -25,7 +25,7 @@ const FirstFilteringTimetable = () => {
     const id = localStorage.getItem("id");
     const courses = localStorage.getItem("courses");
     const response = await axios.post(
-      "http://3.1.79.31:8000/timetablepage/firstFilteringTimetable/",
+      "http://54.169.159.174:8000/timetablepage/firstFilteringTimetable/",
       {
         courses: courses,
         id: id,
@@ -54,7 +54,7 @@ const FirstFilteringTimetable = () => {
     });
   };
   const getAi = () => {
-    window.location.href = "http://3.1.79.31:8501";
+    window.location.href = "http://54.169.159.174:8501";
   };
   const goBack = () => {
     window.location.href = "/firstFilteringLoading";

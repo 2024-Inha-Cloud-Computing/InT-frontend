@@ -23,20 +23,24 @@ const ManualAddManual = () => {
   const [totalCredits, setTotalCredits] = useState(0);
   const [courseList, setCourseList] = useState([]);  // 여기서 선언된 courseList
   const [timetable, setTimetable] = useState([]);
+  const [departement, setDepartment] = useState([]);
 
   const getData = async () => {
     try {
       const id = localStorage.getItem("id");
       const response = await axios.post(
-        "http://18.141.146.148:8000/timetablepage/sndFilDecide/",
+        "http://54.169.159.174:8000/timetablepage/manualAddManual/",
         {
           id: id,
         }
       );
       const course = await response.data.courses; // 강의 정보
       const schedule = await response.data.schedule; // 시간표 정보
+      const departements = await response.data.department; // 학과/교양
+
       setCourseList(course);
       setTimetable(schedule);
+      setDepartment(departements);
     } catch (error) {
       console.error("Failed to fetch courses:", error);
     }
@@ -50,7 +54,7 @@ const ManualAddManual = () => {
     try {
       const id = localStorage.getItem("id");
       const response = await axios.post(
-        "http://18.141.146.148:8000/timetablepage/findCourse/",
+        "http://54.169.159.174:8000/timetablepage/findCourse/",
         {
           id: id,
           input: select,
@@ -67,7 +71,7 @@ const ManualAddManual = () => {
     try {
       const id = localStorage.getItem("id");
       const response = await axios.post(
-        "http://18.141.146.148:8000/timetablepage/updateSchedule/",
+        "http://54.169.159.174:8000/timetablepage/updateSchedule/",
         {
           id: id,
           courses: selectedCourses,
@@ -93,7 +97,7 @@ const ManualAddManual = () => {
       try {
         const id = localStorage.getItem("id");
         const response = await axios.post(
-          "http://18.141.146.148:8000/timetablepage/addCourse/",
+          "http://54.169.159.174:8000/timetablepage/addCourse/",
           {
             id: id,
             course: course,
@@ -119,7 +123,7 @@ const ManualAddManual = () => {
       try {
         const id = localStorage.getItem("id");
         const response = await axios.post(
-          "http://18.141.146.148:8000/timetablepage/removeCourse/",
+          "http://54.169.159.174:8000/timetablepage/removeCourse/",
           {
             id: id,
             courseName: courseName,
@@ -185,6 +189,8 @@ const ManualAddManual = () => {
         handleCourseClick={handleCourseClick}
         search={search}
         setSelect={setSelect}
+        departement={departement}
+        setDepartment={setDepartment}
         totalCredits={totalCredits}
         setTotalCredits={setTotalCredits}
         selectedCourses={selectedCourses}

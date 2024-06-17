@@ -5,7 +5,6 @@ import "./ManualContent.css";
 import find from "../../assets/img/find.png";
 import star from "../../assets/img/star.png";
 
-// const subjectTypes = ['전공필수', '전공선택', '핵심교양1'];
 const years = ['1학년', '2학년', '3학년', '4학년', '전체'];
 const credits = ['1.0', '2.0', '3.0', '4.0'];
 
@@ -54,23 +53,10 @@ const DropdownButton = ({ label, options, onSelect, className }) => {
   );
 };
 
-const ManualContent = ({ handleCourseClick, search, setSelect, totalCredits, setTotalCredits, selectedCourses, courseList, setCourseList }) => {
+const ManualContent = ({ handleCourseClick, search, setSelect, department, setDepartment, totalCredits, setTotalCredits, selectedCourses, courseList, setCourseList }) => {
   const [filters, setFilters] = useState({ department: '', subjectType: '', year: '', credits: '' });
   const [departments, setDepartments] = useState([]);
   const [subjectTypes, setSubjectTypes] = useState(['전공필수', '전공선택', '핵심교양1']);
-
-  useEffect(() => {
-    const fetchDepartments = async () => {
-      try {
-        const response = await axios.get("http://18.141.146.148:8000/timetablepage/departments/");
-        setDepartments(response.data.departments);
-      } catch (error) {
-        console.error("Failed to fetch departments:", error);
-      }
-    };
-
-    fetchDepartments();
-  }, []);
 
   const filter = async (filterType, value) => {
     const newFilters = { ...filters, [filterType]: value };
@@ -78,7 +64,7 @@ const ManualContent = ({ handleCourseClick, search, setSelect, totalCredits, set
     try {
       const id = localStorage.getItem("id");
       const response = await axios.post(
-        "http://18.141.146.148:8000/timetablepage/findCourse/",
+        "http://54.169.159.174:8000/timetablepage/findCourse/",
         {
           id: id,
           input: newFilters,

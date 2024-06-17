@@ -24,7 +24,7 @@ const ManualRandomSelect = () => {
     const major = JSON.parse(localStorage.getItem("selectedMajorConditions"));
     const id = localStorage.getItem("id");
     const response = await axios.post(
-      "http://3.1.79.31:8000/timetablepage/getSchedule/",
+      "http://54.169.159.174:8000/timetablepage/getSchedule/",
       {
         liberal: liberal,
         major: major,
@@ -49,7 +49,7 @@ const ManualRandomSelect = () => {
     const id = localStorage.getItem("id");
     try {
       const response = await axios.post(
-        "http://3.1.79.31:8000/timetablepage/firstFilteringDecide/",
+        "http://54.169.159.174:8000/timetablepage/firstFilteringDecide/",
         {
           final: schedules[currentSlideIndex],
           id: id,

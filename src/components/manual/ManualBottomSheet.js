@@ -33,7 +33,7 @@ const BottomSheetContent = styled.div`
   -webkit-overflow-scrolling: touch;
 `
 
-const BottomSheet = ({ handleCourseClick, search, setSelect, totalCredits, setTotalCredits, selectedCourses, courseList }) => {
+const BottomSheet = ({ handleCourseClick, search, setSelect, department, setDepartment, totalCredits, setTotalCredits, selectedCourses, courseList }) => {
 
   const { sheet, content } = UseBottomSheet();
 
@@ -45,6 +45,8 @@ const BottomSheet = ({ handleCourseClick, search, setSelect, totalCredits, setTo
             handleCourseClick={handleCourseClick} 
             search={search}
             setSelect={setSelect}
+            department={department}
+            setDepartment={setDepartment}
             totalCredits={totalCredits}
             setTotalCredits={setTotalCredits}
             selectedCourses={selectedCourses} 

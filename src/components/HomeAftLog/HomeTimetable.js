@@ -10,7 +10,7 @@ const HomeTimetable = () => {
     const id = localStorage.getItem("id");
     try {
       const response = await axios.post(
-        "http://3.1.79.31:8000/homeTimetable/",
+        "http://54.169.159.174:8000/homeTimetable/",
         {
           id: id,
         }

@@ -51,7 +51,7 @@ const PhoneEmail = () => {
       value.push(phone1 + phone2 + phone3);
       value.push(emailId + "@" + emailDomain);
       try {
-        const response = await axios.post("http://3.1.79.31:8000/checkEmail/", {
+        const response = await axios.post("http://54.169.159.174:8000/checkEmail/", {
           email: emailId + "@" + emailDomain,
         });
         window.sessionStorage.setItem("value", JSON.stringify(value));
