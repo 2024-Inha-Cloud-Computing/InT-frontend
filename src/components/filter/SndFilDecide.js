@@ -30,27 +30,34 @@ const SndFilDecide = () => {
     );
     const time = JSON.parse(localStorage.getItem("time"));
     const courses = JSON.parse(localStorage.getItem("courses"));
+    const order = JSON.parse(localStorage.getItem("ordering"));
     const id = localStorage.getItem("id");
-    const response = await axios.post(
-      "http://18.141.146.148:8000/timetablepage/sndFilDecide/",
-      {
-        time: time,
-        selectedHateProfessors: selectedHateProfessors,
-        selectedLikeProfessors: selectedLikeProfessors,
-        courses: courses,
-        id: id,
+    try {
+      const response = await axios.post(
+        "http://3.1.79.31:8000/timetablepage/sndFilDecide/",
+        {
+          time: time,
+          selectedHateProfessors: selectedHateProfessors,
+          selectedLikeProfessors: selectedLikeProfessors,
+          courses: courses,
+          order: order,
+          id: id,
+        }
+      );
+      console.log(response);
+      const result = await response.data.courses;
+      if (result.length == 0) {
+        alert("조건을 만족하는 시간표가 없습니다. 다시 필터링을 하세요");
+        window.location.href = "/sndHateTime";
       }
-    );
-    const result = await response.data.courses;
-    if (result.length == 0) {
-      alert("조건을 만족하는 시간표가 없습니다. 다시 필터링을 하세요");
-      window.location.href = "/sndHateTime";
+      setSchedules(result);
+      setFadeOut(true);
+      setTimeout(() => {
+        setIsLoading(false); // 페이드 아웃 애니메이션 후 로딩 상태 해제
+      }, 1000);
+    } catch (error) {
+      console.log(error);
     }
-    setSchedules(result);
-    setFadeOut(true);
-    setTimeout(() => {
-      setIsLoading(false); // 페이드 아웃 애니메이션 후 로딩 상태 해제
-    }, 1000);
   };
   useEffect(() => {
     getData();
@@ -63,7 +70,7 @@ const SndFilDecide = () => {
     const id = localStorage.getItem("id");
     try {
       const response = await axios.post(
-        "http://18.141.146.148:8000/timetablepage/firstFilteringDecide/",
+        "http://3.1.79.31:8000/timetablepage/firstFilteringDecide/",
         {
           final: schedules[currentSlideIndex],
           id: id,

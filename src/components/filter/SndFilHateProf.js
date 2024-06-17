@@ -17,7 +17,7 @@ const SndFilHateProf = () => {
     const cs = localStorage.getItem("courses");
     const id = localStorage.getItem("id");
     const response = await axios.post(
-      "http://18.141.146.148:8000/timetablepage/sndFilLikeProf/",
+      "http://3.1.79.31:8000/timetablepage/sndFilLikeProf/",
       {
         courses: cs,
         id: id,
@@ -132,52 +132,6 @@ const SndFilHateProf = () => {
               </div>
             ))
           )}
-          {/* {courses.map((course) => (
-            <div
-              key={course.id}
-              className={`course ${
-                expandedCourse === course.id ? "expanded" : ""
-              }`}
-            >
-              <div
-                className="course-info"
-                onClick={() => toggleCourse(course.id)}
-              >
-                <span className="course-title">과목 {course.id}</span>
-                <span className="course-name">{course.name}</span>
-                <span className="arrow">
-                  {expandedCourse === course.id ? (
-                    <img src={up} className="sflp_triangle" alt="collapse" />
-                  ) : (
-                    <img src={down} className="sflp_triangle" alt="expand" />
-                  )}
-                </span>
-              </div>
-              {expandedCourse === course.id && (
-                <div className="professor-list">
-                  {course.professors.map((professor) => (
-                    <div
-                      key={professor}
-                      className={`professor-name ${
-                        selectedHateProfessors.find(
-                          (item) =>
-                            item.course === course.name &&
-                            item.professor === professor
-                        )
-                          ? "selected"
-                          : ""
-                      }`}
-                      onClick={() =>
-                        selectHateProfessor(course.name, professor)
-                      }
-                    >
-                      {professor}
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))} */}
         </div>
         <div className="sfhp_buttons">
           <button className="sfhp_skipButton" onClick={goSkip}>

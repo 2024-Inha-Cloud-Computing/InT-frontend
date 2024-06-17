@@ -25,7 +25,7 @@ const Login = () => {
     const csrfToken = cookies;
     try {
       const response = await axios.post(
-        "http://18.141.146.148:8000/login/",
+        "http://3.1.79.31:8000/login/",
         // 로그인 요청
         {
           username: formRef.current.id.value,

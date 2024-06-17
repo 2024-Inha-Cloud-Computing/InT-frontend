@@ -22,7 +22,7 @@ const SndFilHateCheck = () => {
   };
 
   const goNext = () => {
-    window.location.href = "/sndFilDecide";
+    window.location.href = "/sndOrdering";
   };
 
   return (
