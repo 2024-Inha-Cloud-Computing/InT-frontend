@@ -64,6 +64,7 @@ const SndFilHateProf = () => {
   };
 
   const goSkip = () => {
+    localStorage.setItem("selectedHateProfessors", JSON.parse([]));
     window.location.href = "/sndFilLoading";
   };
 
