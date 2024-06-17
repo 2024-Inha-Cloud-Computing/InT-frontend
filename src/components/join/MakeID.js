@@ -25,9 +25,12 @@ const MakeID = () => {
     const span = document.querySelector("#message");
     // id 중복확인 로직
     try {
-      const response = await axios.post("http://54.169.159.174:8000/checkId/", {
-        id: formRef.current.id.value,
-      });
+      const response = await axios.post(
+        process.env.REACT_APP_NOTION_SERVER_URL + "checkId/",
+        {
+          id: formRef.current.id.value,
+        }
+      );
       setCheckID(true);
       span.className = "makeID_checkSuccess";
       span.innerText = "사용 가능한 아이디입니다.";

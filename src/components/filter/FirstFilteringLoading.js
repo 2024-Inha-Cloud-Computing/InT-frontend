@@ -11,13 +11,8 @@ const FirstFilteringLoading = () => {
       document.body.classList.add("fade-out");
     }, 10000);
 
-    // const timer2 = setTimeout(() => {
-    //   window.location.href = "/firstFilteringTimetable";
-    // }, 3000);
-
     return () => {
       clearTimeout(timer1);
-      // clearTimeout(timer2);
     };
   }, []);
   const goBack = () => {

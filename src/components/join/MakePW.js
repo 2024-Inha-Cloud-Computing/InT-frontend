@@ -46,14 +46,17 @@ const MakePW = () => {
       const value = JSON.parse(sessionStorage.getItem("value"));
       console.log(value);
       try {
-        const response = await axios.post("http://54.169.159.174:8000/signup", {
-          name: value[0],
-          birth: value[1],
-          phone: value[2],
-          email: value[3],
-          id: value[4],
-          password: password,
-        });
+        const response = await axios.post(
+          process.env.REACT_APP_NOTION_SERVER_URL + "signup",
+          {
+            name: value[0],
+            birth: value[1],
+            phone: value[2],
+            email: value[3],
+            id: value[4],
+            password: password,
+          }
+        );
         alert("회원가입완료!");
         sessionStorage.removeItem("value");
         window.location.href = "/login";

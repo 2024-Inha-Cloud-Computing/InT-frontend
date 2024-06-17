@@ -24,7 +24,7 @@ const ManualRandomSelect = () => {
     const major = JSON.parse(localStorage.getItem("selectedMajorConditions"));
     const id = localStorage.getItem("id");
     const response = await axios.post(
-      "http://54.169.159.174:8000/timetablepage/getSchedule/",
+      process.env.REACT_APP_NOTION_SERVER_URL + "timetablepage/getSchedule/",
       {
         liberal: liberal,
         major: major,
@@ -49,7 +49,8 @@ const ManualRandomSelect = () => {
     const id = localStorage.getItem("id");
     try {
       const response = await axios.post(
-        "http://54.169.159.174:8000/timetablepage/firstFilteringDecide/",
+        process.env.REACT_APP_NOTION_SERVER_URL +
+          "timetablepage/firstFilteringDecide/",
         {
           final: schedules[currentSlideIndex],
           id: id,

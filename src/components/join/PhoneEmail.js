@@ -51,9 +51,12 @@ const PhoneEmail = () => {
       value.push(phone1 + phone2 + phone3);
       value.push(emailId + "@" + emailDomain);
       try {
-        const response = await axios.post("http://54.169.159.174:8000/checkEmail/", {
-          email: emailId + "@" + emailDomain,
-        });
+        const response = await axios.post(
+          process.env.REACT_APP_NOTION_SERVER_URL + "checkEmail/",
+          {
+            email: emailId + "@" + emailDomain,
+          }
+        );
         window.sessionStorage.setItem("value", JSON.stringify(value));
         setSeratchParams({ name_birth: true, phone_email: true });
       } catch (error) {
