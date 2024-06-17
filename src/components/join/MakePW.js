@@ -46,7 +46,7 @@ const MakePW = () => {
       const value = JSON.parse(sessionStorage.getItem("value"));
       console.log(value);
       try {
-        const response = await axios.post("http://47.129.55.117:8000/signup", {
+        const response = await axios.post("http://18.141.146.148:8000/signup", {
           name: value[0],
           birth: value[1],
           phone: value[2],

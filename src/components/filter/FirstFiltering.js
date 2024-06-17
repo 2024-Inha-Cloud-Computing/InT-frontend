@@ -15,7 +15,7 @@ const FirstFiltering = () => {
     try {
       const id = localStorage.getItem("id");
       const response = await axios.post(
-        "http://47.129.55.117:8000/timetablepage/allCourse/",
+        "http://18.141.146.148:8000/timetablepage/allCourse/",
         {
           id: id,
         }
@@ -52,7 +52,7 @@ const FirstFiltering = () => {
     try {
       const id = localStorage.getItem("id");
       const response = await axios.post(
-        "http://47.129.55.117:8000/timetablepage/findCourse/",
+        "http://18.141.146.148:8000/timetablepage/findCourse/",
         {
           id: id,
           input: select,

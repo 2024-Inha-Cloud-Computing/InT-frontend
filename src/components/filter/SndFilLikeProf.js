@@ -15,7 +15,7 @@ const SndFilLikeProf = () => {
     const cs = localStorage.getItem("courses");
     const id = localStorage.getItem("id");
     const response = await axios.post(
-      "http://47.129.55.117:8000/timetablepage/sndFilLikeProf/",
+      "http://18.141.146.148:8000/timetablepage/sndFilLikeProf/",
       {
         courses: cs,
         id: id,

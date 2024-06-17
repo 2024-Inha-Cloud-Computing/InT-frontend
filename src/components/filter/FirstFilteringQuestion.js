@@ -13,7 +13,12 @@ const FirstFilteringQuestion = () => {
   };
 
   const goDecide = () => {
-    window.location.href = "/firstFilteringDecide";
+    const liked = JSON.parse(localStorage.getItem("liked"));
+    if (liked.length == 0) {
+      alert("찜한 시간표가 없습니다!");
+    } else {
+      window.location.href = "/firstFilteringDecide";
+    }
   };
   return (
     <div className="ffq_container">
