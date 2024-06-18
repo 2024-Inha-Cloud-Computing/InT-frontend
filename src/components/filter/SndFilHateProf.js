@@ -18,7 +18,7 @@ const SndFilHateProf = () => {
     const cs = localStorage.getItem("courses");
     const id = localStorage.getItem("id");
     const response = await axios.post(
-      process.env.REACT_APP_NOTION_SERVER_URL + "timetablepage/sndFilLikeProf/",
+      "http://18.140.185.78:8000/timetablepage/sndFilLikeProf/",
       {
         courses: cs,
         id: id,
@@ -72,7 +72,7 @@ const SndFilHateProf = () => {
     window.location.href = "/sndFilHateCheck"; // '싫어하는 교수' 검증 페이지로 넘어갑니다
   };
   const getAi = () => {
-    window.location.href = process.env.REACT_APP_NOTION_BEDROCK_URL;
+    window.location.href = process.env."http://18.140.185.78:8501;
   };
   return (
     <div className="sfhp_container">

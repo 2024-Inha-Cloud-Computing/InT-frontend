@@ -52,7 +52,7 @@ const PhoneEmail = () => {
       value.push(emailId + "@" + emailDomain);
       try {
         const response = await axios.post(
-          process.env.REACT_APP_NOTION_SERVER_URL + "checkEmail/",
+          "http://18.140.185.78:8000/checkEmail/",
           {
             email: emailId + "@" + emailDomain,
           }

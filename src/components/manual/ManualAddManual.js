@@ -29,7 +29,7 @@ const ManualAddManual = () => {
     try {
       const id = localStorage.getItem("id");
       const response = await axios.post(
-        process.env.REACT_APP_NOTION_SERVER_URL + "timetablepage/manualAddManual/",
+        "http://18.140.185.78:8000/timetablepage/manualAddManual/",
         { id: id }
       );
       const course = await response.data.course;
@@ -56,7 +56,7 @@ const ManualAddManual = () => {
     try {
       const id = localStorage.getItem("id");
       const response = await axios.post(
-        process.env.REACT_APP_NOTION_SERVER_URL + "timetablepage/allFindCourse/",
+        "http://18.140.185.78:8000/timetablepage/allFindCourse/",
         {
           id: id,
           input: select,
@@ -73,7 +73,7 @@ const ManualAddManual = () => {
     try {
       const id = localStorage.getItem("id");
       const response = await axios.post(
-        process.env.REACT_APP_NOTION_SERVER_URL + "timetablepage/addCourse/",
+        "http://18.140.185.78:8000/timetablepage/addCourse/",
         {
           id: id,
           course: course,
@@ -103,7 +103,7 @@ const ManualAddManual = () => {
     try {
       const id = localStorage.getItem("id");
       const response = await axios.post(
-        process.env.REACT_APP_NOTION_SERVER_URL + "timetablepage/removeCourse/",
+        "http://18.140.185.78:8000/timetablepage/removeCourse/",
         {
           id: id,
           courseName: courseName,

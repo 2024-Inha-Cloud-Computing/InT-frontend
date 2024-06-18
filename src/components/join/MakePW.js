@@ -47,7 +47,7 @@ const MakePW = () => {
       console.log(value);
       try {
         const response = await axios.post(
-          process.env.REACT_APP_NOTION_SERVER_URL + "signup",
+          "http://18.140.185.78:8000/signup",
           {
             name: value[0],
             birth: value[1],

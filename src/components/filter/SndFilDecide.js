@@ -35,7 +35,7 @@ const SndFilDecide = () => {
     const id = localStorage.getItem("id");
     try {
       const response = await axios.post(
-        process.env.REACT_APP_NOTION_SERVER_URL + "timetablepage/sndFilDecide/",
+        "http://18.140.185.78:8000/timetablepage/sndFilDecide/",
         {
           time: time,
           selectedHateProfessors: selectedHateProfessors,
@@ -78,7 +78,7 @@ const SndFilDecide = () => {
   };
 
   const getAi = () => {
-    window.location.href = process.env.REACT_APP_NOTION_BEDROCK_URL;
+    window.location.href = process.env."http://18.140.185.78:8501;
   };
 
   const goNext = async () => {

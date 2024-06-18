@@ -16,7 +16,7 @@ const FirstFiltering = () => {
     try {
       const id = localStorage.getItem("id");
       const response = await axios.post(
-        process.env.REACT_APP_NOTION_SERVER_URL + "timetablepage/allCourse/",
+        "http://18.140.185.78:8000/timetablepage/allCourse/",
         {
           id: id,
         }
@@ -48,14 +48,14 @@ const FirstFiltering = () => {
     );
   };
   const getAi = () => {
-    window.location.href = process.env.REACT_APP_NOTION_BEDROCK_URL;
+    window.location.href = process.env."http://18.140.185.78:8501;
   };
   const search = async () => {
     //서버로 부터 받기 courseList 갱신
     try {
       const id = localStorage.getItem("id");
       const response = await axios.post(
-        process.env.REACT_APP_NOTION_SERVER_URL + "timetablepage/findCourse/",
+        "http://18.140.185.78:8000/timetablepage/findCourse/",
         {
           id: id,
           input: select,

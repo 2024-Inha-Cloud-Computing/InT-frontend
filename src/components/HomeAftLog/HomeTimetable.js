@@ -10,7 +10,7 @@ const HomeTimetable = () => {
     const id = localStorage.getItem("id");
     try {
       const response = await axios.post(
-        process.env.REACT_APP_NOTION_SERVER_URL + "homeTimetable/",
+        "http://18.140.185.78:8000/homeTimetable/",
         {
           id: id,
         }

@@ -31,7 +31,7 @@ const ChangePW = () => {
     } else {
       //localStore의 id 정보로 비밀번호 변경
       const response = await axios.post(
-        process.env.REACT_APP_NOTION_SERVER_URL + "changePw",
+        "http://18.140.185.78:8000/changePw",
         {
           id: localStorage.getItem("id"),
           password: password,

@@ -24,7 +24,7 @@ const ManualRandomSelect = () => {
     const major = JSON.parse(localStorage.getItem("selectedMajorConditions"));
     const id = localStorage.getItem("id");
     const response = await axios.post(
-      process.env.REACT_APP_NOTION_SERVER_URL + "timetablepage/getSchedule/",
+      "http://18.140.185.78:8000/timetablepage/getSchedule/",
       {
         liberal: liberal,
         major: major,

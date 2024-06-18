@@ -29,7 +29,7 @@ const Check = () => {
     setIsTimerActive(true);
     try {
       const response = await axios.post(
-        process.env.REACT_APP_NOTION_SERVER_URL + "checkPhone/",
+        "http://18.140.185.78:8000/checkPhone/",
         {
           phone: `${first}${second}${third}`,
         }
@@ -52,7 +52,7 @@ const Check = () => {
     //인증번호 인증 로직
     try {
       const response = await axios.post(
-        process.env.REACT_APP_NOTION_SERVER_URL + "checkPhoneNumber/",
+        "http://18.140.185.78:8000/checkPhoneNumber/",
         {
           number: number,
           phone: `${first}${second}${third}`,
@@ -82,7 +82,7 @@ const Check = () => {
       // 아이디 정보 가져오는 로직(로컬 스토리지에 저장) -> result 값
       try {
         const response = await axios.post(
-          process.env.REACT_APP_NOTION_SERVER_URL + "findId/",
+          "http://18.140.185.78:8000/findId/",
           {
             phone: `${first}${second}${third}`,
           }

@@ -25,7 +25,7 @@ const Login = () => {
     const csrfToken = cookies;
     try {
       const response = await axios.post(
-        process.env.REACT_APP_NOTION_SERVER_URL + "login/",
+        "http://18.140.185.78:8000/login/",
         // 로그인 요청
         {
           username: formRef.current.id.value,

@@ -103,7 +103,7 @@ const ManualAddRandom = () => {
 
   const getDepartmentData = async () => {
     const response = await axios.post(
-      process.env.REACT_APP_NOTION_SERVER_URL + "timetablepage/departments/"
+      "http://18.140.185.78:8000/timetablepage/departments/"
     );
     const data = await response.data.department;
     setDepartments(data);
@@ -122,7 +122,7 @@ const ManualAddRandom = () => {
   };
 
   const getAi = () => {
-    window.location.href = process.env.REACT_APP_NOTION_BEDROCK_URL;
+    window.location.href = process.env."http://18.140.185.78:8501;
   };
 
   const addMajorCondition = () => {

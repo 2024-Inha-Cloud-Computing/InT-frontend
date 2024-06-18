@@ -61,7 +61,7 @@ const ManualContent = ({ handleCourseClick, search, setSelect, department, setDe
       const id = localStorage.getItem("id");
       const searchText = localStorage.getItem("searchText");
       const response = await axios.post(
-        process.env.REACT_APP_NOTION_SERVER_URL + "timetablepage/filteringCourse/",
+        "http://18.140.185.78:8000/timetablepage/filteringCourse/",
         {
           id: id,
           input: newFilters,

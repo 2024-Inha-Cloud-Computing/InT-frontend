@@ -26,7 +26,7 @@ const MakeID = () => {
     // id 중복확인 로직
     try {
       const response = await axios.post(
-        process.env.REACT_APP_NOTION_SERVER_URL + "checkId/",
+        "http://18.140.185.78:8000/checkId/",
         {
           id: formRef.current.id.value,
         }

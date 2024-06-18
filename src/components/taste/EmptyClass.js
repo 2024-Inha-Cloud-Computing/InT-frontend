@@ -24,7 +24,7 @@ const EmptyClass = () => {
     try {
       //axios -> instance로 바꾸면 됨!
       const reponse = await axios.post(
-        process.env.REACT_APP_NOTION_SERVER_URL + "taste/",
+        "http://18.140.185.78:8000/taste/",
         {
           taste: value,
           id: id,
@@ -43,7 +43,7 @@ const EmptyClass = () => {
     const id = localStorage.getItem("id");
     try {
       const reponse = await axios.post(
-        process.env.REACT_APP_NOTION_SERVER_URL + "taste/",
+        "http://18.140.185.78:8000/taste/",
         {
           taste: value,
           id: id,
