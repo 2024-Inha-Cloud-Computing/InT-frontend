@@ -8,16 +8,13 @@ import star from "../../assets/img/star.png";
 const years = ['1학년', '2학년', '3학년', '4학년', '전체'];
 const credits = ['1.0', '2.0', '3.0', '4.0'];
 
-const DropdownButton = ({ label, options, onSelect, className }) => {
+const DropdownButton = ({ label, options, selectedOption, onSelect, className }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null);
 
   const handleSelect = (option) => {
     if (selectedOption === option) {
-      setSelectedOption(null); // 선택된 옵션을 다시 클릭하면 해제
-      onSelect(null);
+      onSelect(''); // 선택된 옵션을 다시 클릭하면 해제 (기본값으로 설정)
     } else {
-      setSelectedOption(option);
       onSelect(option);
     }
     setIsOpen(false);
@@ -58,20 +55,20 @@ const ManualContent = ({ handleCourseClick, search, setSelect, department, setDe
   const [subjectTypes, setSubjectTypes] = useState(['전공필수', '전공선택', '핵심교양1']);
 
   const filter = async (filterType, value) => {
-    const newFilters = { ...filters, [filterType]: value };
+    const newFilters = { ...filters, [filterType]: value || '' }; // 필터값이 없으면 기본값으로 설정
     setFilters(newFilters);
     try {
       const id = localStorage.getItem("id");
       const searchText = localStorage.getItem("searchText");
       const response = await axios.post(
-        "http://54.169.159.174:8000/timetablepage/filteringCourse/",
+        process.env.REACT_APP_NOTION_SERVER_URL + "timetablepage/filteringCourse/",
         {
           id: id,
           input: newFilters,
           search: searchText,
         }
       );
-      const list = response.data.courses;
+      const list = await response.data.course;
       setCourseList(list);
     } catch (e) {
       console.log(e);
@@ -110,22 +107,26 @@ const ManualContent = ({ handleCourseClick, search, setSelect, department, setDe
         <DropdownButton
           label="학과/교양"
           options={department}
+          selectedOption={filters.department}
           onSelect={(value) => filter('department', value)}
         />
         <DropdownButton
           label="과목구분"
           options={subjectTypes}
+          selectedOption={filters.subjectType}
           onSelect={(value) => filter('subjectType', value)}
         />
         <DropdownButton
           label="학년"
           options={years}
+          selectedOption={filters.year}
           onSelect={(value) => filter('year', value)}
           className="year" /* 학년 버튼에 특정 클래스 추가 */
         />
         <DropdownButton
           label="학점"
           options={credits}
+          selectedOption={filters.credits}
           onSelect={(value) => filter('credits', value)}
           className="credits" /* 학점 버튼에 특정 클래스 추가 */
         />

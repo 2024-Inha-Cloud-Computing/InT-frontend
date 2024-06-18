@@ -29,18 +29,20 @@ const ManualAddManual = () => {
     try {
       const id = localStorage.getItem("id");
       const response = await axios.post(
-        "http://54.169.159.174:8000/timetablepage/manualAddManual/",
+        process.env.REACT_APP_NOTION_SERVER_URL + "timetablepage/manualAddManual/",
         { id: id }
       );
-      const course = response.data.course;
-      const schedule = response.data.schedule;
-      const departments = response.data.department;
-      const credits = response.data.credits;
+      const course = await response.data.course;
+      const schedule = await response.data.schedule;
+      const departments = await response.data.department;
+      const credits = await response.data.credits;
 
       setCourseList(course);
       setTimetable(schedule);
       setDepartment(departments);
       setTotalCredits(credits);
+
+
     } catch (error) {
       console.error("Failed to fetch courses:", error);
     }
@@ -54,13 +56,13 @@ const ManualAddManual = () => {
     try {
       const id = localStorage.getItem("id");
       const response = await axios.post(
-        "http://54.169.159.174:8000/timetablepage/allFindCourse/",
+        process.env.REACT_APP_NOTION_SERVER_URL + "timetablepage/allFindCourse/",
         {
           id: id,
           input: select,
         }
       );
-      const list = response.data.course;
+      const list = await response.data.course;
       setCourseList(list);
     } catch (e) {
       console.log(e);
@@ -71,7 +73,7 @@ const ManualAddManual = () => {
     try {
       const id = localStorage.getItem("id");
       const response = await axios.post(
-        "http://54.169.159.174:8000/timetablepage/addCourse/",
+        process.env.REACT_APP_NOTION_SERVER_URL + "timetablepage/addCourse/",
         {
           id: id,
           course: course,
@@ -101,13 +103,13 @@ const ManualAddManual = () => {
     try {
       const id = localStorage.getItem("id");
       const response = await axios.post(
-        "http://54.169.159.174:8000/timetablepage/removeCourse/",
+        process.env.REACT_APP_NOTION_SERVER_URL + "timetablepage/removeCourse/",
         {
           id: id,
           courseName: courseName,
         }
       );
-      const updatedSchedule = response.data.schedule;
+      const updatedSchedule = await response.data.schedule;
       const updatedCredits = await response.data.credits;
       setTimetable(updatedSchedule);
       setTotalCredits(updatedCredits);
