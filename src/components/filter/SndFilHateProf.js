@@ -72,7 +72,7 @@ const SndFilHateProf = () => {
     window.location.href = "/sndFilHateCheck"; // '싫어하는 교수' 검증 페이지로 넘어갑니다
   };
   const getAi = () => {
-    window.location.href = process.env."http://18.140.185.78:8501;
+    window.location.href = "http://18.140.185.78:8501";
   };
   return (
     <div className="sfhp_container">

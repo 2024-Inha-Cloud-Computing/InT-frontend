@@ -55,7 +55,7 @@ const FirstFilteringTimetable = () => {
     });
   };
   const getAi = () => {
-    window.location.href = process.env."http://18.140.185.78:8501;
+    window.location.href = "http://18.140.185.78:8501";
   };
   const goBack = () => {
     window.location.href = "/firstFilteringLoading";

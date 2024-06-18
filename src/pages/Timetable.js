@@ -9,7 +9,7 @@ const Timetable = () => {
   };
 
   const goManual = () => {
-    window.location.href = "/timetable/manual";
+    window.location.href = "/manualAutoQ";
   };
 
   const goFiltering = () => {

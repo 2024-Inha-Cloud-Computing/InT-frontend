@@ -48,7 +48,7 @@ const FirstFiltering = () => {
     );
   };
   const getAi = () => {
-    window.location.href = process.env."http://18.140.185.78:8501;
+    window.location.href = "http://18.140.185.78:8501";
   };
   const search = async () => {
     //서버로 부터 받기 courseList 갱신

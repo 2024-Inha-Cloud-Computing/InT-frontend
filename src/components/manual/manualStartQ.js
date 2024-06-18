@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import "./manualStartQ.css";
 import back from "../../assets/img/back.png";
 import bulb from "../../assets/img/lightbulb.png";
 
 const ManualStartQ = () => {
+  const navigate = useNavigate();
+
   const goBack = () => {
-    window.location.href = "/sndFilDecide";
+    navigate(-1);
   };
 
   const goAutoQ = () => {
