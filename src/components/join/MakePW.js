@@ -96,7 +96,7 @@ const MakePW = () => {
             <span className="makePW_infoTxt">
               비밀번호는 영문, 숫자, 특수 문자를 포함하여
               <br />
-              2자 이상이어야 합니다.
+              12자 이상이어야 합니다.
             </span>
           </div>
         </div>
